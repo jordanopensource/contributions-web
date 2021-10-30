@@ -17,39 +17,35 @@
             <a href="#">Methodology</a>
           </li>
         </ul>
-        <MobileMenuButton />
+        <MobileMenuButton :is-open="isOpen" @ToggleIsOpen="ToggleIsOpen()" />
       </div>
-      <div :class="isOpen ? 'block md:hidden' : 'hidden md:hidden'">
-        <ul class="mobile-menu">
-          <li class="pb-4 border-gray">
-            <a href="#">Stats</a>
-          </li>
-          <li class="py-4 border-gray">
-            <a href="#">Users</a>
-          </li>
-          <li class="py-4 border-gray">
-            <a href="#">Organizations</a>
-          </li>
-          <li class="py-4">
-            <a href="#">Methodology</a>
-          </li>
-        </ul>
-      </div>
+      <MobileMenuItems :is-open="isOpen" />
     </nav>
   </header>
 </template>
 
 <script>
 import MobileMenuButton from './MobileMenuButton.vue'
+import MobileMenuItems from './MobileMenuItems.vue'
 export default {
   name: 'TheHeader',
   components: {
     MobileMenuButton,
+    MobileMenuItems,
   },
   data() {
     return {
       isOpen: false,
     }
+  },
+  methods: {
+    ToggleIsOpen() {
+      if (this.isOpen) {
+        this.isOpen = false
+      } else {
+        this.isOpen = true
+      }
+    },
   },
 }
 </script>
@@ -69,10 +65,6 @@ li a:hover {
   color: #73bc86;
 }
 
-.border-gray {
-  border-bottom: solid 2px #22292c;
-}
-
 .menu-item {
   @apply inline-block px-4;
 }
@@ -83,9 +75,5 @@ li a:hover {
 
 .nav-bar {
   @apply flex justify-between items-center p-8 md:px-28 md:py-11;
-}
-
-.mobile-menu {
-  @apply px-8 py-8 text-white font-medium text-base;
 }
 </style>

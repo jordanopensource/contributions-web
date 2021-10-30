@@ -20,18 +20,12 @@
 <script>
 export default {
   name: 'MobileMenuButton',
-  data() {
-    return {
-      isOpen: false,
-    }
+  props: {
+    isOpen: Boolean,
   },
   methods: {
     OnClick() {
-      if (this.isOpen) {
-        this.isOpen = false
-      } else {
-        this.isOpen = true
-      }
+      this.$emit('ToggleIsOpen')
     },
   },
 }
