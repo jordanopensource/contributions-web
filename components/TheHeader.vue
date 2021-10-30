@@ -17,23 +17,7 @@
             <a href="#">Methodology</a>
           </li>
         </ul>
-        <!-- Mobile menu button -->
-        <div class="md:hidden flex items-center">
-          <button class="outline-none" @click="OnClick">
-            <img
-              v-if="isOpen"
-              class="w-9 h-9"
-              src="~/assets/images/navbar/x-circle.svg"
-              alt=""
-            />
-            <img
-              v-else
-              class="w-9 h-9"
-              src="~/assets/images/navbar/bars-solid.svg"
-              alt=""
-            />
-          </button>
-        </div>
+        <MobileMenuButton />
       </div>
       <div :class="isOpen ? 'block md:hidden' : 'hidden md:hidden'">
         <ul class="mobile-menu">
@@ -56,21 +40,16 @@
 </template>
 
 <script>
+import MobileMenuButton from './MobileMenuButton.vue'
 export default {
   name: 'TheHeader',
+  components: {
+    MobileMenuButton,
+  },
   data() {
     return {
       isOpen: false,
     }
-  },
-  methods: {
-    OnClick() {
-      if (this.isOpen) {
-        this.isOpen = false
-      } else {
-        this.isOpen = true
-      }
-    },
   },
 }
 </script>
