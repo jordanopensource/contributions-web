@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+* {
+  font-family: 'IBM Sans';
+}
 .mobile-menu {
   @apply px-8 py-8 text-white font-medium text-base;
 }
