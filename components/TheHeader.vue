@@ -1,20 +1,20 @@
 <template>
   <header>
     <nav>
-      <div class="flex justify-between items-center p-8 md:px-28 md:py-11">
+      <div class="nav-bar">
         <img class="w-13 h-10" src="~/assets/images/navbar/logo.svg" alt="" />
-        <ul class="text-white hidden md:flex font-medium text-lg">
-          <li class="inline-block px-4">
-            <a class="" href="#">Stats</a>
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="#">Stats</a>
           </li>
-          <li class="inline-block px-4">
-            <a class="" href="#">Users</a>
+          <li class="menu-item">
+            <a href="#">Users</a>
           </li>
-          <li class="inline-block px-4">
-            <a class="" href="#">Organizations</a>
+          <li class="menu-item">
+            <a href="#">Organizations</a>
           </li>
-          <li class="inline-block px-4">
-            <a class="" href="#">Methodology</a>
+          <li class="menu-item">
+            <a href="#">Methodology</a>
           </li>
         </ul>
         <!-- Mobile menu button -->
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div :class="isOpen ? 'block md:hidden' : 'hidden md:hidden'">
-        <ul class="px-8 py-8 text-white font-medium text-base">
+        <ul class="mobile-menu">
           <li class="pb-4 border-gray">
             <a href="#">Stats</a>
           </li>
@@ -75,14 +75,7 @@ export default {
 }
 </script>
 
-<style scoped>
-@font-face {
-  font-family: 'IBM Sans';
-  font-style: normal;
-  font-display: swap;
-  src: url('~assets/fonts/IBMPlexSansArabic-Medium.ttf') format('truetype');
-}
-
+<style lang="postcss" scoped>
 * {
   font-family: 'IBM Sans';
   background-color: #1a1f21;
@@ -99,5 +92,21 @@ li a:hover {
 
 .border-gray {
   border-bottom: solid 2px #22292c;
+}
+
+.menu-item {
+  @apply inline-block px-4;
+}
+
+.menu {
+  @apply text-white hidden md:flex font-medium text-lg;
+}
+
+.nav-bar {
+  @apply flex justify-between items-center p-8 md:px-28 md:py-11;
+}
+
+.mobile-menu {
+  @apply px-8 py-8 text-white font-medium text-base;
 }
 </style>
