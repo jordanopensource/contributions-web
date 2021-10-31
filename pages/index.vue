@@ -1,7 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <Hero />
+  </div>
 </template>
 
 <script>
-export default {}
+import Hero from '../components/Hero.vue'
+export default {
+  components: {
+    Hero,
+  },
+}
 </script>
