@@ -54,6 +54,8 @@ export default {
 * {
   font-family: 'IBM Sans';
   background-color: #1a1f21;
+  padding: 0;
+  margin: 0;
 }
 
 li a {
@@ -66,14 +68,14 @@ li a:hover {
 }
 
 .menu-item {
-  @apply inline-block px-4;
+  @apply inline-block md:px-4 lg:px-7;
 }
 
 .menu {
-  @apply text-white hidden md:flex font-medium text-lg;
+  @apply text-white hidden md:flex font-medium text-lg lg:text-xl md:mx-0;
 }
 
 .nav-bar {
-  @apply flex justify-between items-center p-8 md:px-28 md:py-11;
+  @apply flex justify-between items-center py-6 px-8 md:px-20 lg:px-24 md:py-11;
 }
 </style>
