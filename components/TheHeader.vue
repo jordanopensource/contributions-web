@@ -1,70 +1,45 @@
 <template>
   <header>
     <nav>
-      <div class="flex justify-between items-center p-8 md:px-28 md:py-11">
+      <div class="nav-bar">
         <img class="w-13 h-10" src="~/assets/images/navbar/logo.svg" alt="" />
-        <ul class="text-white hidden md:flex font-medium text-lg">
-          <li class="inline-block px-4">
-            <a class="" href="#">Stats</a>
-          </li>
-          <li class="inline-block px-4">
-            <a class="" href="#">Users</a>
-          </li>
-          <li class="inline-block px-4">
-            <a class="" href="#">Organizations</a>
-          </li>
-          <li class="inline-block px-4">
-            <a class="" href="#">Methodology</a>
-          </li>
-        </ul>
-        <!-- Mobile menu button -->
-        <div class="md:hidden flex items-center">
-          <button class="outline-none" @click="OnClick">
-            <img
-              v-if="isOpen"
-              class="w-9 h-9"
-              src="~/assets/images/navbar/x-circle.svg"
-              alt=""
-            />
-            <img
-              v-else
-              class="w-9 h-9"
-              src="~/assets/images/navbar/bars-solid.svg"
-              alt=""
-            />
-          </button>
-        </div>
-      </div>
-      <div :class="isOpen ? 'block md:hidden' : 'hidden md:hidden'">
-        <ul class="px-8 py-8 text-white font-medium text-base">
-          <li class="pb-4 border-gray">
+        <ul class="menu">
+          <li class="menu-item">
             <a href="#">Stats</a>
           </li>
-          <li class="py-4 border-gray">
+          <li class="menu-item">
             <a href="#">Users</a>
           </li>
-          <li class="py-4 border-gray">
+          <li class="menu-item">
             <a href="#">Organizations</a>
           </li>
-          <li class="py-4">
+          <li class="menu-item">
             <a href="#">Methodology</a>
           </li>
         </ul>
+        <MobileMenuButton :is-open="isOpen" @ToggleIsOpen="ToggleIsOpen()" />
       </div>
+      <MobileMenuItems :is-open="isOpen" />
     </nav>
   </header>
 </template>
 
 <script>
+import MobileMenuButton from './MobileMenuButton.vue'
+import MobileMenuItems from './MobileMenuItems.vue'
 export default {
   name: 'TheHeader',
+  components: {
+    MobileMenuButton,
+    MobileMenuItems,
+  },
   data() {
     return {
       isOpen: false,
     }
   },
   methods: {
-    OnClick() {
+    ToggleIsOpen() {
       if (this.isOpen) {
         this.isOpen = false
       } else {
@@ -75,14 +50,7 @@ export default {
 }
 </script>
 
-<style scoped>
-@font-face {
-  font-family: 'IBM Sans';
-  font-style: normal;
-  font-display: swap;
-  src: url('~assets/fonts/IBMPlexSansArabic-Medium.ttf') format('truetype');
-}
-
+<style lang="postcss" scoped>
 * {
   font-family: 'IBM Sans';
   background-color: #1a1f21;
@@ -97,7 +65,15 @@ li a:hover {
   color: #73bc86;
 }
 
-.border-gray {
-  border-bottom: solid 2px #22292c;
+.menu-item {
+  @apply inline-block px-4;
+}
+
+.menu {
+  @apply text-white hidden md:flex font-medium text-lg;
+}
+
+.nav-bar {
+  @apply flex justify-between items-center p-8 md:px-28 md:py-11;
 }
 </style>
