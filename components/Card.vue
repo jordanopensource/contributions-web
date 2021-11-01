@@ -51,7 +51,7 @@ export default {
 }
 
 .card-container {
-  @apply bg-white shadow my-5 mx-3;
+  @apply bg-white shadow my-5 mx-3 lg:w-2/4 lg:mx-5;
 }
 
 .content-container {
