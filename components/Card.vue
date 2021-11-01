@@ -1,0 +1,56 @@
+<template>
+  <div class="card-container">
+    <div class="content-container">
+      <img
+        class="w-7"
+        :src="require(`~/assets/images/stats/${image}`)"
+        alt=""
+      />
+      <h2 :class="color">{{ count }}</h2>
+    </div>
+    <p class="description">
+      {{ description }}
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Card',
+  props: {
+    count: { type: Number, required: true },
+    description: { type: String, required: true },
+    color: { type: String, required: true },
+    image: { type: String, required: true },
+  },
+}
+</script>
+
+<style lang="postcss" scoped>
+.blue {
+  color: #0b97ac;
+  @apply text-4xl;
+}
+
+.blue-green {
+  color: #00b199;
+  @apply text-4xl;
+}
+
+.green {
+  color: #73bc86;
+  @apply text-4xl;
+}
+
+.description {
+  @apply text-base px-6 pt-1 pb-6;
+}
+
+.card-container {
+  @apply bg-white shadow my-5;
+}
+
+.content-container {
+  @apply flex space-x-2 items-center px-6 pt-6;
+}
+</style>
