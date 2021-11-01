@@ -54,8 +54,6 @@ export default {
 * {
   font-family: 'IBM Sans';
   background-color: #1a1f21;
-  padding: 0;
-  margin: 0;
 }
 
 li a {
