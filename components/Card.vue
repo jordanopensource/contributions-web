@@ -28,21 +28,25 @@ export default {
 
 <style lang="postcss" scoped>
 .blue {
+  font-family: 'IBM Sans';
   color: #0b97ac;
-  @apply text-4xl;
+  @apply text-5xl;
 }
 
 .blue-green {
+  font-family: 'IBM Sans';
   color: #00b199;
-  @apply text-4xl;
+  @apply text-5xl;
 }
 
 .green {
+  font-family: 'IBM Sans';
   color: #73bc86;
-  @apply text-4xl;
+  @apply text-5xl;
 }
 
 .description {
+  font-family: 'IBM Sans';
   @apply text-base px-6 pt-1 pb-6;
 }
 
