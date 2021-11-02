@@ -15,36 +15,36 @@
         <div class="sort-section has-border">
           <h6 class="text-xs font-bold">Sort by:</h6>
           <div class="input-section"></div>
-          <label class="text-xs">
-            <input type="radio" />
+          <label for="Score" class="text-xs">
+            <input name="sortby" value="Score" type="radio" checked />
             Score
           </label>
-          <label class="text-xs px-10">
-            <input type="radio" />
+          <label for="Contributions" class="text-xs px-10">
+            <input name="sortby" value="Contributions" type="radio" />
             Contributions
           </label>
         </div>
         <div class="sort-section has-border">
           <h6 class="text-xs font-bold">Show:</h6>
           <div class="input-section"></div>
-          <label class="text-xs">
-            <input type="radio" />
+          <label for="All" class="text-xs">
+            <input name="show" value="All" type="radio" checked />
             All
           </label>
-          <label class="text-xs px-14">
-            <input type="radio" />
+          <label for="josa" class="text-xs px-14">
+            <input name="show" value="josa" type="radio" />
             Only JOSA members
           </label>
         </div>
         <div class="sort-section">
           <h6 class="text-xs font-bold">Count:</h6>
           <div class="input-section"></div>
-          <label class="text-xs">
-            <input type="checkbox" />
+          <label for="Commits" class="text-xs">
+            <input name="count" value="Commits" type="checkbox" checked />
             Commits
           </label>
-          <label class="text-xs px-5">
-            <input type="checkbox" />
+          <label for="Contributions" class="text-xs px-5">
+            <input name="count" value="Contributions" type="checkbox" />
             Contribution
           </label>
         </div>
