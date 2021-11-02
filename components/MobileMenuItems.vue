@@ -1,5 +1,5 @@
 <template>
-  <div :class="isOpen ? 'block md:hidden' : 'hidden md:hidden'">
+  <div :class="isOpen ? 'block lg:hidden' : 'hidden lg:hidden'">
     <ul class="mobile-menu">
       <li class="pb-4 border-gray">
         <a href="#">Stats</a>

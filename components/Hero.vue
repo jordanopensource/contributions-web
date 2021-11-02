@@ -48,12 +48,12 @@ export default {
 
 .content-header {
   font-family: 'IBM Mono';
-  @apply text-4xl md:text-4xl  lg:text-5xl tracking-wide font-normal md:ml-2;
+  @apply text-4xl md:text-4xl  lg:text-5xl tracking-wide font-normal md:ml-3;
 }
 
 .para-section {
   font-family: 'IBM Sans';
-  @apply w-11/12 pt-7 text-xl lg:text-2xl font-normal md:ml-2;
+  @apply w-11/12 pt-7 text-xl lg:text-2xl font-normal md:ml-3;
 }
 
 .section-image {

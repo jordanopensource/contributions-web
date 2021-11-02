@@ -70,7 +70,7 @@ li a:hover {
 }
 
 .menu {
-  @apply text-white hidden md:flex font-medium text-lg lg:text-xl md:mx-0;
+  @apply text-white hidden lg:flex font-medium text-lg lg:text-xl md:mx-0;
 }
 
 .nav-bar {
