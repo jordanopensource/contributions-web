@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jordanopensource/top-contributors-web">
-    <img src=".github/images/logo.svg" alt="Logo" width="80" height="80">
+    <img src=".github/images/logo.svg" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">top-contributors-web</h3>
@@ -123,7 +123,7 @@ See the [open issues](https://github.com/jordanopensource/top-contributors-web/i
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
