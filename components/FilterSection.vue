@@ -1,7 +1,7 @@
 <template>
   <div class="section-container">
     <div class="content-conatiner">
-      <div class="filter-section">
+      <div class="filter-section has-border">
         <h1 class="filter-text">Filter</h1>
         <button class="outline-none" @click="ToggleIsOpen">
           <img
@@ -84,7 +84,7 @@ export default {
 }
 
 .filter-section {
-  @apply flex mx-6 pt-6 pb-2 border-b-2 border-dotted border-black justify-between;
+  @apply flex mx-6 pt-6 pb-2 justify-between;
 }
 
 .filter-text {
@@ -94,7 +94,7 @@ export default {
 }
 
 .has-border {
-  @apply border-b-2 border-dotted border-black;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
 }
 
 .sort-section {
