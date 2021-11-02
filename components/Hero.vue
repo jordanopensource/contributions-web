@@ -39,7 +39,7 @@ export default {
 }
 
 .banner {
-  @apply flex flex-col px-8 h-auto md:flex-row md:pl-20 lg:px-24;
+  @apply flex flex-col px-9 h-auto md:flex-row  lg:px-24;
 }
 
 .content-container {
@@ -48,12 +48,12 @@ export default {
 
 .content-header {
   font-family: 'IBM Mono';
-  @apply text-4xl md:text-4xl  lg:text-5xl tracking-wide font-normal;
+  @apply text-4xl md:text-4xl  lg:text-5xl tracking-wide font-normal md:ml-2;
 }
 
 .para-section {
   font-family: 'IBM Sans';
-  @apply w-11/12 pt-7 text-xl lg:text-2xl font-normal;
+  @apply w-11/12 pt-7 text-xl lg:text-2xl font-normal md:ml-2;
 }
 
 .section-image {

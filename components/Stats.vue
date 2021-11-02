@@ -64,7 +64,7 @@ export default {
 .header {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
-  @apply font-normal ml-8 pt-16 lg:ml-20 lg:text-4xl lg:font-light 2xl:ml-24;
+  @apply font-normal ml-8 pt-16 md:ml-12 lg:ml-20 lg:text-4xl lg:font-light 2xl:ml-24;
 }
 
 .divider {
