@@ -66,14 +66,14 @@ li a:hover {
 }
 
 .menu-item {
-  @apply inline-block md:px-4 lg:px-7;
+  @apply inline-block lg:mx-7;
 }
 
 .menu {
-  @apply text-white hidden lg:flex font-medium text-lg lg:text-xl md:mx-0;
+  @apply text-white hidden lg:flex font-medium text-lg lg:text-xl w-full justify-end;
 }
 
 .nav-bar {
-  @apply flex justify-between items-center py-6 px-8 md:px-20 lg:px-24 md:py-11;
+  @apply flex items-center py-6 mx-8 md:mx-11 lg:ml-24 md:py-11;
 }
 </style>

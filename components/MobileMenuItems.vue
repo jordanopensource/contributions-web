@@ -31,7 +31,7 @@ export default {
   font-family: 'IBM Sans';
 }
 .mobile-menu {
-  @apply px-8 py-8 text-white font-medium text-base;
+  @apply mx-8 py-8 text-white font-medium text-base md:mx-11;
 }
 
 .border-gray {

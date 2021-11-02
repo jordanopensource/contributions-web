@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:hidden flex items-center">
+  <div class="lg:hidden flex items-center w-full justify-end">
     <button class="outline-none" @click="OnClick">
       <img
         v-if="isOpen"
