@@ -5,7 +5,7 @@
         <div class="divider"></div>
         <h1>Top Developers in Jordan</h1>
       </div>
-      <FilterSection />
+      <FilterSection class="mt-8" />
     </article>
   </div>
 </template>
