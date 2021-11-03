@@ -11,51 +11,18 @@
           />
         </button>
       </div>
-      <div :class="isOpen ? '' : 'hidden overflow-hidden'">
-        <div class="sort-section has-border">
-          <h6 class="text-xs font-bold">Sort by:</h6>
-          <div class="input-section"></div>
-          <label for="Score" class="text-xs">
-            <input name="sortby" value="Score" type="radio" checked />
-            Score
-          </label>
-          <label for="Contributions" class="text-xs px-10">
-            <input name="sortby" value="Contributions" type="radio" />
-            Contributions
-          </label>
-        </div>
-        <div class="sort-section has-border">
-          <h6 class="text-xs font-bold">Show:</h6>
-          <div class="input-section"></div>
-          <label for="All" class="text-xs">
-            <input name="show" value="All" type="radio" checked />
-            All
-          </label>
-          <label for="josa" class="text-xs px-14">
-            <input name="show" value="josa" type="radio" />
-            Only JOSA members
-          </label>
-        </div>
-        <div class="sort-section">
-          <h6 class="text-xs font-bold">Count:</h6>
-          <div class="input-section"></div>
-          <label for="Commits" class="text-xs">
-            <input name="count" value="Commits" type="checkbox" checked />
-            Commits
-          </label>
-          <label for="Contributions" class="text-xs px-5">
-            <input name="count" value="Contributions" type="checkbox" />
-            Contribution
-          </label>
-        </div>
-      </div>
+      <InputsSection :is-open="isOpen" />
     </div>
   </div>
 </template>
 
 <script>
+import InputsSection from './InputsSection.vue'
 export default {
   name: 'FilterSection',
+  components: {
+    InputsSection,
+  },
   data() {
     return {
       isOpen: true,
@@ -84,7 +51,7 @@ export default {
 }
 
 .filter-section {
-  @apply flex mx-6 pt-6 pb-2 justify-between;
+  @apply flex mx-8 pt-6 pb-2 justify-between;
 }
 
 .filter-text {
@@ -101,7 +68,7 @@ export default {
   @apply mx-6 pt-6 pb-4;
 }
 
-.input-section {
-  @apply pt-2;
+.contributions-radio {
+  margin-left: 2.8rem;
 }
 </style>
