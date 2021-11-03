@@ -1,5 +1,5 @@
 <template>
-  <div :class="isOpen ? '' : 'hidden overflow-hidden'">
+  <div :class="isOpen ? '' : 'hidden overflow-hidden lg:block'">
     <div class="sort-section has-border">
       <h6 class="text-xs font-bold pb-2">Sort by:</h6>
       <div class="flex">
