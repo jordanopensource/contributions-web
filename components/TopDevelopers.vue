@@ -6,16 +6,19 @@
         <h1>Top Developers in Jordan</h1>
       </div>
       <FilterSection class="mt-8" />
+      <Contributors />
     </article>
   </div>
 </template>
 
 <script>
 import FilterSection from './FilterSection.vue'
+import Contributors from './Contributors.vue'
 export default {
   name: 'TopDevelopers',
   components: {
     FilterSection,
+    Contributors,
   },
 }
 </script>
