@@ -1,13 +1,17 @@
 <template>
   <div class="section-container">
     <div class="content-conatiner">
-      <div class="text-section has-border">
+      <div class="text-section has-border py-3">
         <h1 class="head-text">Rank</h1>
-        <h1 class="head-text px-4">User</h1>
+        <h1 class="head-text px-5">User</h1>
         <div class="flex justify-end w-full">
           <h1 class="head-text">Total</h1>
         </div>
       </div>
+      <UserCard />
+      <UserCard />
+      <UserCard />
+      <UserCard />
       <UserCard />
     </div>
   </div>
