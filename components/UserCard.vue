@@ -2,15 +2,7 @@
   <div class="flex mx-8 h-32 content-center has-border pb-3">
     <h1 class="rank">1.</h1>
     <img
-      class="
-        image-filter
-        w-20
-        h-20
-        rounded-full
-        border border-gray-100
-        shadow-sm
-        self-center
-      "
+      class="image-filter image"
       src="~/assets/images/stats/icon-users.svg"
       alt=""
     />
@@ -67,6 +59,10 @@ export default {
 
 .green {
   color: #73bc86;
+}
+
+.image {
+  @apply w-20 h-20 rounded-full border border-gray-100 shadow-sm self-center;
 }
 
 .image-filter {
