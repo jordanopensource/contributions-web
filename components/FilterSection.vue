@@ -42,16 +42,16 @@ export default {
 
 <style lang="postcss" scoped>
 .section-container {
-  @apply block w-11/12 mx-auto;
+  @apply block w-11/12 lg:w-1/3 mx-auto lg:mx-0 lg:mr-5 lg:bg-lightgrey;
 }
 
 .content-conatiner {
   background-color: #f4f4f5;
-  @apply mx-3;
+  @apply mx-3 lg:mx-0;
 }
 
 .filter-section {
-  @apply flex mx-8 pt-6 pb-2 justify-between;
+  @apply flex mx-8 pt-6 lg:pt-10 lg:mx-10 pb-2 justify-between;
 }
 
 .filter-text {
