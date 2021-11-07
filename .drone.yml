@@ -1,0 +1,33 @@
+# Drone CI File!
+
+kind: pipeline
+type: kubernetes
+name: default
+
+metadata:
+  namespace: josa-builds
+
+node_selector:
+  doks.digitalocean.com/node-pool: josa-cloud-np
+
+steps:
+  - name: build and release top-contributors-web
+    image: plugins/docker
+    settings:
+      repo: josaorg/top-contributors-web
+      tags:
+        - ${DRONE_COMMIT_SHA}
+        - latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      auto_tag: false
+  - name: notify on Slack
+    image: plugins/slack
+    settings:
+      webhook:
+        from_secret: slack_webhook
+      channel: heartbeat
+    depends_on:
+      - build and release top-contributors-web
