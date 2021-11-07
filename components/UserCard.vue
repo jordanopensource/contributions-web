@@ -20,7 +20,7 @@
         </div>
         <div class="flex flex-col">
           <p class="text-xs">Contributions</p>
-          <p class="green">7689</p>
+          <p class="blue-green">7689</p>
         </div>
       </div>
     </div>
@@ -58,9 +58,9 @@ export default {
   color: #0b97ac;
 }
 
-.green {
+.blue-green {
   @apply lg:text-xl;
-  color: #73bc86;
+  color: #00b199;
 }
 
 .image {
