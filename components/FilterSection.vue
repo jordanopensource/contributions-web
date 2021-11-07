@@ -1,7 +1,7 @@
 <template>
   <div class="section-container">
     <div class="content-conatiner">
-      <div :class="isOpen ? 'filter-section has-border' : 'filter-section'">
+      <div class="filter-section has-border">
         <h1 class="filter-text">Filter</h1>
         <button class="outline-none lg:hidden" @click="ToggleIsOpen">
           <img
@@ -51,7 +51,7 @@ export default {
 }
 
 .filter-section {
-  @apply flex mx-8 pt-6 lg:pt-10 lg:mx-10 pb-2 justify-between;
+  @apply flex mx-8 pt-6 lg:pt-10 lg:mx-8 pb-2 justify-between;
 }
 
 .filter-text {

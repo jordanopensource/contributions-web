@@ -1,12 +1,12 @@
 <template>
-  <div class="flex mx-8 h-32 content-center has-border pb-3">
+  <div class="flex mx-8 h-32 lg:h-40 content-center has-border pb-3">
     <h1 class="rank">1.</h1>
     <img
       class="image-filter image"
       src="~/assets/images/stats/icon-users.svg"
       alt=""
     />
-    <div class="block w-full px-4 mt-5">
+    <div class="block w-full px-4 mt-3 lg:mt-6">
       <div class="flex flex-col">
         <h1 class="full-name">Mohamad Berjawi</h1>
         <h1 class="user-name">thread-koder</h1>
@@ -14,7 +14,7 @@
     </div>
     <div class="self-center">
       <div class="block text-right">
-        <div class="flex flex-col">
+        <div class="flex flex-col pb-2">
           <p class="text-xs">Score</p>
           <p class="blue">24324</p>
         </div>
@@ -36,12 +36,12 @@ export default {
 <style lang="postcss" scoped>
 .rank {
   font-family: 'IBM Sans';
-  @apply text-lg text-center pr-2 self-center;
+  @apply text-lg text-center pr-2 self-center lg:text-2xl tracking-widest lg:pr-10;
 }
 
 .full-name {
   font-family: 'IBM Sans';
-  @apply text-sm font-semibold;
+  @apply text-sm font-semibold lg:text-lg;
 }
 
 .user-name {
@@ -54,10 +54,12 @@ export default {
 }
 
 .blue {
+  @apply lg:text-xl;
   color: #0b97ac;
 }
 
 .green {
+  @apply lg:text-xl;
   color: #73bc86;
 }
 
