@@ -2,8 +2,9 @@
   <div :class="isOpen ? '' : 'hidden overflow-hidden lg:block'">
     <div class="sort-section has-border">
       <h6 class="text-xs font-bold pb-2">Sort by:</h6>
-      <div class="flex">
+      <div class="flex lg:flex-col">
         <RadioButton
+          class="lg:pb-1"
           :input-id="`score`"
           :input-name="`sortby`"
           :label-for="`score`"
@@ -21,8 +22,9 @@
     </div>
     <div class="sort-section has-border">
       <h6 class="text-xs font-bold pb-2">Show:</h6>
-      <div class="flex">
+      <div class="flex lg:flex-col">
         <RadioButton
+          class="lg:pb-1"
           :input-id="`all`"
           :input-name="`show`"
           :label-for="`all`"
@@ -30,7 +32,7 @@
           :checked="true"
         />
         <RadioButton
-          class="pb-2 ml-16"
+          class="pb-2 ml-16 lg:ml-0"
           :input-id="`only`"
           :input-name="`show`"
           :label-for="`only`"
@@ -40,8 +42,9 @@
     </div>
     <div class="sort-section">
       <h6 class="text-xs font-bold pb-2">Count:</h6>
-      <div class="flex">
+      <div class="flex lg:flex-col">
         <CheckBox
+          class="lg:pb-1"
           :input-id="`commits`"
           :input-name="`count`"
           :label-for="`commits`"
@@ -49,7 +52,7 @@
           :checked="true"
         />
         <CheckBox
-          class="pb-2 ml-6"
+          class="pb-2 ml-6 lg:ml-0"
           :input-id="`contribution`"
           :input-name="`count`"
           :label-for="`contribution`"
@@ -86,5 +89,6 @@ export default {
 
 .contributions-radio {
   margin-left: 2.8rem;
+  @apply lg:ml-0;
 }
 </style>

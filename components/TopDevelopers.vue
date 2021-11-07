@@ -5,8 +5,10 @@
         <div class="divider"></div>
         <h1>Top Developers in Jordan</h1>
       </div>
-      <FilterSection class="mt-8" />
-      <Contributors />
+      <div class="filter-component">
+        <FilterSection class="lg:mt-0 lg:order-2" />
+        <Contributors class="lg:flex-grow lg:pl-6" />
+      </div>
     </article>
   </div>
 </template>
@@ -24,7 +26,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.section-container {
+* {
   background-color: #edeeef;
 }
 .divider {
@@ -34,5 +36,9 @@ export default {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
   @apply font-normal ml-8 pt-16 md:ml-12 lg:ml-20 lg:text-4xl lg:font-light 2xl:ml-24;
+}
+
+.filter-component {
+  @apply lg:flex mx-auto mt-10 lg:mt-20 lg:w-11/12;
 }
 </style>

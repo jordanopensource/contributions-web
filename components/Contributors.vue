@@ -1,7 +1,7 @@
 <template>
   <div class="section-container">
     <div class="content-conatiner">
-      <div class="text-section has-border py-3">
+      <div class="text-section has-border">
         <h1 class="head-text">Rank</h1>
         <h1 class="head-text px-5">User</h1>
         <div class="flex justify-end w-full">
@@ -33,11 +33,11 @@ export default {
 }
 
 .section-container {
-  @apply block w-11/12 mx-auto;
+  @apply block w-11/12 mx-auto lg:mx-0 bg-gray;
 }
 
 .content-conatiner {
-  @apply mx-3 bg-white;
+  @apply mx-3 lg:mx-0 bg-white;
 }
 
 .has-border {
@@ -45,12 +45,12 @@ export default {
 }
 
 .text-section {
-  @apply flex flex-nowrap mx-8;
+  @apply flex flex-nowrap mx-8 py-3 pt-10 lg:pb-2;
 }
 
 .head-text {
   font-family: 'IBM Sans';
   text-transform: uppercase;
-  @apply text-lg;
+  @apply text-lg lg:text-xl;
 }
 </style>
