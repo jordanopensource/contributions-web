@@ -6,7 +6,7 @@
       src="~/assets/images/stats/icon-users.svg"
       alt=""
     />
-    <div class="block w-full px-4 mt-3 lg:mt-6">
+    <div class="block w-full pl-2 lg:px-5 mt-3 lg:mt-6">
       <div class="flex flex-col">
         <h1 class="full-name">Mohamad Berjawi</h1>
         <h1 class="user-name">thread-koder</h1>
@@ -36,7 +36,7 @@ export default {
 <style lang="postcss" scoped>
 .rank {
   font-family: 'IBM Sans';
-  @apply text-lg text-center pr-2 self-center lg:text-2xl tracking-widest lg:pr-10;
+  @apply text-lg text-center pr-1 self-center lg:text-2xl tracking-widest lg:pr-10;
 }
 
 .full-name {
@@ -64,7 +64,7 @@ export default {
 }
 
 .image {
-  @apply w-20 h-20 rounded-full border border-gray-100 shadow-sm self-center;
+  @apply w-20 h-20 rounded-full border border-gray-100 shadow-sm self-center object-contain;
 }
 
 .image-filter {
