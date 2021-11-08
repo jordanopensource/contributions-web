@@ -1,0 +1,41 @@
+services:
+  frontend:
+    build: 
+      context: .
+    image: top-contributors:latest
+    container_name: top-contrib
+    restart: unless-stopped
+    environment:
+      API_BASE_URL: top-contrib://top-contrib:8080 #url for backend
+      PORT: 3000
+    networks:
+      - topContrib-app-network
+    ports:
+      - "3000:3000"
+  
+#   backend:
+#     image: josaorg/top-contributors:latest
+#     container_name: top-contrib
+#     restart: unless-stopped
+#     environment:
+#       DB_URL: mongodb://mongodb:27017
+#       PORT: 8080
+#     networks:
+#       - topContrib-app-network
+#     ports:
+#       - "8080:8080"
+  
+#   mongodb:
+#     image: mongo
+#     container_name: mongoedb
+#     restart: unless-stopped
+#     environment:
+#       MONGO_INITDB_DATABASE: top-contributors
+#     networks:
+#       - topContrib-app-network
+#     ports:
+#       - "27017:27017"
+
+networks:
+  topContrib-app-network:
+    driver: bridge
