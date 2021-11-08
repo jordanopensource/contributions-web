@@ -6,7 +6,7 @@
       src="~/assets/images/stats/icon-users.svg"
       alt=""
     />
-    <div class="block w-full pl-2 lg:px-5 mt-3 lg:mt-6">
+    <div class="block w-full pl-2 lg:px-5 mt-6 lg:mt-8">
       <div class="flex flex-col">
         <h1 class="full-name">Mohamad Berjawi</h1>
         <h1 class="user-name">thread-koder</h1>
@@ -14,7 +14,7 @@
     </div>
     <div class="self-center">
       <div class="block text-right">
-        <div class="flex flex-col pb-2">
+        <div class="flex flex-col pb-2 pt-5">
           <p class="text-xs">Score</p>
           <p class="blue">24324</p>
         </div>
@@ -64,7 +64,7 @@ export default {
 }
 
 .image {
-  @apply w-20 h-20 rounded-full border border-gray-100 shadow-sm self-center object-contain;
+  @apply w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-100 shadow-sm self-center object-contain;
 }
 
 .image-filter {
