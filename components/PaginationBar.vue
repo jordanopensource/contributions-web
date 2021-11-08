@@ -38,7 +38,7 @@ export default {
   font-family: 'IBM Mono';
 }
 .pagination {
-  @apply pt-5 pb-12 mx-3 px-5 flex lg:mx-0 lg:pt-8 lg:pb-14 justify-center;
+  @apply pt-5 pb-12 mx-3 px-5 flex lg:mx-0 lg:pt-10 lg:pb-14 justify-center;
   text-align: center;
   user-select: none;
 }
