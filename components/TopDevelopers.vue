@@ -1,0 +1,44 @@
+<template>
+  <div>
+    <article class="section-container">
+      <div class="header-title">
+        <div class="divider"></div>
+        <h1>Top Developers in Jordan</h1>
+      </div>
+      <div class="filter-component">
+        <FilterSection class="lg:mt-0 lg:order-2" />
+        <Contributors class="lg:flex-grow lg:pl-6" />
+      </div>
+    </article>
+  </div>
+</template>
+
+<script>
+import FilterSection from './FilterSection.vue'
+import Contributors from './Contributors.vue'
+export default {
+  name: 'TopDevelopers',
+  components: {
+    FilterSection,
+    Contributors,
+  },
+}
+</script>
+
+<style lang="postcss" scoped>
+* {
+  background-color: #edeeef;
+}
+.divider {
+  @apply w-10 lg:w-14 border-t-2 border-black;
+}
+.header-title {
+  font-family: 'IBM Mono';
+  font-size: 1.7rem;
+  @apply font-normal ml-8 pt-16 lg:pt-24 md:ml-12 lg:ml-20 lg:text-4xl lg:font-light 2xl:ml-24;
+}
+
+.filter-component {
+  @apply lg:flex mx-auto mt-10 lg:mt-20 lg:w-11/12;
+}
+</style>
