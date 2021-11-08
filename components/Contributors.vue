@@ -14,15 +14,18 @@
       <UserCard />
       <UserCard />
     </div>
+    <PaginationBar />
   </div>
 </template>
 
 <script>
 import UserCard from './UserCard.vue'
+import PaginationBar from './PaginationBar.vue'
 export default {
   name: 'Contributors',
   components: {
     UserCard,
+    PaginationBar,
   },
 }
 </script>
