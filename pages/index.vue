@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-gray">
     <Hero />
     <Stats />
     <TopDevelopers />
