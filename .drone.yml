@@ -11,10 +11,10 @@ node_selector:
   doks.digitalocean.com/node-pool: josa-cloud-np
 
 steps:
-  - name: build and release top-contributors-web
+  - name: build and release contributions-web
     image: plugins/docker
     settings:
-      repo: josaorg/top-contributors-web
+      repo: josaorg/contributions-web
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
@@ -30,4 +30,4 @@ steps:
         from_secret: slack_webhook
       channel: heartbeat
     depends_on:
-      - build and release top-contributors-web
+      - build and release contributions-web
