@@ -2,7 +2,7 @@
   <div class="card-container">
     <div class="content-container">
       <img
-        class="w-7"
+        :class="imgSize"
         :src="require(`~/assets/images/stats/${image}`)"
         alt=""
       />
@@ -22,6 +22,7 @@ export default {
     description: { type: String, required: true },
     color: { type: String, required: true },
     image: { type: String, required: true },
+    imgSize: { type: String, required: true },
   },
 }
 </script>

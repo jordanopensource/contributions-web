@@ -11,18 +11,21 @@
         description="Commits from users in Jordan in the last month"
         color="blue"
         image="icon-commits.svg"
+        img-size="w-10"
       />
       <Card
         :count="usersCount"
         description="Github users from Jordan"
         color="blue-green"
         image="icon-users.svg"
+        img-size="w-16"
       />
       <Card
         :count="orgsCount"
         description="Organizations in Jordan on Github"
         color="green"
         image="icon-organization.svg"
+        img-size="w-12"
       />
     </div>
   </article>
