@@ -7,51 +7,58 @@
 
     <div class="cards-container">
       <Card
-        v-for="stat in stats"
-        :key="stat.id"
-        :count="stat.count"
-        :description="stat.description"
-        :color="stat.color"
-        :image="stat.image"
+        :count="commitsLastMonth"
+        description="Commits from users in Jordan in the last month"
+        color="blue"
+        image="icon-commits.svg"
+        img-size="w-10"
+      />
+      <Card
+        :count="usersCount"
+        description="Github users from Jordan"
+        color="blue-green"
+        image="icon-users.svg"
+        img-size="w-16"
+      />
+      <Card
+        :count="orgsCount"
+        description="Organizations in Jordan on Github"
+        color="green"
+        image="icon-organization.svg"
+        img-size="w-12"
       />
     </div>
   </article>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Card from './Card.vue'
-
 export default {
   name: 'Stats',
   components: {
     Card,
   },
-  data() {
-    return {
-      stats: [
-        {
-          id: 1,
-          count: 23556,
-          description: 'Commits from users in Jordan in last 12 months',
-          color: 'blue',
-          image: 'icon-commits.svg',
-        },
-        {
-          id: 2,
-          count: 235,
-          description: 'Github users from Jordan',
-          color: 'blue-green',
-          image: 'icon-users.svg',
-        },
-        {
-          id: 3,
-          count: 98,
-          description: 'Organizations in Jordan on Github',
-          color: 'green',
-          image: 'icon-organization.svg',
-        },
-      ],
-    }
+  async fetch() {
+    let response = await this.$axios.get(
+      'http://localhost:8080/api/v1/orgs?limit=1'
+    )
+    this.$store.commit('setOrgsCount', response.data.orgs.totalDocs)
+    response = await this.$axios.get(
+      'http://localhost:8080/api/v1/users?limit=1'
+    )
+    this.$store.commit('setUsersCount', response.data.users.totalDocs)
+    response = await this.$axios.get(
+      'http://localhost:8080/api/v1/contributions'
+    )
+    this.$store.commit('setCommitsLastMonth', response.data.commits_last_month)
+  },
+  computed: {
+    ...mapState({
+      orgsCount: 'orgsCount',
+      usersCount: 'usersCount',
+      commitsLastMonth: 'commitsLastMonth',
+    }),
   },
 }
 </script>
