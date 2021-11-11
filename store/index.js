@@ -3,6 +3,7 @@ export const state = () => ({
   usersCount: 0,
   commitsLastMonth: 0,
   users: [],
+  pageCount: 0,
 })
 
 export const getters = {}
@@ -19,5 +20,8 @@ export const mutations = {
   },
   setCommitsLastMonth(state, commitsLastMonth) {
     state.commitsLastMonth = commitsLastMonth
+  },
+  setPageCount(state, pageCount) {
+    state.pageCount = pageCount
   },
 }

@@ -7,13 +7,14 @@
       </div>
       <div class="filter-component">
         <FilterSection class="lg:mt-0 lg:order-2" />
-        <Contributors class="lg:flex-grow lg:pl-6" />
+        <Contributors :users="users" class="lg:flex-grow lg:pl-6" />
       </div>
     </article>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import FilterSection from './FilterSection.vue'
 import Contributors from './Contributors.vue'
 export default {
@@ -21,6 +22,16 @@ export default {
   components: {
     FilterSection,
     Contributors,
+  },
+  async fetch() {
+    const response = await this.$axios.get('http://localhost:8080/api/v1/users')
+    const users = response.data.users.docs
+    this.$store.commit('setUsers', users)
+  },
+  computed: {
+    ...mapState({
+      users: 'users',
+    }),
   },
 }
 </script>

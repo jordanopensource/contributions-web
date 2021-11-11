@@ -1,10 +1,34 @@
 <template>
   <p v-if="checked">
-    <input :id="inputId" type="radio" :name="inputName" checked />
+    <input
+      :id="inputId"
+      type="radio"
+      :name="inputName"
+      :value="value"
+      checked
+      @change="onChange($event)"
+    />
+    <label class="text-sm" :for="labelFor">{{ labelText }}</label>
+  </p>
+  <p v-else-if="disabled">
+    <input
+      :id="inputId"
+      type="radio"
+      :name="inputName"
+      :value="value"
+      disabled
+      @change="onChange($event)"
+    />
     <label class="text-sm" :for="labelFor">{{ labelText }}</label>
   </p>
   <p v-else>
-    <input :id="inputId" type="radio" :name="inputName" />
+    <input
+      :id="inputId"
+      type="radio"
+      :name="inputName"
+      :value="value"
+      @change="onChange($event)"
+    />
     <label class="text-sm" :for="labelFor">{{ labelText }}</label>
   </p>
 </template>
@@ -18,6 +42,19 @@ export default {
     labelFor: { type: String, required: true },
     labelText: { type: String, required: true },
     checked: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    value: { type: String, required: true },
+  },
+  methods: {
+    async onChange(event) {
+      if (this.inputName === 'sortby') {
+        const sortby = event.target.value
+        const response = await this.$axios.get(
+          `http://localhost:8080/api/v1/users?sort_by=${sortby}`
+        )
+        this.$store.commit('setUsers', response.data.users.docs)
+      }
+    },
   },
 }
 </script>

@@ -1,10 +1,26 @@
 <template>
   <p v-if="checked">
-    <input :id="inputId" type="checkbox" :name="inputName" checked />
+    <input
+      :id="inputId"
+      type="checkbox"
+      :name="inputName"
+      :value="value"
+      checked
+    />
+    <label class="text-sm" :for="labelFor">{{ labelText }}</label>
+  </p>
+  <p v-else-if="disabled">
+    <input
+      :id="inputId"
+      type="checkbox"
+      :name="inputName"
+      :value="value"
+      disabled
+    />
     <label class="text-sm" :for="labelFor">{{ labelText }}</label>
   </p>
   <p v-else>
-    <input :id="inputId" type="checkbox" :name="inputName" />
+    <input :id="inputId" type="checkbox" :name="inputName" :value="value" />
     <label class="text-sm" :for="labelFor">{{ labelText }}</label>
   </p>
 </template>
@@ -18,6 +34,8 @@ export default {
     labelFor: { type: String, required: true },
     labelText: { type: String, required: true },
     checked: { type: Boolean, default: false },
+    disabled: { type: Boolean, default: false },
+    value: { type: String, required: true },
   },
 }
 </script>

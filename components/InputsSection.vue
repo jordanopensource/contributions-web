@@ -10,6 +10,7 @@
           :label-for="`score`"
           :label-text="`Score`"
           :checked="true"
+          :value="'score'"
         />
         <RadioButton
           class="pb-2 contributions-radio"
@@ -17,6 +18,7 @@
           :input-name="`sortby`"
           :label-for="`contributions`"
           :label-text="`Contributions`"
+          :value="'commit'"
         />
       </div>
     </div>
@@ -30,6 +32,7 @@
           :label-for="`all`"
           :label-text="`All`"
           :checked="true"
+          :value="'all'"
         />
         <RadioButton
           class="pb-2 ml-16 lg:ml-0"
@@ -37,6 +40,8 @@
           :input-name="`show`"
           :label-for="`only`"
           :label-text="`Only JOSA members`"
+          :value="'josa'"
+          :disabled="true"
         />
       </div>
     </div>
@@ -50,6 +55,7 @@
           :label-for="`commits`"
           :label-text="`Commits`"
           :checked="true"
+          :value="'commits'"
         />
         <CheckBox
           class="pb-2 ml-6 lg:ml-0"
@@ -57,6 +63,8 @@
           :input-name="`count`"
           :label-for="`contribution`"
           :label-text="`Contributions`"
+          :value="'contribution'"
+          :disabled="true"
         />
       </div>
     </div>

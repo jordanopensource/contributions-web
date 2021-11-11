@@ -1,35 +1,52 @@
 <template>
   <div class="pagination">
-    <li class="page-item previous-page">
-      <a class="page-link" href="#"> Previous</a>
-    </li>
-    <div class="hidden lg:flex">
-      <li class="page-item current-page">
-        <a class="page-link" href="#">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-      <li class="page-item dots">
-        <a class="page-link" href="#">...</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">19</a>
-      </li>
-    </div>
-
-    <li class="page-item previous-page">
-      <a class="page-link" href="#">Next </a>
-    </li>
+    <ul>
+      <span class="px-4 lg:px-1"
+        ><a
+          :class="currentPage == 1 ? 'disabled' : 'previous-page'"
+          @click="fetchCurrentPage(currentPage - 1)"
+        >
+          &lt; Previous</a
+        ></span
+      >
+      <span v-for="i in pageCount" :key="i" class="hidden lg:inline">
+        <li v-if="i == pageCount || i == 1 || Math.abs(i - currentPage) < 3">
+          <a
+            :class="{
+              current: currentPage === i,
+              last: i == pageCount && Math.abs(i - currentPage) > 3,
+              first: i == 1 && Math.abs(i - currentPage) > 3,
+            }"
+            class="px-1"
+            @click="fetchCurrentPage(i)"
+            >{{ i }}</a
+          >
+        </li>
+      </span>
+      <span class="px-4 lg:px-1"
+        ><a
+          class="next-page"
+          :class="currentPage == pageCount ? 'disabled' : ''"
+          @click="fetchCurrentPage(currentPage + 1)"
+          >Next &gt;</a
+        ></span
+      >
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: 'PaginationBar',
+  data() {
+    return {
+      pageCount: 25,
+      currentPage: 1,
+    }
+  },
+  methods: {
+    fetchCurrentPage(page) {},
+  },
 }
 </script>
 
@@ -38,9 +55,7 @@ export default {
   font-family: 'IBM Mono';
 }
 .pagination {
-  @apply pt-5 pb-12 mx-3 px-5 flex lg:mx-0 lg:pt-10 lg:pb-14 justify-center;
-  text-align: center;
-  user-select: none;
+  @apply pt-7 pb-12 mx-3 px-5 flex lg:mx-0 lg:pt-10 lg:pb-14 justify-center;
 }
 
 .pagination li {
@@ -53,14 +68,36 @@ export default {
   color: #00b199;
 }
 
-.current-page {
-  background-color: #00b199;
-  color: #fff;
-  width: 20px;
-  border-radius: 17%;
+.pagination a.disabled {
+  @apply cursor-default font-light;
+  opacity: 0.25;
+}
+.pagination a.disabled:hover {
+  @apply cursor-default;
 }
 
-.page-link {
-  @apply mx-7 lg:mx-0;
+.pagination .current {
+  @apply px-1 py-0;
+  background-color: #00b199;
+  color: #fff;
+  border-radius: 17%;
+}
+.pagination ul {
+  @apply p-0 list-none;
+}
+.pagination li {
+  @apply inline m-1;
+}
+.pagination a.first::after {
+  cursor: default;
+  content: '\2800\22ef';
+}
+.pagination a.last::before {
+  cursor: default;
+  content: '\22ef\2800';
+}
+
+.pagination a {
+  cursor: pointer;
 }
 </style>
