@@ -8,11 +8,16 @@
           <h1 class="head-text">Total</h1>
         </div>
       </div>
-      <UserCard />
-      <UserCard />
-      <UserCard />
-      <UserCard />
-      <UserCard />
+      <UserCard
+        v-for="user in users"
+        :key="user.github_id"
+        :username="user.username"
+        :name="user.name"
+        :image-url="user.avatar_url"
+        :score="user.score"
+        :contributions="user.commitsTotalCount"
+        :rank="1"
+      />
     </div>
     <PaginationBar />
   </div>
@@ -26,6 +31,9 @@ export default {
   components: {
     UserCard,
     PaginationBar,
+  },
+  props: {
+    users: { type: Array, required: true },
   },
 }
 </script>
