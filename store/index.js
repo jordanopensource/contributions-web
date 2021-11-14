@@ -5,11 +5,13 @@ export const state = () => ({
   users: [],
   pageCount: 0,
   currentPage: 1,
+  sortBy: 'score',
 })
 
 export const getters = {
   getPageCount: (state) => state.pageCount,
   getCurrentPage: (state) => state.currentPage,
+  getSortBy: (state) => state.sortBy,
 }
 
 export const mutations = {
@@ -30,5 +32,8 @@ export const mutations = {
   },
   setCurrentPage(state, currentPage) {
     state.currentPage = currentPage
+  },
+  setSortBy(state, sortBy) {
+    state.sortBy = sortBy
   },
 }
