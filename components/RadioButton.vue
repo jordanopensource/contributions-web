@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'RadioButton',
   props: {
@@ -45,12 +46,18 @@ export default {
     disabled: { type: Boolean, default: false },
     value: { type: String, required: true },
   },
+  computed: {
+    ...mapGetters({
+      getCurrentPage: 'getCurrentPage',
+    }),
+  },
   methods: {
     async onChange(event) {
       if (this.inputName === 'sortby') {
-        const sortby = event.target.value
+        const sortBy = event.target.value
+        this.$store.commit('setSortBy', sortBy)
         const response = await this.$axios.get(
-          `http://localhost:8080/api/v1/users?sort_by=${sortby}`
+          `http://localhost:8080/api/v1/users?page=${this.getCurrentPage}&sort_by=${sortBy}`
         )
         this.$store.commit('setUsers', response.data.users.docs)
       }
