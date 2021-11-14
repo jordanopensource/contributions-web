@@ -44,10 +44,9 @@ export default {
       'http://localhost:8080/api/v1/orgs?limit=1'
     )
     this.$store.commit('setOrgsCount', response.data.orgs.totalDocs)
-    response = await this.$axios.get(
-      'http://localhost:8080/api/v1/users?limit=1'
-    )
+    response = await this.$axios.get('http://localhost:8080/api/v1/users')
     this.$store.commit('setUsersCount', response.data.users.totalDocs)
+    this.$store.commit('setUsers', response.data.users.docs)
     response = await this.$axios.get(
       'http://localhost:8080/api/v1/contributions'
     )
