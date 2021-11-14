@@ -31,7 +31,7 @@
 export default {
   name: 'UserCard',
   props: {
-    name: { type: String, required: true },
+    name: { type: String, default: '' },
     username: { type: String, required: true },
     score: { type: Number, required: true },
     contributions: { type: Number, required: true },
