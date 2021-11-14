@@ -23,11 +23,6 @@ export default {
     FilterSection,
     Contributors,
   },
-  async fetch() {
-    const response = await this.$axios.get('http://localhost:8080/api/v1/users')
-    const users = response.data.users.docs
-    this.$store.commit('setUsers', users)
-  },
   computed: {
     ...mapState({
       users: 'users',
