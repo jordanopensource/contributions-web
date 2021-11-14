@@ -25,8 +25,7 @@
       </span>
       <span class="px-4 lg:px-1"
         ><a
-          class="next-page"
-          :class="currentPage == pageCount ? 'disabled' : ''"
+          :class="currentPage == pageCount ? 'disabled' : 'next-page'"
           @click="fetchCurrentPage(currentPage + 1)"
           >Next &gt;</a
         ></span
@@ -38,14 +37,28 @@
 <script>
 export default {
   name: 'PaginationBar',
-  data() {
-    return {
-      pageCount: 25,
-      currentPage: 1,
-    }
+  computed: {
+    pageCount() {
+      return this.$store.getters.getPageCount
+    },
+    currentPage() {
+      return this.$store.getters.getCurrentPage
+    },
   },
   methods: {
-    fetchCurrentPage(page) {},
+    async fetchCurrentPage(page) {
+      this.$store.commit(
+        'setCurrentPage',
+        this.limitNumberWithinRange(page, 1, this.pageCount)
+      )
+      const response = await this.$axios.get(
+        `http://localhost:8080/api/v1/users?page=${this.currentPage}&sort_by=score`
+      )
+      this.$store.commit('setUsers', response.data.users.docs)
+    },
+    limitNumberWithinRange(num, min, max) {
+      return Math.min(Math.max(parseInt(num), min), max)
+    },
   },
 }
 </script>
