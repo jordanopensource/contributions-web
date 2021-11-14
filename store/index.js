@@ -6,7 +6,9 @@ export const state = () => ({
   pageCount: 0,
 })
 
-export const getters = {}
+export const getters = {
+  getPageCount: (state) => state.pageCount,
+}
 
 export const mutations = {
   setOrgsCount(state, orgsCount) {
