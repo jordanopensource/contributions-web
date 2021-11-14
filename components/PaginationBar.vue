@@ -44,6 +44,9 @@ export default {
     currentPage() {
       return this.$store.getters.getCurrentPage
     },
+    sortBy() {
+      return this.$store.getters.getSortBy
+    },
   },
   methods: {
     async fetchCurrentPage(page) {
@@ -52,7 +55,7 @@ export default {
         this.limitNumberWithinRange(page, 1, this.pageCount)
       )
       const response = await this.$axios.get(
-        `http://localhost:8080/api/v1/users?page=${this.currentPage}&sort_by=score`
+        `http://localhost:8080/api/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}`
       )
       this.$store.commit('setUsers', response.data.users.docs)
     },
