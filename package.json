@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "build:modern": "nuxt build --modern=server",
+    "start:modern": "nuxt start --modern=server",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
