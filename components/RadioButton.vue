@@ -57,7 +57,7 @@ export default {
         const sortBy = event.target.value
         this.$store.commit('setSortBy', sortBy)
         const response = await this.$axios.get(
-          `http://localhost:8080/api/v1/users?page=${this.getCurrentPage}&sort_by=${sortBy}`
+          `users?page=${this.getCurrentPage}&sort_by=${sortBy}`
         )
         this.$store.commit('setUsers', response.data.users.docs)
       }
