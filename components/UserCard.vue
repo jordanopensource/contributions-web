@@ -33,7 +33,7 @@ export default {
   props: {
     name: { type: String, default: '' },
     username: { type: String, required: true },
-    score: { type: Number, required: true },
+    score: { type: Number, default: 0 },
     contributions: { type: Number, required: true },
     imageUrl: { type: String, required: true },
     rank: { type: Number, required: true },
