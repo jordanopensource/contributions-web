@@ -13,13 +13,11 @@
 <script>
 import LazyHydrate from 'vue-lazy-hydration'
 import Hero from '../components/Hero.vue'
-import Stats from '../components/Stats.vue'
-import TopDevelopers from '../components/TopDevelopers.vue'
 export default {
   components: {
     Hero,
-    Stats,
-    TopDevelopers,
+    Stats: () => import('../components/Stats.vue'),
+    TopDevelopers: () => import('../components/TopDevelopers.vue'),
     LazyHydrate,
   },
 }
