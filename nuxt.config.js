@@ -36,26 +36,17 @@ export default {
     '@nuxtjs/proxy',
   ],
 
-  env: {
-    BASE_API_URL: process.env.BASE_API_URL,
-  },
-
-  proxy: {
-    '/v1': {
-      target: process.env.BASE_API_URL,
-      pathRewrite: { '^/v1': '' },
-    },
-  },
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
   },
 
+  proxy: {
+    '/v1': { target: process.env.BASE_API_URL },
+  },
+
   publicRuntimeConfig: {
-    axios: {
-      baseUrl: process.env.BASE_API_URL,
-    },
+    BASE_API_URL: process.env.BASE_API_URL,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

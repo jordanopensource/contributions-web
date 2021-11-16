@@ -40,13 +40,13 @@ export default {
     Card,
   },
   async fetch() {
-    let response = await this.$axios.get(`/orgs?limit=1`)
+    let response = await this.$axios.get(`/v1/orgs?limit=1`)
     this.$store.commit('setOrgsCount', response.data.orgs.totalDocs)
-    response = await this.$axios.get('/users')
+    response = await this.$axios.get('/v1/users')
     this.$store.commit('setUsersCount', response.data.users.totalDocs)
     this.$store.commit('setUsers', response.data.users.docs)
     this.$store.commit('setPageCount', response.data.users.totalPages)
-    response = await this.$axios.get('/contributions')
+    response = await this.$axios.get('/v1/contributions')
     this.$store.commit('setCommitsLastMonth', response.data.commits_last_month)
   },
   computed: {
