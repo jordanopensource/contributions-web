@@ -55,7 +55,7 @@ export default {
         this.limitNumberWithinRange(page, 1, this.pageCount)
       )
       const response = await this.$axios.get(
-        `users?page=${this.currentPage}&sort_by=${this.sortBy}`
+        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}`
       )
       this.$store.commit('setUsers', response.data.users.docs)
     },
