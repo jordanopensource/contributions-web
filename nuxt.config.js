@@ -39,6 +39,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
+    'nuxt-healthcheck',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -52,6 +53,14 @@ export default {
 
   publicRuntimeConfig: {
     BASE_API_URL: process.env.BASE_API_URL,
+  },
+
+  healthcheck: {
+    path: '/hello',
+    contentType: 'application/json',
+    healthy: () => {
+      return JSON.stringify({ result: 'yeeeeeeeeeeees' })
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
