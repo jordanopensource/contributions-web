@@ -9,9 +9,12 @@
         </div>
         <div class="para-section">
           <p>
-            A list of Github users in Jordan sorted by their open contributions.
+            An aggregated list of Jordan’s GitHub users, ranked according to
+            their Open Source commits and contributions.
           </p>
-          <p>Provided to you by Jordan Open Source Association(JOSA)</p>
+          <p class="mt-2 lg:mt-8">
+            Provided to you by the Jordan Open Source Association (JOSA)
+          </p>
         </div>
       </div>
       <img
