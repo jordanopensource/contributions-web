@@ -1,6 +1,6 @@
 <template>
   <div class="lg:hidden flex items-center w-full justify-end">
-    <button class="outline-none" @click="OnClick">
+    <button class="outline-none" aria-label="Mobile Menu" @click="OnClick">
       <img
         v-if="isOpen"
         class="w-9 h-9"

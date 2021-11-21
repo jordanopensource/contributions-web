@@ -23,13 +23,21 @@
       <div class="lg:flex px-8 pb-8 lg:px-0 lg:pb-0">
         <div class="flex items-center justify-end">
           <div class="flex lg:px-5">
-            <a href="https://github.com/jordanopensource" target="_blank">
+            <a
+              href="https://github.com/jordanopensource"
+              target="_blank"
+              aria-label="JOSA Github Account"
+            >
               <img
                 class="h-5 px-2"
                 src="~assets/images/footer/icon-small-github.svg"
                 alt=""
             /></a>
-            <a href="https://twitter.com/jo_osa" target="_blank">
+            <a
+              href="https://twitter.com/jo_osa"
+              target="_blank"
+              aria-label="JOSA Twitter Account"
+            >
               <img
                 class="h-5 px-2"
                 src="~assets/images/footer/icon-small-twitter.svg"
@@ -38,6 +46,7 @@
             <a
               href="https://www.facebook.com/jordanopensource/"
               target="_blank"
+              aria-label="JOSA Facebook Page"
             >
               <img
                 class="h-5 pl-2 lg:px-2"
