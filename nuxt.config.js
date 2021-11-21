@@ -56,7 +56,7 @@ export default {
   },
 
   healthcheck: {
-    path: '/hello',
+    path: '/health_check',
     contentType: 'application/json',
     healthy: () => {
       return JSON.stringify({ result: 'yeeeeeeeeeeees' })
