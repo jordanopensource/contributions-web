@@ -1,14 +1,16 @@
 <template>
   <div class="pagination">
     <ul>
-      <span class="px-4 lg:px-1"
-        ><a
-          :class="currentPage == 1 ? 'disabled' : 'previous-page'"
-          @click="fetchCurrentPage(currentPage - 1)"
+      <li>
+        <span class="px-4 lg:px-1"
+          ><a
+            :class="currentPage == 1 ? 'disabled' : 'previous-page'"
+            @click="fetchCurrentPage(currentPage - 1)"
+          >
+            &lt; Previous</a
+          ></span
         >
-          &lt; Previous</a
-        ></span
-      >
+      </li>
       <span v-for="i in pageCount" :key="i" class="hidden lg:inline">
         <li v-if="i == pageCount || i == 1 || Math.abs(i - currentPage) < 3">
           <a
@@ -23,13 +25,15 @@
           >
         </li>
       </span>
-      <span class="px-4 lg:px-1"
-        ><a
-          :class="currentPage == pageCount ? 'disabled' : 'next-page'"
-          @click="fetchCurrentPage(currentPage + 1)"
-          >Next &gt;</a
-        ></span
-      >
+      <li>
+        <span class="px-4 lg:px-1"
+          ><a
+            :class="currentPage == pageCount ? 'disabled' : 'next-page'"
+            @click="fetchCurrentPage(currentPage + 1)"
+            >Next &gt;</a
+          ></span
+        >
+      </li>
     </ul>
   </div>
 </template>
