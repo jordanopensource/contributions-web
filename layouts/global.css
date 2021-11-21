@@ -4,7 +4,7 @@
   font-weight: 100;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-Thin.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-Thin.woff2) format('trueType');
 }
 
 @font-face {
@@ -13,7 +13,7 @@
   font-weight: 200;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-ExtraLight.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-ExtraLight.woff2) format('trueType');
 }
 
 @font-face {
@@ -22,7 +22,7 @@
   font-weight: 300;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-Light.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-Light.woff2) format('trueType');
 }
 
 @font-face {
@@ -31,7 +31,7 @@
   font-weight: 400;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-Regular.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-Regular.woff2) format('trueType');
 }
 
 @font-face {
@@ -40,7 +40,7 @@
   font-weight: 500;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-Medium.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-Medium.woff2) format('trueType');
 }
 
 @font-face {
@@ -49,7 +49,7 @@
   font-weight: 600;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-SemiBold.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-SemiBold.woff2) format('trueType');
 }
 
 @font-face {
@@ -58,7 +58,7 @@
   font-weight: 700;
   font-display: swap;
   src: local('IBM Sans'),
-    url(~assets/fonts/IBMPlexSansArabic-Bold.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexSansArabic-Bold.woff2) format('trueType');
 }
 
 @font-face {
@@ -67,7 +67,7 @@
   font-weight: 100;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-Thin.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-Thin.woff2) format('trueType');
 }
 
 @font-face {
@@ -76,7 +76,7 @@
   font-weight: 200;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-ExtraLight.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-ExtraLight.woff2) format('trueType');
 }
 
 @font-face {
@@ -85,7 +85,7 @@
   font-weight: 300;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-Light.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-Light.woff2) format('trueType');
 }
 
 @font-face {
@@ -94,7 +94,7 @@
   font-weight: 400;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-Regular.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-Regular.woff2) format('trueType');
 }
 
 @font-face {
@@ -103,7 +103,7 @@
   font-weight: 500;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-Medium.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-Medium.woff2) format('trueType');
 }
 
 @font-face {
@@ -112,7 +112,7 @@
   font-weight: 600;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-SemiBold.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-SemiBold.woff2) format('trueType');
 }
 
 @font-face {
@@ -121,5 +121,5 @@
   font-weight: 700;
   font-display: swap;
   src: local('IBM Mono'),
-    url(~assets/fonts/IBMPlexMono-Bold.ttf) format('trueType');
+    url(~assets/fonts/IBMPlexMono-Bold.woff2) format('trueType');
 }
