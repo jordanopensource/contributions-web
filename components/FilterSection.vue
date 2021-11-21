@@ -3,7 +3,11 @@
     <div class="content-conatiner">
       <div class="filter-section has-border">
         <h1 class="filter-text">Filter</h1>
-        <button class="outline-none lg:hidden" @click="ToggleIsOpen">
+        <button
+          class="outline-none lg:hidden"
+          aria-label="Expand Filter Section"
+          @click="ToggleIsOpen"
+        >
           <img
             class="w-6 h-6"
             src="~/assets/images/filter/icon-small-chevron.svg"
