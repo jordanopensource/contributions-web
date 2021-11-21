@@ -2,36 +2,41 @@
   <div class="pagination">
     <ul>
       <li>
-        <span class="px-4 lg:px-1"
-          ><a
+        <span class="px-1 lg:px-1"
+          ><button
             :class="currentPage == 1 ? 'disabled' : 'previous-page'"
+            aria-label="Previous Page"
             @click="fetchCurrentPage(currentPage - 1)"
           >
-            &lt; Previous</a
-          ></span
+            &lt; Previous
+          </button></span
         >
       </li>
       <span v-for="i in pageCount" :key="i" class="hidden lg:inline">
         <li v-if="i == pageCount || i == 1 || Math.abs(i - currentPage) < 3">
-          <a
+          <button
             :class="{
               current: currentPage === i,
               last: i == pageCount && Math.abs(i - currentPage) > 3,
               first: i == 1 && Math.abs(i - currentPage) > 3,
             }"
             class="px-1"
+            :aria-label="'Page ' + i"
             @click="fetchCurrentPage(i)"
-            >{{ i }}</a
           >
+            {{ i }}
+          </button>
         </li>
       </span>
       <li>
-        <span class="px-4 lg:px-1"
-          ><a
+        <span class="px-1 lg:px-1"
+          ><button
             :class="currentPage == pageCount ? 'disabled' : 'next-page'"
+            aria-label="Next Page"
             @click="fetchCurrentPage(currentPage + 1)"
-            >Next &gt;</a
-          ></span
+          >
+            Next &gt;
+          </button></span
         >
       </li>
     </ul>
@@ -80,7 +85,7 @@ export default {
 
 .pagination li {
   display: inline-block;
-  margin: 10px;
+  margin: 1px;
 }
 
 .previous-page,
@@ -88,7 +93,7 @@ export default {
   color: #00b199;
 }
 
-.pagination a.disabled {
+.pagination button.disabled {
   @apply cursor-default font-light;
   opacity: 0.25;
 }
@@ -108,16 +113,16 @@ export default {
 .pagination li {
   @apply inline m-1;
 }
-.pagination a.first::after {
+.pagination button.first::after {
   cursor: default;
   content: '\2800\22ef';
 }
-.pagination a.last::before {
+.pagination button.last::before {
   cursor: default;
   content: '\22ef\2800';
 }
 
-.pagination a {
+.pagination button {
   cursor: pointer;
 }
 </style>
