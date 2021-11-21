@@ -21,6 +21,8 @@
         class="section-image"
         src="~/assets/images/hero/jordan-commits.svg"
         alt=""
+        width="320"
+        height="320"
       />
     </section>
   </div>
@@ -60,6 +62,6 @@ export default {
 }
 
 .section-image {
-  @apply my-8 place-self-end w-3/5 md:w-2/5 lg:w-1/4 lg:mt-5 lg:mr-12;
+  @apply my-8 place-self-end w-8/12 md:w-5/12 lg:w-80 lg:mt-14 2xl:w-96 lg:mr-12;
 }
 </style>
