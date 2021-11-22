@@ -10,10 +10,8 @@
         <div class="para-section">
           <p>
             An aggregated list of Jordan’s GitHub users, ranked according to
-            their Open Source commits and contributions.
-          </p>
-          <p class="mt-2 lg:mt-8">
-            Provided to you by the Jordan Open Source Association (JOSA)
+            their Open Source commits and contributions. Provided to you by the
+            Jordan Open Source Association (JOSA)
           </p>
         </div>
       </div>
@@ -58,7 +56,7 @@ export default {
 
 .para-section {
   font-family: 'IBM Sans';
-  @apply w-11/12 pt-7 text-xl lg:text-2xl font-normal md:mx-3 lg:mx-16;
+  @apply w-11/12 pt-7 text-xl lg:text-2xl font-normal md:mx-3 lg:mx-16 lg:w-9/12;
 }
 
 .section-image {
