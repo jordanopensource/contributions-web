@@ -5,7 +5,7 @@
         <img
           class="w-36 h-10"
           src="~/assets/images/navbar/logo.svg"
-          alt=""
+          alt="Logo"
           width="128"
           height="40"
           loading="eager"
