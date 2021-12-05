@@ -5,7 +5,7 @@
         <img
           class="h-5"
           src="~assets/images/footer/icon-small-coded.svg"
-          alt=""
+          alt="Made"
           width="45"
           height="20"
           loading="lazy"
@@ -14,7 +14,7 @@
         <img
           class="h-5"
           src="~assets/images/footer/icon-small-love.svg"
-          alt=""
+          alt="Love"
           width="23"
           height="20"
           loading="lazy"
@@ -23,7 +23,7 @@
         <img
           class="h-5"
           src="~assets/images/footer/icon-small-josa.svg"
-          alt=""
+          alt="JOSA"
           width="80"
           height="20"
           loading="lazy"
@@ -40,7 +40,7 @@
               <img
                 class="h-5 px-2"
                 src="~assets/images/footer/icon-small-github.svg"
-                alt=""
+                alt="Github Account"
                 width="auto"
                 height="20"
                 loading="lazy"
@@ -53,7 +53,7 @@
               <img
                 class="h-5 px-2"
                 src="~assets/images/footer/icon-small-twitter.svg"
-                alt=""
+                alt="Twitter Account"
                 width="auto"
                 height="20"
                 loading="lazy"
@@ -66,7 +66,7 @@
               <img
                 class="h-5 pl-2 lg:px-2"
                 src="~assets/images/footer/icon-small-fb.svg"
-                alt=""
+                alt="Facebook Page"
                 width="auto"
                 height="20"
                 loading="lazy"
@@ -79,7 +79,7 @@
             <img
               class="h-4 inline"
               src="~assets/images/footer/icon-small-cc.svg"
-              alt=""
+              alt="CC"
               width="auto"
               height="16"
               loading="lazy"
