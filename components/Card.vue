@@ -7,7 +7,6 @@
         alt=""
         width="64"
         height="64"
-        loading="lazy"
       />
       <h2 :class="color">{{ count }}</h2>
     </div>
