@@ -5,6 +5,8 @@
         :class="imgSize"
         :src="require(`~/assets/images/stats/${image}`)"
         alt=""
+        width="64"
+        height="64"
       />
       <h2 :class="color">{{ count }}</h2>
     </div>
