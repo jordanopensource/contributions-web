@@ -2,7 +2,13 @@
   <header>
     <nav>
       <div class="nav-bar">
-        <img class="w-13 h-10" src="~/assets/images/navbar/logo.svg" alt="" />
+        <img
+          class="w-36 h-10"
+          src="~/assets/images/navbar/logo.svg"
+          alt=""
+          width="128"
+          height="40"
+        />
         <ul class="menu">
           <li class="menu-item">
             <a href="#">Stats</a>
