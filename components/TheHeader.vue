@@ -8,6 +8,7 @@
           alt=""
           width="128"
           height="40"
+          loading="eager"
         />
         <ul class="menu">
           <li class="menu-item">
