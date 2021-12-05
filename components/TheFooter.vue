@@ -6,18 +6,24 @@
           class="h-5"
           src="~assets/images/footer/icon-small-coded.svg"
           alt=""
+          width="45"
+          height="20"
         />
         <span class="px-2 text-lg">with</span>
         <img
           class="h-5"
           src="~assets/images/footer/icon-small-love.svg"
           alt=""
+          width="23"
+          height="20"
         />
         <span class="px-2 text-lg">by</span>
         <img
           class="h-5"
           src="~assets/images/footer/icon-small-josa.svg"
           alt=""
+          width="80"
+          height="20"
         />
       </div>
       <div class="lg:flex px-8 pb-8 lg:px-0 lg:pb-0">
@@ -32,6 +38,8 @@
                 class="h-5 px-2"
                 src="~assets/images/footer/icon-small-github.svg"
                 alt=""
+                width="auto"
+                height="20"
             /></a>
             <a
               href="https://twitter.com/jo_osa"
@@ -42,6 +50,8 @@
                 class="h-5 px-2"
                 src="~assets/images/footer/icon-small-twitter.svg"
                 alt=""
+                width="auto"
+                height="20"
             /></a>
             <a
               href="https://www.facebook.com/jordanopensource/"
@@ -52,6 +62,8 @@
                 class="h-5 pl-2 lg:px-2"
                 src="~assets/images/footer/icon-small-fb.svg"
                 alt=""
+                width="auto"
+                height="20"
               />
             </a>
           </div>
@@ -62,6 +74,8 @@
               class="h-4 inline"
               src="~assets/images/footer/icon-small-cc.svg"
               alt=""
+              width="auto"
+              height="16"
             />
             2021, JOSA - Jordan Open Source Association
           </p>
