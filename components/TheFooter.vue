@@ -8,6 +8,7 @@
           alt=""
           width="45"
           height="20"
+          loading="lazy"
         />
         <span class="px-2 text-lg">with</span>
         <img
@@ -16,6 +17,7 @@
           alt=""
           width="23"
           height="20"
+          loading="lazy"
         />
         <span class="px-2 text-lg">by</span>
         <img
@@ -24,6 +26,7 @@
           alt=""
           width="80"
           height="20"
+          loading="lazy"
         />
       </div>
       <div class="lg:flex px-8 pb-8 lg:px-0 lg:pb-0">
@@ -40,6 +43,7 @@
                 alt=""
                 width="auto"
                 height="20"
+                loading="lazy"
             /></a>
             <a
               href="https://twitter.com/jo_osa"
@@ -52,6 +56,7 @@
                 alt=""
                 width="auto"
                 height="20"
+                loading="lazy"
             /></a>
             <a
               href="https://www.facebook.com/jordanopensource/"
@@ -64,6 +69,7 @@
                 alt=""
                 width="auto"
                 height="20"
+                loading="lazy"
               />
             </a>
           </div>
@@ -76,6 +82,7 @@
               alt=""
               width="auto"
               height="16"
+              loading="lazy"
             />
             2021, JOSA - Jordan Open Source Association
           </p>
