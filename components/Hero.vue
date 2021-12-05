@@ -21,6 +21,7 @@
         alt=""
         width="320"
         height="320"
+        loading="eager"
       />
     </section>
   </div>
