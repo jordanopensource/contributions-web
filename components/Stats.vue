@@ -12,6 +12,7 @@
         color="blue"
         image="icon-commits.svg"
         img-size="w-10"
+        altText="Commits"
       />
       <Card
         :count="usersCount"
@@ -19,6 +20,7 @@
         color="blue-green"
         image="icon-users.svg"
         img-size="w-16"
+        altText="Users"
       />
       <Card
         :count="orgsCount"
@@ -26,6 +28,7 @@
         color="green"
         image="icon-organization.svg"
         img-size="w-12"
+        altText="Organizations"
       />
     </div>
   </article>

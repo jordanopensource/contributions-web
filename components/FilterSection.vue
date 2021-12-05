@@ -11,7 +11,7 @@
           <img
             class="w-6 h-6"
             src="~/assets/images/filter/icon-small-chevron.svg"
-            alt=""
+            alt="small chevron"
           />
         </button>
       </div>

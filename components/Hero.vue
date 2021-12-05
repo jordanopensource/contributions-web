@@ -18,7 +18,7 @@
       <img
         class="section-image"
         src="~/assets/images/hero/jordan-commits.svg"
-        alt=""
+        alt="Jordan Commits"
         width="320"
         height="320"
         loading="eager"

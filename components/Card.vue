@@ -4,7 +4,7 @@
       <img
         :class="imgSize"
         :src="require(`~/assets/images/stats/${image}`)"
-        alt=""
+        :alt="altText"
         width="64"
         height="64"
       />
@@ -25,6 +25,7 @@ export default {
     color: { type: String, required: true },
     image: { type: String, required: true },
     imgSize: { type: String, required: true },
+    altText: { type: String, required: true },
   },
 }
 </script>
