@@ -77,11 +77,16 @@ export default {
 }
 
 .image {
-  @apply w-16 h-16 lg:w-20 lg:h-20 rounded-full  object-contain;
+  width: 3rem;
+  height: 3rem;
+  @apply lg:w-20 lg:h-20 rounded-full  object-contain;
 }
 
 .image-filter {
-  @apply w-16 h-16 rounded-full self-center object-contain relative block lg:w-20 lg:h-20 -top-16 lg:-top-20;
+  width: 3rem;
+  height: 3rem;
+  top: -3rem;
+  @apply rounded-full self-center object-contain relative block lg:w-20 lg:h-20 lg:-top-20;
   background: linear-gradient(
     to bottom,
     rgba(115, 188, 134, 0.7) 0%,
