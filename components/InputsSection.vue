@@ -57,15 +57,6 @@
           :checked="true"
           :value="'commits'"
         />
-        <CheckBox
-          class="pb-2 ml-6 lg:ml-0"
-          :input-id="`contribution`"
-          :input-name="`count`"
-          :label-for="`contribution`"
-          :label-text="`Contributions`"
-          :value="'contribution'"
-          :disabled="true"
-        />
       </div>
     </div>
   </div>
