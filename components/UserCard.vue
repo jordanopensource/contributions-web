@@ -19,7 +19,7 @@
           <p class="blue">{{ score }}</p>
         </div>
         <div class="flex flex-col">
-          <p class="counters">Contributions</p>
+          <p class="counters">Commits</p>
           <p class="blue-green">{{ contributions }}</p>
         </div>
       </div>
