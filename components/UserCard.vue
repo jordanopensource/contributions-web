@@ -1,6 +1,6 @@
 <template>
   <div class="flex mx-8 h-32 lg:h-40 content-center has-border pb-3">
-    <h1 class="rank">{{ rank }}.</h1>
+    <h1 class="rank hidden md:block">{{ rank }}.</h1>
     <div class="image-container">
       <img class="image" :src="imageUrl" alt="avatar" width="80" height="80" />
       <span class="image-filter"></span>
