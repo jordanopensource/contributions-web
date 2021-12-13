@@ -85,4 +85,8 @@ li a:hover {
 .nav-bar {
   @apply flex items-center py-6 mx-8 md:mx-11 lg:ml-24 md:py-11;
 }
+
+.nuxt-link-active {
+  color: #73bc86;
+}
 </style>
