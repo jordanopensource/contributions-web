@@ -36,7 +36,7 @@ export default {
     score: { type: Number, default: 0 },
     contributions: { type: Number, required: true },
     imageUrl: { type: String, required: true },
-    rank: { type: Number, required: true },
+    rank: { type: Number, required: true, default: 0 },
   },
 }
 </script>
