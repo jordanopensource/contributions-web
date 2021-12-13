@@ -1,6 +1,6 @@
 <template>
   <div class="flex mx-8 h-32 lg:h-40 content-center has-border pb-3">
-    <h1 class="rank">{{ rank }}.</h1>
+    <h1 class="rank hidden md:block">{{ rank }}.</h1>
     <div class="image-container">
       <img class="image" :src="imageUrl" alt="avatar" width="80" height="80" />
       <span class="image-filter"></span>
@@ -15,11 +15,11 @@
     <div class="self-center">
       <div class="block text-right">
         <div class="flex flex-col pb-2 pt-5">
-          <p class="text-xs lg:text-sm">Score</p>
+          <p class="counters">Score</p>
           <p class="blue">{{ score }}</p>
         </div>
         <div class="flex flex-col">
-          <p class="text-xs lg:text-sm">Contributions</p>
+          <p class="counters">Commits</p>
           <p class="blue-green">{{ contributions }}</p>
         </div>
       </div>
@@ -47,6 +47,11 @@ export default {
   @apply text-lg text-center pr-1 self-center lg:text-2xl tracking-widest lg:pr-10;
 }
 
+.counters {
+  font-size: 0.7rem;
+  @apply lg:text-sm;
+}
+
 .full-name {
   font-family: 'IBM Sans';
   @apply text-sm font-semibold lg:text-lg;
@@ -72,11 +77,16 @@ export default {
 }
 
 .image {
-  @apply w-16 h-16 lg:w-20 lg:h-20 rounded-full  object-contain;
+  width: 3rem;
+  height: 3rem;
+  @apply lg:w-20 lg:h-20 rounded-full  object-contain;
 }
 
 .image-filter {
-  @apply w-16 h-16 rounded-full self-center object-contain relative block lg:w-20 lg:h-20 -top-16 lg:-top-20;
+  width: 3rem;
+  height: 3rem;
+  top: -3rem;
+  @apply rounded-full self-center object-contain relative block lg:w-20 lg:h-20 lg:-top-20;
   background: linear-gradient(
     to bottom,
     rgba(115, 188, 134, 0.7) 0%,

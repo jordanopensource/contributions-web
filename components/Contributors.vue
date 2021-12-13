@@ -2,8 +2,8 @@
   <div class="section-container">
     <div class="content-conatiner">
       <div class="text-section has-border">
-        <h1 class="head-text">Rank</h1>
-        <h1 class="head-text px-3 lg:px-7">User</h1>
+        <h1 class="hidden head-text md:block">Rank</h1>
+        <h1 class="head-text px-0 lg:px-7">User</h1>
         <div class="flex justify-end w-full">
           <h1 class="head-text">Total</h1>
         </div>
