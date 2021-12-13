@@ -15,11 +15,11 @@
     <div class="self-center">
       <div class="block text-right">
         <div class="flex flex-col pb-2 pt-5">
-          <p class="text-xs lg:text-sm">Score</p>
+          <p class="counters">Score</p>
           <p class="blue">{{ score }}</p>
         </div>
         <div class="flex flex-col">
-          <p class="text-xs lg:text-sm">Contributions</p>
+          <p class="counters">Contributions</p>
           <p class="blue-green">{{ contributions }}</p>
         </div>
       </div>
@@ -45,6 +45,11 @@ export default {
 .rank {
   font-family: 'IBM Sans';
   @apply text-lg text-center pr-1 self-center lg:text-2xl tracking-widest lg:pr-10;
+}
+
+.counters {
+  font-size: 0.7rem;
+  @apply lg:text-sm;
 }
 
 .full-name {
