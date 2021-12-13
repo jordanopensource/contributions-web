@@ -2,14 +2,16 @@
   <header>
     <nav>
       <div class="nav-bar">
-        <img
-          class="w-36 h-10"
-          src="~/assets/images/navbar/logo.svg"
-          alt="Logo"
-          width="128"
-          height="40"
-          loading="eager"
-        />
+        <nuxt-link to="/">
+          <img
+            class="w-36 h-10"
+            src="~/assets/images/navbar/logo.svg"
+            alt="Logo"
+            width="128"
+            height="40"
+            loading="eager"
+          />
+        </nuxt-link>
         <ul class="menu">
           <li class="menu-item">
             <a href="#">Stats</a>
@@ -82,5 +84,9 @@ li a:hover {
 
 .nav-bar {
   @apply flex items-center py-6 mx-8 md:mx-11 lg:ml-24 md:py-11;
+}
+
+.nuxt-link-active {
+  color: #73bc86;
 }
 </style>
