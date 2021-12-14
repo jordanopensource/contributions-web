@@ -3,7 +3,7 @@
     <article class="section-container">
       <div class="header-title">
         <div class="divider"></div>
-        <h1>Top Developers in Jordan</h1>
+        <h2>Top Developers in Jordan</h2>
       </div>
       <div class="filter-component">
         <FilterSection class="lg:mt-0 lg:order-2" />

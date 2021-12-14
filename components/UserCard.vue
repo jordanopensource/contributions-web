@@ -1,6 +1,6 @@
 <template>
   <div class="flex mx-8 h-32 lg:h-40 content-center has-border pb-3">
-    <h1 class="rank hidden md:block">{{ rank }}.</h1>
+    <p class="rank hidden md:block">{{ rank }}.</p>
     <div class="image-container">
       <img class="image" :src="imageUrl" alt="avatar" width="80" height="80" />
       <span class="image-filter"></span>
@@ -8,8 +8,8 @@
 
     <div class="block w-full pl-2 lg:px-5 mt-6 lg:mt-8">
       <div class="flex flex-col">
-        <h1 class="full-name">{{ name }}</h1>
-        <h1 class="user-name">{{ username }}</h1>
+        <h3 class="full-name">{{ name }}</h3>
+        <p class="user-name">{{ username }}</p>
       </div>
     </div>
     <div class="self-center">
