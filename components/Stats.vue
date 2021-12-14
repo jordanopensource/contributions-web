@@ -2,7 +2,7 @@
   <article class="section-container">
     <div class="header">
       <div class="divider"></div>
-      <h1>Jordan Stats</h1>
+      <h2>Jordan Stats</h2>
     </div>
 
     <div class="cards-container">
@@ -12,7 +12,7 @@
         color="blue"
         image="icon-commits.svg"
         img-size="w-10"
-        altText="Commits"
+        alt-text="Commits"
       />
       <Card
         :count="usersCount"
@@ -20,7 +20,7 @@
         color="blue-green"
         image="icon-users.svg"
         img-size="w-16"
-        altText="Users"
+        alt-text="Users"
       />
       <Card
         :count="orgsCount"
@@ -28,7 +28,7 @@
         color="green"
         image="icon-organization.svg"
         img-size="w-12"
-        altText="Organizations"
+        alt-text="Organizations"
       />
     </div>
   </article>
