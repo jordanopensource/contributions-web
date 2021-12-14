@@ -1,7 +1,11 @@
 <template>
   <div class="section-container">
     <div class="content-conatiner">
-      <div class="filter-section has-border">
+      <div
+        :class="
+          isOpen ? 'filter-section has-border' : 'filter-section lg:has-border'
+        "
+      >
         <h1 class="filter-text">Filter</h1>
         <button
           class="outline-none lg:hidden"
