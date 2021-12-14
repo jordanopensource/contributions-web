@@ -8,7 +8,7 @@
       >
         <h1 class="filter-text">Filter</h1>
         <button
-          class="outline-none lg:hidden"
+          :class="isOpen ? 'expand-button' : 'expand-button-collapsed'"
           aria-label="Expand Filter Section"
           @click="ToggleIsOpen"
         >
@@ -59,7 +59,7 @@ export default {
 }
 
 .filter-section {
-  @apply flex mx-8 pt-6 lg:pt-10 lg:mx-8 pb-2 justify-between;
+  @apply flex mx-8 pt-6 lg:pt-10 lg:mx-8 pb-6 lg:pb-2 justify-between;
 }
 
 .filter-text {
@@ -78,5 +78,17 @@ export default {
 
 .contributions-radio {
   margin-left: 2.8rem;
+}
+
+.expand-button {
+  transition-duration: 0.5s;
+  transform: rotate(-180deg);
+  @apply cursor-pointer  outline-none lg:hidden;
+}
+
+.expand-button-collapsed {
+  transition-duration: 0.5s;
+  transform: rotate(0deg);
+  @apply cursor-pointer  outline-none lg:hidden;
 }
 </style>
