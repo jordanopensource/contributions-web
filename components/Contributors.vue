@@ -76,7 +76,7 @@ export default {
 }
 
 .text-section {
-  @apply flex flex-nowrap mx-8 py-3 pt-10 lg:pb-2;
+  @apply flex flex-nowrap mx-8 py-3 pt-7 lg:pb-2 lg:pt-10;
 }
 
 .head-text {
