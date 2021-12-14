@@ -6,7 +6,7 @@
       <span class="image-filter"></span>
     </div>
 
-    <div class="block w-full pl-2 lg:px-5 mt-6 lg:mt-8">
+    <div class="block w-full pl-2 lg:px-3 mt-6 lg:mt-8">
       <div class="flex flex-col">
         <h3 class="full-name">{{ name }}</h3>
         <p class="user-name">{{ username }}</p>
@@ -44,7 +44,8 @@ export default {
 <style lang="postcss" scoped>
 .rank {
   font-family: 'IBM Sans';
-  @apply text-lg text-center pr-1 self-center lg:text-2xl tracking-widest lg:pr-10;
+  width: 3.2em;
+  @apply text-lg text-right pr-1 self-center lg:text-2xl tracking-widest lg:pr-4;
 }
 
 .counters {
