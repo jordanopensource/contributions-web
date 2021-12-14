@@ -4,8 +4,8 @@
       <div class="content-container">
         <div class="content-header">
           <div class="divider"></div>
-          <p>Jordan's Top</p>
-          <p>Contributors</p>
+          <h1>Jordan's Top</h1>
+          <h1>Contributors</h1>
         </div>
         <div class="para-section">
           <p>
