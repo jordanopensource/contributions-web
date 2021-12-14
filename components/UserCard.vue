@@ -44,7 +44,8 @@ export default {
 <style lang="postcss" scoped>
 .rank {
   font-family: 'IBM Sans';
-  @apply text-lg text-center pr-1 self-center lg:text-2xl tracking-widest lg:pr-10;
+  width: 3.2em;
+  @apply text-lg text-right pr-1 self-center lg:text-2xl tracking-widest lg:pr-4;
 }
 
 .counters {
