@@ -14,10 +14,10 @@
         />
         <RadioButton
           class="pb-2 contributions-radio"
-          :input-id="`contributions`"
+          :input-id="`commits`"
           :input-name="`sortby`"
-          :label-for="`contributions`"
-          :label-text="`Contributions`"
+          :label-for="`commits`"
+          :label-text="`Commits`"
           :value="'commit'"
         />
       </div>
