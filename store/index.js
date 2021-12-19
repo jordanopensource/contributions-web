@@ -6,6 +6,7 @@ export const state = () => ({
   pageCount: 0,
   currentPage: 1,
   sortBy: 'score',
+  period: 'last30Days',
 })
 
 export const getters = {
@@ -35,5 +36,8 @@ export const mutations = {
   },
   setSortBy(state, sortBy) {
     state.sortBy = sortBy
+  },
+  setPeriod(state, period) {
+    state.period = period
   },
 }
