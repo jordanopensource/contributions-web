@@ -23,6 +23,11 @@ export default {
     FilterSection,
     Contributors,
   },
+  async fetch() {
+    const response = await this.$axios.get('/v1/users')
+    this.$store.commit('setUsers', response.data.users.docs)
+    this.$store.commit('setPageCount', response.data.users.totalPages)
+  },
   computed: {
     ...mapState({
       users: 'users',
