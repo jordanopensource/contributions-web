@@ -1,5 +1,11 @@
 <template>
   <div :class="isOpen ? '' : 'hidden overflow-hidden lg:block'">
+    <div class="sort-section">
+      <h6 class="text-xs font-bold pb-2">Period:</h6>
+      <div class="flex lg:flex-col">
+        <PeriodDropdown />
+      </div>
+    </div>
     <div class="sort-section has-border">
       <h6 class="text-xs font-bold pb-2">Sort by:</h6>
       <div class="flex lg:flex-col">
@@ -65,11 +71,13 @@
 <script>
 import RadioButton from './RadioButton.vue'
 import CheckBox from './CheckBox.vue'
+import PeriodDropdown from './PeriodDropdown.vue'
 export default {
   name: 'InputsSection',
   components: {
     RadioButton,
     CheckBox,
+    PeriodDropdown,
   },
   props: {
     isOpen: { type: Boolean, required: true },
