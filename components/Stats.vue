@@ -8,7 +8,7 @@
     <div class="cards-container">
       <Card
         :count="commitsLastMonth"
-        description="Commits from users in Jordan in the 30 days"
+        description="Commits from users in Jordan in the last 30 days"
         color="blue"
         image="icon-commits.svg"
         img-size="w-10"
