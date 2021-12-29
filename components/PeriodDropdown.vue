@@ -1,17 +1,17 @@
 <template>
   <div>
     <select id="period" name="period" @change="onChange">
-      <option value="last30Days" selected>Last 30 Days</option>
-      <option value="lastMonth">Last Month</option>
-      <option value="thisYear">This Year</option>
+      <option value="last_30_days" selected>Last 30 Days</option>
+      <option value="last_month">Last Month</option>
+      <option value="this_year">This Year</option>
     </select>
-    <p v-if="period === 'last30Days'">
+    <p v-if="period === 'last_30_days'">
       <small>{{ last30Days }} ➜ {{ todayDate }}</small>
     </p>
-    <p v-if="period === 'lastMonth'">
+    <p v-if="period === 'last_month'">
       <small>{{ firstDayOfTheLastMonth }} ➜ {{ lastDayOfTheLastMonth }}</small>
     </p>
-    <p v-if="period === 'thisYear'">
+    <p v-if="period === 'this_year'">
       <small>{{ startOfTheYear }} ➜ {{ todayDate }}</small>
     </p>
   </div>
