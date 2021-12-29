@@ -6,7 +6,7 @@ export const state = () => ({
   pageCount: 0,
   currentPage: 1,
   sortBy: 'score',
-  period: 'last30Days',
+  period: 'last_30_days',
 })
 
 export const getters = {
