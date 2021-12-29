@@ -14,9 +14,6 @@
         </nuxt-link>
         <ul class="menu">
           <li class="menu-item">
-            <a href="#">Stats</a>
-          </li>
-          <li class="menu-item">
             <a href="#">Users</a>
           </li>
           <li class="menu-item">
