@@ -46,9 +46,12 @@ export default {
     let response = await this.$axios.get(`/v1/orgs?limit=1`)
     this.$store.commit('setOrgsCount', response.data.orgs.totalDocs)
     response = await this.$axios.get('/v1/users?limit=1')
-    this.$store.commit('setUsersCount', response.data.users.totalDocs)
+    this.$store.commit('setUsersCount', response.data.totalUsers)
     response = await this.$axios.get('/v1/contributions')
-    this.$store.commit('setCommitsLastMonth', response.data.commits_last_month)
+    this.$store.commit(
+      'setCommitsLastMonth',
+      response.data.commits_last_30_days
+    )
   },
   computed: {
     ...mapState({
