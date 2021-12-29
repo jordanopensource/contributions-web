@@ -8,7 +8,7 @@
           <h1 class="head-text">Total</h1>
         </div>
       </div>
-      <div v-if="sortBy === 'score'">
+      <div>
         <UserCard
           v-for="user in users"
           :key="user.github_id"
@@ -17,19 +17,7 @@
           :image-url="user.avatar_url"
           :score="user.score"
           :contributions="user.commitsTotalCount"
-          :rank="user.score_rank"
-        />
-      </div>
-      <div v-else>
-        <UserCard
-          v-for="user in users"
-          :key="user.github_id"
-          :username="user.username"
-          :name="user.name"
-          :image-url="user.avatar_url"
-          :score="user.score"
-          :contributions="user.commitsTotalCount"
-          :rank="user.contributions_rank"
+          :rank="user.currentRank"
         />
       </div>
     </div>
