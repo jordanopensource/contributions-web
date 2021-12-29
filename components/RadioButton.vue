@@ -49,6 +49,7 @@ export default {
   computed: {
     ...mapGetters({
       getCurrentPage: 'getCurrentPage',
+      getPeriod: 'getPeriod',
     }),
   },
   methods: {
@@ -57,9 +58,9 @@ export default {
         const sortBy = event.target.value
         this.$store.commit('setSortBy', sortBy)
         const response = await this.$axios.get(
-          `/v1/users?page=${this.getCurrentPage}&sort_by=${sortBy}`
+          `/v1/users?page=${this.getCurrentPage}&sort_by=${sortBy}&period=${this.getPeriod}`
         )
-        this.$store.commit('setUsers', response.data.users.docs)
+        this.$store.commit('setUsers', response.data.users)
       }
     },
   },
