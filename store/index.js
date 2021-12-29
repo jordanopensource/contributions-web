@@ -13,6 +13,7 @@ export const getters = {
   getPageCount: (state) => state.pageCount,
   getCurrentPage: (state) => state.currentPage,
   getSortBy: (state) => state.sortBy,
+  getPeriod: (state) => state.period,
 }
 
 export const mutations = {
