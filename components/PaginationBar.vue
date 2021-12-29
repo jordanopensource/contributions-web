@@ -56,6 +56,9 @@ export default {
     sortBy() {
       return this.$store.getters.getSortBy
     },
+    period() {
+      return this.$store.getters.getPeriod
+    },
   },
   methods: {
     async fetchCurrentPage(page) {
@@ -64,9 +67,9 @@ export default {
         this.limitNumberWithinRange(page, 1, this.pageCount)
       )
       const response = await this.$axios.get(
-        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}`
+        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
       )
-      this.$store.commit('setUsers', response.data.users.docs)
+      this.$store.commit('setUsers', response.data.users)
     },
     limitNumberWithinRange(num, min, max) {
       return Math.min(Math.max(parseInt(num), min), max)

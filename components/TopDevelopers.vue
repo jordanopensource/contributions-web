@@ -25,8 +25,8 @@ export default {
   },
   async fetch() {
     const response = await this.$axios.get('/v1/users')
-    this.$store.commit('setUsers', response.data.users.docs)
-    this.$store.commit('setPageCount', response.data.users.totalPages)
+    this.$store.commit('setUsers', response.data.users)
+    this.$store.commit('setPageCount', response.data.totalPages)
   },
   computed: {
     ...mapState({
