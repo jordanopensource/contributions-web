@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   name: 'PeriodDropdown',
   data() {
@@ -47,9 +46,15 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      period: 'period',
-    }),
+    currentPage() {
+      return this.$store.getters.getCurrentPage
+    },
+    sortBy() {
+      return this.$store.getters.getSortBy
+    },
+    period() {
+      return this.$store.getters.getPeriod
+    },
   },
   mounted() {
     const today = new Date()
@@ -68,8 +73,12 @@ export default {
   },
 
   methods: {
-    onChange(e) {
+    async onChange(e) {
       this.$store.commit('setPeriod', e.target.value)
+      const response = await this.$axios.get(
+        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
+      )
+      this.$store.commit('setUsers', response.data.users)
     },
   },
 }
