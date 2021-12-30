@@ -1,3 +1,12 @@
 <template>
-  <h1>Contributors</h1>
+  <Hero />
 </template>
+
+<script>
+export default {
+  name: 'ContributorsPage',
+  components: {
+    Hero: () => import('~/components/Hero.vue'),
+  },
+}
+</script>
