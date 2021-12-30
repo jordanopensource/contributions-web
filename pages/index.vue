@@ -12,7 +12,7 @@
 
 <script>
 import LazyHydrate from 'vue-lazy-hydration'
-import Hero from '../components/Hero.vue'
+import Hero from '../components/HomePageHero.vue'
 export default {
   components: {
     Hero,
