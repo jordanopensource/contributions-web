@@ -27,11 +27,11 @@ export default {
 }
 
 .banner {
-  @apply flex flex-col mx-9 h-96 md:flex-row;
+  @apply flex flex-col mx-9 md:h-96 md:flex-row;
 }
 
 .content-container {
-  @apply w-full text-white md:self-center pt-8;
+  @apply w-full text-white pb-6 md:pb-0 md:self-center pt-8;
 }
 
 .content-header {
