@@ -2,6 +2,7 @@
   <client-only>
     <div class="chart-section-container">
       <Apexchart
+        :height="'100%'"
         :type="chartOptions.type"
         :options="chartOptions.chartOptions"
         :series="chartOptions.series"
@@ -29,17 +30,18 @@ export default {
 
 .tooltip {
   font-family: 'IBM Sans';
-  padding: 10px;
+  @apply p-2 md:p-2.5;
 }
 .tooltip-number {
   color: #00b199;
-  font-size: 1.3rem;
+  @apply text-sm md:text-3xl;
 }
 
 .tooltip-description {
-  font-size: 0.7rem;
+  @apply text-xs md:text-base;
 }
 .tooltip-x-axis {
   font-weight: bold;
+  @apply text-xs md:text-lg;
 }
 </style>
