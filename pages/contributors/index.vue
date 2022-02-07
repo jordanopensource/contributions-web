@@ -23,6 +23,9 @@
       </div>
       <BarChart class="bar-chart" :chart-options="barChartData" />
     </div>
+    <div>
+      <TopDevelopers class="top-developers" />
+    </div>
   </div>
 </template>
 
@@ -33,6 +36,7 @@ export default {
     Hero: () => import('~/components/Hero.vue'),
     AreaChart: () => import('~/components/AreaChart.vue'),
     BarChart: () => import('~/components/BarChart.vue'),
+    TopDevelopers: () => import('~/components/TopDevelopers.vue'),
   },
   data() {
     return {
@@ -561,6 +565,10 @@ export default {
 
 .bar-chart-section {
   @apply lg:mx-10 2xl:mx-9 mx-3;
+}
+
+.top-developers {
+  @apply 2xl:mx-3;
 }
 
 .bar-chart-header {
