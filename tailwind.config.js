@@ -9,6 +9,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      height: {
+        720: '45rem',
+      },
       colors: {
         gray: {
           DEFAULT: '#edeeef',

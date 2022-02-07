@@ -1,11 +1,8 @@
 <template>
   <div :class="isOpen ? 'block lg:hidden' : 'hidden lg:hidden'">
     <ul class="mobile-menu">
-      <li class="pb-4 border-gray">
-        <a href="#">Stats</a>
-      </li>
       <li class="py-4 border-gray">
-        <a href="#">Users</a>
+        <nuxt-link to="/contributors">contributors</nuxt-link>
       </li>
       <li class="py-4 border-gray">
         <a href="#">Organizations</a>

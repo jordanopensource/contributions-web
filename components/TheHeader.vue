@@ -14,10 +14,7 @@
         </nuxt-link>
         <ul class="menu">
           <li class="menu-item">
-            <a href="#">Stats</a>
-          </li>
-          <li class="menu-item">
-            <a href="#">Users</a>
+            <nuxt-link to="/contributors">Contributors</nuxt-link>
           </li>
           <li class="menu-item">
             <a href="#">Organizations</a>
