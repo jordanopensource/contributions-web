@@ -12,7 +12,16 @@
           />
         </div>
       </div>
-      <AreaChart :chart-options="areaChartData" />
+      <AreaChart class="area-chart" :chart-options="areaChartData" />
+    </div>
+    <div class="bar-chart-section">
+      <div class="bar-chart-header">
+        <div class="divider-black"></div>
+        <div class="flex-container">
+          <h2 class="pb-3 lg:pb-0">Contributions from Jordan</h2>
+        </div>
+      </div>
+      <BarChart class="bar-chart" :chart-options="barChartData" />
     </div>
   </div>
 </template>
@@ -23,6 +32,7 @@ export default {
   components: {
     Hero: () => import('~/components/Hero.vue'),
     AreaChart: () => import('~/components/AreaChart.vue'),
+    BarChart: () => import('~/components/BarChart.vue'),
   },
   data() {
     return {
@@ -31,16 +41,27 @@ export default {
         chartOptions: {},
         series: [],
       },
+      barChartData: {
+        type: 'bar',
+        chartOptions: {},
+        series: [],
+      },
     }
   },
   async mounted() {
     const lastYear = new Date().getFullYear() - 1
-    const response = await this.$axios.get(
+    let response = await this.$axios.get(
       `/v1/stats/contributors?period=${lastYear}-01-01_${lastYear}-12-31&type=users&aggregation=month`
     )
-    const stats = response.data.usersStats[lastYear]
+    const areaChartStats = response.data.usersStats[lastYear]
 
-    this.generateAreaChartOptions(stats)
+    response = await this.$axios.get(
+      `/v1/stats/contributors?period=${lastYear}-01-01_${lastYear}-12-31&type=commits&aggregation=month`
+    )
+    const barChartStats = response.data.commitsStats[lastYear]
+
+    this.generateAreaChart(areaChartStats)
+    this.generateBarChart(barChartStats)
   },
   methods: {
     async onChartPeriodChanged(period) {
@@ -52,8 +73,7 @@ export default {
         await this.lastMonthCharts()
       }
     },
-
-    generateAreaChartOptions(stats) {
+    generateAreaChart(stats) {
       const months = [...Array(12).keys()].map((key) =>
         new Date(0, key).toLocaleString('default', {
           month: 'short',
@@ -64,7 +84,8 @@ export default {
       this.areaChartData.chartOptions = {
         chart: {
           id: 'UsersTotalCount',
-          fontFamily: 'IBM Mono',
+          fontFamily: 'IBM Sans',
+          height: '100%',
           toolbar: {
             show: false,
           },
@@ -154,78 +175,280 @@ export default {
             )
           },
         },
+        series: [
+          {
+            name: 'Total Users',
+            data: stats,
+          },
+        ],
         xaxis: {
           categories: months,
+          labels: {
+            style: {
+              fontFamily: 'IBM Sans',
+              fontSize: '15px',
+            },
+          },
         },
         yaxis: {
           labels: {
             style: {
               colors: ['#00b199'],
+              fontFamily: 'IBM Mono',
+              fontSize: '18px',
             },
           },
         },
+        responsive: [
+          {
+            breakpoint: 768,
+            options: {
+              xaxis: {
+                labels: {
+                  style: {
+                    fontSize: '12px',
+                  },
+                },
+              },
+              yaxis: {
+                labels: {
+                  style: {
+                    colors: ['#00b199'],
+                    fontSize: '13px',
+                  },
+                },
+              },
+            },
+          },
+        ],
       }
-      this.areaChartData.series = [
-        {
-          name: 'Total Users',
-          data: stats,
-        },
-      ]
     },
-    async thisYearCharts() {
-      const thisYear = new Date().getFullYear()
-      const response = await this.$axios.get(
-        `/v1/stats/contributors?period=${thisYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`
-      )
-
-      const stats = response.data.usersStats[thisYear]
+    generateBarChart(stats) {
+      const lastYear = new Date().getFullYear() - 1
       const months = [...Array(12).keys()].map((key) => {
-        return new Date(thisYear, key).toLocaleString('en-GB', {
+        return new Date(lastYear, key).toLocaleString('en-GB', {
           month: 'short',
         })
       })
 
-      this.changeAreaChartOptions(months, thisYear)
-
-      this.areaChartData.series = [
-        {
-          name: 'Total Users',
-          data: stats,
+      this.barChartData.chartOptions = {
+        chart: {
+          id: 'Contributions',
+          fontFamily: 'IBM Sans',
+          height: '100%',
+          toolbar: {
+            show: false,
+          },
+          zoom: {
+            enabled: false,
+          },
+          animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 800,
+            animateGradually: {
+              enabled: true,
+              delay: 150,
+            },
+            dynamicAnimation: {
+              enabled: true,
+              speed: 350,
+            },
+          },
         },
-      ]
+        states: {
+          normal: {
+            filter: {
+              type: 'none',
+              value: 0,
+            },
+          },
+          hover: {
+            filter: {
+              type: 'lighten',
+              value: 0.01,
+            },
+          },
+          active: {
+            allowMultipleDataPointsSelection: false,
+            filter: {
+              type: 'none',
+              value: 0,
+            },
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '100%',
+            barHeight: '70%',
+          },
+        },
+        fill: {
+          colors: ['#0b97ac'],
+          opacity: 0.5,
+          type: 'solid',
+        },
+        grid: {
+          show: true,
+          borderColor: '#90A4AE',
+          strokeDashArray: 2,
+          position: 'back',
+          row: {
+            colors: undefined,
+            opacity: 0.5,
+          },
+          column: {
+            colors: undefined,
+            opacity: 0.5,
+          },
+          padding: {
+            top: 0,
+            right: 35,
+            bottom: 0,
+            left: 35,
+          },
+        },
+        theme: {
+          mode: 'light',
+          monochrome: {
+            enabled: true,
+            color: '#00b199',
+            shadeTo: 'dark',
+            shadeIntensity: 0.65,
+          },
+        },
+        tooltip: {
+          enabled: true,
+          custom({ series, seriesIndex, dataPointIndex, w }) {
+            return (
+              '<div class="bar-tooltip">' +
+              '<span class="bar-tooltip-number">' +
+              series[seriesIndex][dataPointIndex] +
+              '</span>' +
+              '<p class="bar-tooltip-description">Contributions from Jordan on</p>' +
+              '<p class="bar-tooltip-x-axis">' +
+              w.config.xaxis.categories[dataPointIndex] +
+              ' ' +
+              lastYear +
+              '</p>' +
+              '</div>'
+            )
+          },
+        },
+        series: [
+          {
+            name: 'Contributions',
+            data: stats,
+          },
+        ],
+        xaxis: {
+          categories: months,
+          labels: {
+            style: {
+              fontFamily: 'IBM Sans',
+              fontSize: '15px',
+            },
+          },
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: ['#0b97ac'],
+              fontFamily: 'IBM Mono',
+              fontSize: '18px',
+            },
+          },
+        },
+        responsive: [
+          {
+            breakpoint: 768,
+            options: {
+              xaxis: {
+                labels: {
+                  style: {
+                    fontSize: '12px',
+                  },
+                },
+              },
+              yaxis: {
+                labels: {
+                  style: {
+                    colors: ['#0b97ac'],
+                    fontSize: '13px',
+                  },
+                },
+              },
+            },
+          },
+        ],
+      }
+    },
+    async thisYearCharts() {
+      const thisYear = new Date().getFullYear()
+
+      let response = await this.$axios.get(
+        `/v1/stats/contributors?period=${thisYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`
+      )
+      const areaChartStats = response.data.usersStats[thisYear]
+      let months = [...Array(areaChartStats.length).keys()].map((key) => {
+        return new Date(thisYear, key).toLocaleString('en-GB', {
+          month: 'short',
+        })
+      })
+      this.changeAreaChartOptions(areaChartStats, months, thisYear)
+
+      response = await this.$axios.get(
+        `/v1/stats/contributors?period=${thisYear}-01-01_${thisYear}-12-31&type=commits&aggregation=month`
+      )
+      const barChartStats = response.data.commitsStats[thisYear]
+      months = [...Array(barChartStats.length).keys()].map((key) => {
+        return new Date(thisYear, key).toLocaleString('en-GB', {
+          month: 'short',
+        })
+      })
+      this.changeBarChartOptions(barChartStats, months, thisYear)
     },
     async lastYearCharts() {
       const lastYear = new Date().getFullYear() - 1
-      const response = await this.$axios.get(
+
+      let response = await this.$axios.get(
         `/v1/stats/contributors?period=${lastYear}-01-01_${lastYear}-12-31&type=users&aggregation=month`
       )
-
-      const stats = response.data.usersStats[lastYear]
-      const months = [...Array(12).keys()].map((key) =>
-        new Date(0, key).toLocaleString('default', {
+      const areaChartStats = response.data.usersStats[lastYear]
+      let months = [...Array(areaChartStats.length).keys()].map((key) => {
+        return new Date(lastYear, key).toLocaleString('en-GB', {
           month: 'short',
         })
+      })
+      this.changeAreaChartOptions(areaChartStats, months, lastYear)
+
+      response = await this.$axios.get(
+        `/v1/stats/contributors?period=${lastYear}-01-01_${lastYear}-12-31&type=commits&aggregation=month`
       )
-
-      this.changeAreaChartOptions(months, lastYear)
-
-      this.areaChartData.series = [
-        {
-          name: 'Total Users',
-          data: stats,
-        },
-      ]
+      const barChartStats = response.data.commitsStats[lastYear]
+      months = [...Array(barChartStats.length).keys()].map((key) => {
+        return new Date(lastYear, key).toLocaleString('en-GB', {
+          month: 'short',
+        })
+      })
+      this.changeBarChartOptions(barChartStats, months, lastYear)
     },
     async lastMonthCharts() {
       const lastMonthDate = new Date()
       lastMonthDate.setMonth(lastMonthDate.getMonth() - 1)
       const year = lastMonthDate.getFullYear()
-      const response = await this.$axios.get(
+
+      let response = await this.$axios.get(
         `/v1/stats/contributors?period=${year}-01-01_${year}-12-31&type=users&aggregation=day`
       )
 
-      const stats = response.data.usersStats[year][lastMonthDate.getMonth()]
-      const days = [...Array(stats.length).keys()].map((key) => {
+      const areaChartStats =
+        response.data.usersStats[year][lastMonthDate.getMonth()]
+      let days = [...Array(areaChartStats.length).keys()].map((key) => {
         return new Date(year, lastMonthDate.getMonth(), key + 1).toLocaleString(
           'en-GB',
           {
@@ -235,17 +458,31 @@ export default {
         )
       })
       const tickAmount = 5
-      this.changeAreaChartOptions(days, year, tickAmount)
+      this.changeAreaChartOptions(areaChartStats, days, year, tickAmount)
 
-      this.areaChartData.series = [
-        {
-          name: 'Total Users',
-          data: stats,
-        },
-      ]
+      response = await this.$axios.get(
+        `/v1/stats/contributors?period=2021-01-01_2022-12-31&type=commits&aggregation=day`
+      )
+      const barChartStats =
+        response.data.commitsStats[year][lastMonthDate.getMonth()]
+      days = [...Array(areaChartStats.length).keys()].map((key) => {
+        return new Date(year, lastMonthDate.getMonth(), key + 1).toLocaleString(
+          'en-GB',
+          {
+            day: 'numeric',
+            month: 'numeric',
+          }
+        )
+      })
+      this.changeBarChartOptions(barChartStats, days, year, tickAmount)
     },
-    changeAreaChartOptions(categories, year, tickAmount) {
+    changeAreaChartOptions(data, categories, year, tickAmount) {
       this.areaChartData.chartOptions = {
+        series: [
+          {
+            data,
+          },
+        ],
         xaxis: {
           categories,
           tickAmount,
@@ -270,6 +507,37 @@ export default {
         },
       }
     },
+    changeBarChartOptions(data, categories, year, tickAmount) {
+      this.barChartData.chartOptions = {
+        series: [
+          {
+            data,
+          },
+        ],
+        xaxis: {
+          categories,
+          tickAmount,
+        },
+        tooltip: {
+          enabled: true,
+          custom({ series, seriesIndex, dataPointIndex, w }) {
+            return (
+              '<div class="bar-tooltip">' +
+              '<span class="bar-tooltip-number">' +
+              series[seriesIndex][dataPointIndex] +
+              '</span>' +
+              '<p class="bar-tooltip-description">Contributions from Jordan on</p>' +
+              '<p class="bar-tooltip-x-axis">' +
+              w.config.xaxis.categories[dataPointIndex] +
+              ' ' +
+              year +
+              '</p>' +
+              '</div>'
+            )
+          },
+        },
+      }
+    },
   },
 }
 </script>
@@ -279,15 +547,34 @@ export default {
   @apply bg-gray;
 }
 
+.area-chart {
+  @apply h-56 md:h-96 lg:h-720;
+}
+
+.bar-chart {
+  @apply h-56 md:h-96 lg:h-720;
+}
+
 .area-chart-section {
-  @apply lg:mx-12 2xl:mx-12 mx-3;
+  @apply lg:mx-10 2xl:mx-9 mx-3;
+}
+
+.bar-chart-section {
+  @apply lg:mx-10 2xl:mx-9 mx-3;
+}
+
+.bar-chart-header {
+  font-family: 'IBM Mono';
+  font-size: 1.7rem;
+  line-height: 1em;
+  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-14 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
 }
 
 .chart-header {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
   line-height: 1em;
-  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-12 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
+  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-14 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
 }
 
 .flex-container {
