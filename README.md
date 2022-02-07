@@ -21,8 +21,7 @@
   </p>
 </p>
 
-[![Build Status](https://builds.josa.dev/api/badges/jordanopensource/contributions-web/status.svg)](https://builds.josa.dev/jordanopensource/contributions-web)
-
+[![Build Status](https://builds.josa.dev/api/badges/jordanopensource/contributions-web/status.svg?ref=refs/heads/development)](https://builds.josa.dev/jordanopensource/contributions-web)
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
