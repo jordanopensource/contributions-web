@@ -452,6 +452,7 @@ export default {
 
       const areaChartStats =
         response.data.usersStats[year][lastMonthDate.getMonth()]
+
       let days = [...Array(areaChartStats.length).keys()].map((key) => {
         return new Date(year, lastMonthDate.getMonth(), key + 1).toLocaleString(
           'en-GB',
@@ -465,7 +466,7 @@ export default {
       this.changeAreaChartOptions(areaChartStats, days, year, tickAmount)
 
       response = await this.$axios.get(
-        `/v1/stats/contributors?period=2021-01-01_2022-12-31&type=commits&aggregation=day`
+        `/v1/stats/contributors?period=${year}-01-01_${year}-12-31&type=commits&aggregation=day`
       )
       const barChartStats =
         response.data.commitsStats[year][lastMonthDate.getMonth()]
