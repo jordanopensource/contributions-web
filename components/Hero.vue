@@ -4,7 +4,7 @@
       <div class="content-container">
         <div class="content-header">
           <div class="divider"></div>
-          <h1>Contributors</h1>
+          <h1>{{ title }}</h1>
         </div>
       </div>
     </section>
@@ -14,6 +14,12 @@
 <script>
 export default {
   name: 'Hero',
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+  },
 }
 </script>
 
