@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <Hero />
+    <Hero title="Contributors" />
     <div class="area-chart-section">
       <div class="chart-header">
         <div class="divider-black"></div>
