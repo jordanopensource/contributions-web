@@ -17,7 +17,7 @@
             <nuxt-link to="/contributors">Contributors</nuxt-link>
           </li>
           <li class="menu-item">
-            <a href="#">Organizations</a>
+            <nuxt-link to="/organizations">Organizations</nuxt-link>
           </li>
           <li class="menu-item">
             <a href="#">Methodology</a>
