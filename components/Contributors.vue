@@ -21,7 +21,7 @@
         />
       </div>
     </div>
-    <PaginationBar />
+    <PaginationBar @fetch-current-page="fetchCurrentPage" />
   </div>
 </template>
 
@@ -41,7 +41,17 @@ export default {
   computed: {
     ...mapState({
       sortBy: 'sortBy',
+      currentPage: 'currentPage',
+      period: 'period',
     }),
+  },
+  methods: {
+    async fetchCurrentPage(page) {
+      const response = await this.$axios.get(
+        `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
+      )
+      this.$store.commit('setUsers', response.data.users)
+    },
   },
 }
 </script>
