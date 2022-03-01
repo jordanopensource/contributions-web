@@ -17,6 +17,7 @@
           :label-text="`Score`"
           :checked="true"
           :value="'score'"
+          @on-sort-by-changed="onSortByChanged"
         />
         <RadioButton
           class="pb-2 contributions-radio"
@@ -25,6 +26,7 @@
           :label-for="`commits`"
           :label-text="`Commits`"
           :value="'commit'"
+          @on-sort-by-changed="onSortByChanged"
         />
       </div>
     </div>
@@ -69,6 +71,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import RadioButton from './RadioButton.vue'
 import CheckBox from './CheckBox.vue'
 import PeriodDropdown from './PeriodDropdown.vue'
@@ -81,6 +84,21 @@ export default {
   },
   props: {
     isOpen: { type: Boolean, required: true },
+  },
+  computed: {
+    ...mapGetters({
+      getCurrentPage: 'getCurrentPage',
+      getPeriod: 'getPeriod',
+    }),
+  },
+  methods: {
+    async onSortByChanged(sortBy) {
+      this.$store.commit('setSortBy', sortBy)
+      const response = await this.$axios.get(
+        `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}`
+      )
+      this.$store.commit('setUsers', response.data.users)
+    },
   },
 }
 </script>
