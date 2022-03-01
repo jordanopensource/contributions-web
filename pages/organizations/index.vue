@@ -14,6 +14,9 @@
       </div>
       <AreaChart class="area-chart" :chart-options="areaChartData" />
     </div>
+    <div>
+      <TopOrganizations class="top-developers" />
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,7 @@ export default {
   components: {
     Hero: () => import('~/components/Hero.vue'),
     AreaChart: () => import('~/components/AreaChart.vue'),
+    TopOrganizations: () => import('~/components/TopOrganizations.vue'),
   },
   data() {
     return {
@@ -298,27 +302,12 @@ export default {
   @apply h-56 md:h-96 lg:h-720;
 }
 
-.bar-chart {
-  @apply h-56 md:h-96 lg:h-720;
-}
-
 .area-chart-section {
-  @apply lg:mx-10 2xl:mx-9 mx-3;
-}
-
-.bar-chart-section {
   @apply lg:mx-10 2xl:mx-9 mx-3;
 }
 
 .top-developers {
   @apply 2xl:mx-3;
-}
-
-.bar-chart-header {
-  font-family: 'IBM Mono';
-  font-size: 1.7rem;
-  line-height: 1em;
-  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-14 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
 }
 
 .chart-header {
