@@ -3,9 +3,11 @@ export const state = () => ({
   usersCount: 0,
   commitsLastMonth: 0,
   users: [],
+  orgs: [],
   pageCount: 0,
   currentPage: 1,
   sortBy: 'score',
+  orgs_sortBy: 'repo_num',
   period: 'last_30_days',
   chartPeriod: 'last_year',
 })
@@ -14,6 +16,7 @@ export const getters = {
   getPageCount: (state) => state.pageCount,
   getCurrentPage: (state) => state.currentPage,
   getSortBy: (state) => state.sortBy,
+  getOrgsSortBy: (state) => state.orgs_sortBy,
   getPeriod: (state) => state.period,
   getChartPeriod: (state) => state.chartPeriod,
 }
@@ -24,6 +27,9 @@ export const mutations = {
   },
   setUsers(state, users) {
     state.users = users
+  },
+  setOrgs(state, orgs) {
+    state.orgs = orgs
   },
   setUsersCount(state, usersCount) {
     state.usersCount = usersCount
@@ -39,6 +45,9 @@ export const mutations = {
   },
   setSortBy(state, sortBy) {
     state.sortBy = sortBy
+  },
+  setOrgsSortBy(state, sortBy) {
+    state.orgs_sortBy = sortBy
   },
   setPeriod(state, period) {
     state.period = period

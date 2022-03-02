@@ -44,4 +44,20 @@ export default {
   font-weight: bold;
   @apply text-xs md:text-lg;
 }
+.tooltip-organizations {
+  font-family: 'IBM Sans';
+  @apply p-2 md:p-2.5;
+}
+.tooltip-number-organizations {
+  color: #73bc86;
+  @apply text-sm md:text-3xl;
+}
+
+.tooltip-description-organizations {
+  @apply text-xs md:text-base;
+}
+.tooltip-x-axis-organizations {
+  font-weight: bold;
+  @apply text-xs md:text-lg;
+}
 </style>

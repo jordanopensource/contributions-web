@@ -53,23 +53,20 @@ export default {
     currentPage() {
       return this.$store.getters.getCurrentPage
     },
-    sortBy() {
-      return this.$store.getters.getSortBy
-    },
     period() {
       return this.$store.getters.getPeriod
     },
   },
+  mounted() {
+    this.$store.commit('setCurrentPage', 1)
+  },
   methods: {
-    async fetchCurrentPage(page) {
+    fetchCurrentPage(page) {
       this.$store.commit(
         'setCurrentPage',
         this.limitNumberWithinRange(page, 1, this.pageCount)
       )
-      const response = await this.$axios.get(
-        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
-      )
-      this.$store.commit('setUsers', response.data.users)
+      this.$emit('fetch-current-page', page)
     },
     limitNumberWithinRange(num, min, max) {
       return Math.min(Math.max(parseInt(num), min), max)

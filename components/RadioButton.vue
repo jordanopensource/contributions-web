@@ -53,14 +53,10 @@ export default {
     }),
   },
   methods: {
-    async onChange(event) {
+    onChange(event) {
       if (this.inputName === 'sortby') {
         const sortBy = event.target.value
-        this.$store.commit('setSortBy', sortBy)
-        const response = await this.$axios.get(
-          `/v1/users?page=${this.getCurrentPage}&sort_by=${sortBy}&period=${this.getPeriod}`
-        )
-        this.$store.commit('setUsers', response.data.users)
+        this.$emit('on-sort-by-changed', sortBy)
       }
     },
   },

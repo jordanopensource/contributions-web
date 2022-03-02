@@ -5,7 +5,7 @@
         <nuxt-link to="/contributors">contributors</nuxt-link>
       </li>
       <li class="py-4 border-gray">
-        <a href="#">Organizations</a>
+        <nuxt-link to="/organizations">Organizations</nuxt-link>
       </li>
       <li class="py-4">
         <a href="#">Methodology</a>

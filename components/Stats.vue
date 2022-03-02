@@ -44,7 +44,7 @@ export default {
   },
   async fetch() {
     let response = await this.$axios.get(`/v1/orgs?limit=1`)
-    this.$store.commit('setOrgsCount', response.data.orgs.totalDocs)
+    this.$store.commit('setOrgsCount', response.data.totalOrganizations)
     response = await this.$axios.get('/v1/users?limit=1')
     this.$store.commit('setUsersCount', response.data.totalUsers)
     response = await this.$axios.get('/v1/contributions')

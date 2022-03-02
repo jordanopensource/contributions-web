@@ -3,21 +3,22 @@
     <div class="content-conatiner">
       <div class="text-section has-border">
         <h1 class="hidden head-text md:block">Rank</h1>
-        <h1 class="head-text px-0 lg:px-7">User</h1>
+        <h1 class="head-text px-0 lg:px-7">Organization</h1>
         <div class="flex justify-end w-full">
           <h1 class="head-text">Total</h1>
         </div>
       </div>
       <div>
-        <UserCard
-          v-for="user in users"
-          :key="user.github_id"
-          :username="user.username"
-          :name="user.name"
-          :image-url="user.avatar_url"
-          :score="user.score"
-          :contributions="user.commitsTotalCount"
-          :rank="user.currentRank"
+        <OrganizationCard
+          v-for="org in organizations"
+          :key="org.github_id"
+          :username="org.username"
+          :name="org.name"
+          :image-url="org.avatar_url"
+          :repositories-stars="org.repositories_stars_count"
+          :repositories-number="org.repositories_count"
+          :members-count="org.members_count"
+          :rank="org.currentRank"
         />
       </div>
     </div>
@@ -27,30 +28,29 @@
 
 <script>
 import { mapState } from 'vuex'
-import UserCard from './UserCard.vue'
+import OrganizationCard from './OrganizationCard.vue'
 import PaginationBar from './PaginationBar.vue'
 export default {
-  name: 'Contributors',
+  name: 'Organizations',
   components: {
-    UserCard,
+    OrganizationCard,
     PaginationBar,
   },
   props: {
-    users: { type: Array, required: true },
+    organizations: { type: Array, required: true },
   },
   computed: {
     ...mapState({
-      sortBy: 'sortBy',
+      sortBy: 'orgs_sortBy',
       currentPage: 'currentPage',
-      period: 'period',
     }),
   },
   methods: {
     async fetchCurrentPage(page) {
       const response = await this.$axios.get(
-        `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
+        `/v1/orgs?page=${this.currentPage}&sort_by=${this.sortBy}`
       )
-      this.$store.commit('setUsers', response.data.users)
+      this.$store.commit('setOrgs', response.data.orgs)
     },
   },
 }
