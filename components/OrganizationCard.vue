@@ -14,7 +14,7 @@
     </div>
     <div class="self-center">
       <div class="block text-right">
-        <div class="flex flex-col pb-2 pt-5">
+        <div class="flex flex-col pt-5">
           <p class="counters">Count</p>
           <p class="blue">{{ repositoriesNumber }}</p>
         </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="flex flex-col">
           <p class="counters">Members</p>
-          <p class="blue-green">{{ membersCount }}</p>
+          <p class="green">{{ membersCount }}</p>
         </div>
       </div>
     </div>
@@ -80,6 +80,11 @@ export default {
 .blue-green {
   @apply lg:text-xl;
   color: #00b199;
+}
+
+.green {
+  @apply lg:text-xl;
+  color: #73bc86;
 }
 
 .image {
