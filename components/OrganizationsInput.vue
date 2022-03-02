@@ -5,10 +5,10 @@
       <div class="flex lg:flex-col">
         <RadioButton
           class="lg:pb-1"
-          :input-id="`Count`"
+          :input-id="`Repos Count`"
           :input-name="`sortby`"
-          :label-for="`Count`"
-          :label-text="`Count`"
+          :label-for="`Repos Count`"
+          :label-text="`Repos Count`"
           :checked="true"
           :value="'repos_num'"
           @on-sort-by-changed="onSortByChanged"
