@@ -8,7 +8,7 @@
         <nuxt-link to="/organizations">Organizations</nuxt-link>
       </li>
       <li class="py-4">
-        <a href="#">Methodology</a>
+        <nuxt-link to="/methodology">Methodology</nuxt-link>
       </li>
     </ul>
   </div>
