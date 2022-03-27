@@ -20,7 +20,7 @@
             <nuxt-link to="/organizations">Organizations</nuxt-link>
           </li>
           <li class="menu-item">
-            <a href="#">Methodology</a>
+            <nuxt-link to="/methodology">Methodology</nuxt-link>
           </li>
         </ul>
         <MobileMenuButton :is-open="isOpen" @ToggleIsOpen="ToggleIsOpen()" />
