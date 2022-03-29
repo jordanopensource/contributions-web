@@ -9,7 +9,19 @@
     <div class="block w-full pl-2 lg:px-3 mt-6 lg:mt-8">
       <div class="flex flex-col">
         <h3 class="full-name">{{ name }}</h3>
-        <p class="user-name">{{ username }}</p>
+        <div>
+          <a :href="profileUrl" target="_blank" class="username-container">
+            <img
+              class="h-5 pr-1"
+              src="~assets/images/footer/icon-github.svg"
+              alt="Github Account"
+              width="auto"
+              height="20"
+              loading="lazy"
+            />
+            {{ username }}</a
+          >
+        </div>
       </div>
     </div>
     <div class="self-center">
@@ -36,6 +48,7 @@ export default {
     score: { type: Number, default: 0 },
     contributions: { type: Number, required: true },
     imageUrl: { type: String, required: true },
+    profileUrl: { type: String, default: '#' },
     rank: { type: Number, required: true, default: 0 },
   },
 }
@@ -59,8 +72,6 @@ export default {
 }
 
 .user-name {
-  font-family: 'IBM Mono';
-  @apply text-xs lg:text-sm font-light;
 }
 
 .has-border {
@@ -92,5 +103,19 @@ export default {
 
 .image-container {
   @apply self-center w-16 h-16 relative lg:w-20 lg:h-20;
+}
+
+.username-container {
+  font-family: 'IBM Mono';
+  @apply flex text-xs lg:text-sm font-light items-center;
+}
+
+a {
+  transition: all 0.3s ease 0s;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #00b199;
 }
 </style>
