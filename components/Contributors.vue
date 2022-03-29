@@ -15,6 +15,7 @@
           :username="user.username"
           :name="user.name"
           :image-url="user.avatar_url"
+          :profile-url="user.profile_url"
           :score="user.score"
           :contributions="user.commitsTotalCount"
           :rank="user.currentRank"
