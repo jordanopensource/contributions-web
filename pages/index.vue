@@ -20,5 +20,10 @@ export default {
     TopDevelopers: () => import('../components/TopDevelopers.vue'),
     LazyHydrate,
   },
+  mounted() {
+    this.$store.commit('setPeriod', 'last_30_days')
+    this.$store.commit('setSortBy', 'score')
+    this.$store.commit('setShow', 'all')
+  },
 }
 </script>

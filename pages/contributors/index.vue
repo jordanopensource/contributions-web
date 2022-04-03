@@ -66,6 +66,10 @@ export default {
 
     this.generateAreaChart(areaChartStats)
     this.generateBarChart(barChartStats)
+
+    this.$store.commit('setPeriod', 'last_30_days')
+    this.$store.commit('setSortBy', 'score')
+    this.$store.commit('setShow', 'all')
   },
   methods: {
     async onChartPeriodChanged(period) {
