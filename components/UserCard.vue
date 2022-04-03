@@ -21,6 +21,15 @@
             />
             {{ username }}</a
           >
+          <span class="josa-member">
+            <img
+              class="h-5 pr-1"
+              src="~/assets/images/navbar/logo.svg"
+              alt="Logo"
+              width="auto"
+              loading="lazy"
+            />JOSA Member
+          </span>
         </div>
       </div>
     </div>
@@ -106,6 +115,11 @@ export default {
 }
 
 .username-container {
+  font-family: 'IBM Mono';
+  @apply flex text-xs lg:text-sm font-light items-center;
+}
+
+.josa-member {
   font-family: 'IBM Mono';
   @apply flex text-xs lg:text-sm font-light items-center;
 }
