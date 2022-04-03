@@ -41,6 +41,7 @@
           :label-text="`All`"
           :checked="true"
           :value="'all'"
+          @on-show-changed="onShowChanged"
         />
         <RadioButton
           class="pb-2 ml-16 lg:ml-0"
@@ -48,8 +49,8 @@
           :input-name="`show`"
           :label-for="`only`"
           :label-text="`Only JOSA members`"
-          :value="'josa'"
-          :disabled="true"
+          :value="'members'"
+          @on-show-changed="onShowChanged"
         />
       </div>
     </div>
@@ -89,15 +90,26 @@ export default {
     ...mapGetters({
       getCurrentPage: 'getCurrentPage',
       getPeriod: 'getPeriod',
+      getShow: 'getShow',
+      getSortBy: 'getSortBy',
     }),
   },
   methods: {
     async onSortByChanged(sortBy) {
       this.$store.commit('setSortBy', sortBy)
       const response = await this.$axios.get(
-        `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}`
+        `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}`
       )
       this.$store.commit('setUsers', response.data.users)
+    },
+    async onShowChanged(show) {
+      this.$store.commit('setCurrentPage', 1)
+      const response = await this.$axios.get(
+        `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}`
+      )
+      this.$store.commit('setShow', show)
+      this.$store.commit('setUsers', response.data.users)
+      this.$store.commit('setPageCount', response.data.totalPages)
     },
   },
 }
