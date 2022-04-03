@@ -7,7 +7,7 @@ export const state = () => ({
   pageCount: 0,
   currentPage: 1,
   sortBy: 'score',
-  orgs_sortBy: 'repo_num',
+  orgs_sortBy: 'repos_stars',
   period: 'last_30_days',
   chartPeriod: 'last_year',
 })
