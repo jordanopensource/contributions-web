@@ -10,6 +10,7 @@ export const state = () => ({
   orgs_sortBy: 'repo_num',
   period: 'last_30_days',
   chartPeriod: 'last_year',
+  show: 'all',
 })
 
 export const getters = {
@@ -19,6 +20,7 @@ export const getters = {
   getOrgsSortBy: (state) => state.orgs_sortBy,
   getPeriod: (state) => state.period,
   getChartPeriod: (state) => state.chartPeriod,
+  getShow: (state) => state.show,
 }
 
 export const mutations = {
@@ -54,5 +56,8 @@ export const mutations = {
   },
   setChartPeriod(state, chartPeriod) {
     state.chartPeriod = chartPeriod
+  },
+  setShow(state, show) {
+    state.show = show
   },
 }
