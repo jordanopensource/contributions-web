@@ -27,13 +27,16 @@ export default {
     Organizations,
   },
   async fetch() {
-    const response = await this.$axios.get('/v1/orgs')
+    const response = await this.$axios.get(
+      `/v1/orgs?sort_by=${this.orgs_sortBy}`
+    )
     this.$store.commit('setOrgs', response.data.orgs)
     this.$store.commit('setPageCount', response.data.totalPages)
   },
   computed: {
     ...mapState({
       organizations: 'orgs',
+      orgs_sortBy: 'orgs_sortBy',
     }),
   },
 }
