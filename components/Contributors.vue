@@ -19,6 +19,7 @@
           :score="user.score"
           :contributions="user.commitsTotalCount"
           :rank="user.currentRank"
+          :is-josa-member="user.isJOSAMember"
         />
       </div>
     </div>
