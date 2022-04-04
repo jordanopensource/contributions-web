@@ -4,26 +4,25 @@
       <h6 class="text-xs font-bold pb-2">Sort by:</h6>
       <div class="flex lg:flex-col">
         <RadioButton
-          class="lg:pb-1"
-          :input-id="`Repos Count`"
+          class="mr-3 lg:pb-2 lg:mr-0"
+          :input-id="`Total Stars`"
           :input-name="`sortby`"
-          :label-for="`Repos Count`"
-          :label-text="`Repos Count`"
+          :label-for="`Total Stars`"
+          :label-text="`Total Stars`"
           :checked="true"
-          :value="'repos_num'"
-          @on-sort-by-changed="onSortByChanged"
-        />
-        <RadioButton
-          class="pb-2 contributions-radio"
-          :input-id="`Stars`"
-          :input-name="`sortby`"
-          :label-for="`Stars`"
-          :label-text="`Stars`"
           :value="'repos_stars'"
           @on-sort-by-changed="onSortByChanged"
         />
         <RadioButton
-          class="pb-2 contributions-radio"
+          class="mr-3 lg:pb-2 lg:mr-0"
+          :input-id="`Number of Open Source Repositories`"
+          :input-name="`sortby`"
+          :label-for="`Number of Open Source Repositories`"
+          :label-text="`Number of Open Source Repositories`"
+          :value="'repos_num'"
+          @on-sort-by-changed="onSortByChanged"
+        />
+        <RadioButton
           :input-id="`Members`"
           :input-name="`sortby`"
           :label-for="`Members`"
@@ -67,10 +66,5 @@ export default {
 
 .sort-section {
   @apply mx-8 pt-6 pb-4;
-}
-
-.contributions-radio {
-  margin-left: 2.8rem;
-  @apply lg:ml-0;
 }
 </style>

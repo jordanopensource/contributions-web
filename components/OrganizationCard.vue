@@ -15,12 +15,12 @@
     <div class="self-center">
       <div class="block text-right">
         <div class="flex flex-col pt-5">
-          <p class="counters">Count</p>
-          <p class="blue">{{ repositoriesNumber }}</p>
+          <p class="counters">Stars</p>
+          <p class="blue">{{ repositoriesStars }}</p>
         </div>
         <div class="flex flex-col">
-          <p class="counters">Stars</p>
-          <p class="blue-green">{{ repositoriesStars }}</p>
+          <p class="counters">Count</p>
+          <p class="blue-green">{{ repositoriesNumber }}</p>
         </div>
         <div class="flex flex-col">
           <p class="counters">Members</p>
