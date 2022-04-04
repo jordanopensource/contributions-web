@@ -19,6 +19,7 @@
           :score="user.score"
           :contributions="user.commitsTotalCount"
           :rank="user.currentRank"
+          :is-josa-member="user.isJOSAMember"
         />
       </div>
     </div>
@@ -44,12 +45,13 @@ export default {
       sortBy: 'sortBy',
       currentPage: 'currentPage',
       period: 'period',
+      show: 'show',
     }),
   },
   methods: {
     async fetchCurrentPage(page) {
       const response = await this.$axios.get(
-        `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
+        `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.show}`
       )
       this.$store.commit('setUsers', response.data.users)
     },

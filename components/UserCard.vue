@@ -21,6 +21,15 @@
             />
             {{ username }}</a
           >
+          <span v-show="isJosaMember" class="josa-member">
+            <img
+              class="h-5 pr-1"
+              src="~/assets/images/stats/josa-icon.svg"
+              alt="Logo"
+              width="auto"
+              loading="lazy"
+            />JOSA Member
+          </span>
         </div>
       </div>
     </div>
@@ -49,6 +58,7 @@ export default {
     contributions: { type: Number, required: true },
     imageUrl: { type: String, required: true },
     profileUrl: { type: String, default: '#' },
+    isJosaMember: { type: Boolean, default: false },
     rank: { type: Number, required: true, default: 0 },
   },
 }
@@ -106,6 +116,11 @@ export default {
 }
 
 .username-container {
+  font-family: 'IBM Mono';
+  @apply flex text-xs lg:text-sm font-light items-center pb-2;
+}
+
+.josa-member {
   font-family: 'IBM Mono';
   @apply flex text-xs lg:text-sm font-light items-center;
 }

@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'RadioButton',
   props: {
@@ -46,17 +45,14 @@ export default {
     disabled: { type: Boolean, default: false },
     value: { type: String, required: true },
   },
-  computed: {
-    ...mapGetters({
-      getCurrentPage: 'getCurrentPage',
-      getPeriod: 'getPeriod',
-    }),
-  },
   methods: {
     onChange(event) {
       if (this.inputName === 'sortby') {
         const sortBy = event.target.value
         this.$emit('on-sort-by-changed', sortBy)
+      } else if (this.inputName === 'show') {
+        const show = event.target.value
+        this.$emit('on-show-changed', show)
       }
     },
   },

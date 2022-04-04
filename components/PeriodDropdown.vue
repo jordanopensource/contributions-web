@@ -55,6 +55,9 @@ export default {
     period() {
       return this.$store.getters.getPeriod
     },
+    getShow() {
+      return this.$store.getters.getShow
+    },
   },
   mounted() {
     const today = new Date()
@@ -76,7 +79,7 @@ export default {
     async onChange(e) {
       this.$store.commit('setPeriod', e.target.value)
       const response = await this.$axios.get(
-        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}`
+        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.getShow}`
       )
       this.$store.commit('setUsers', response.data.users)
     },
