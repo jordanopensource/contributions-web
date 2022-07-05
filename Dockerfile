@@ -1,20 +1,24 @@
-FROM node:14.18-alpine3.14
+FROM node:16-alpine3.14
 
-# Create app directory
+# install node_modules
+COPY package*.json /tmp/
+RUN cd /tmp && npm install
+
+# copy application into image
 WORKDIR /app
-ADD . /app/
+COPY . .
 
-# RUN rm yarn.lock
-RUN npm install
+# move node_modules into application root
+RUN mv /tmp/node_modules .
 
-ENV BASE_API_URL http://contributions.josa
-ENV HOST	0.0.0.0
+# declare environment variables
+ENV BASE_API_URL http://contributions.local
+ENV HOST 0.0.0.0
 ENV PORT 3000
+ENV BETA_RELEASE true
 
-# Build NuxtJS project
+# build NuxtJS project
 RUN npm run build:modern
 
-# start command
+# run for production
 CMD [ "npm", "run", "start:modern"]⏎
-
-
