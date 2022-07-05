@@ -14,7 +14,7 @@ steps:
   - name: build
     image: plugins/docker
     settings:
-      repo: josaorg/community-web
+      repo: josaorg/contributions-web
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
