@@ -1,24 +1,51 @@
-FROM node:16-alpine3.14
+ARG BASE_API_URL=http://contributions.local HOST=0.0.0.0 PORT=3000 BETA_RELEASE=true USER=node
 
-# install node_modules
-COPY package*.json /tmp/
-RUN cd /tmp && npm install
+###########
+# BUILDER #
+###########
+FROM node:16-alpine3.14 as builder
 
-# copy application into image
-WORKDIR /app
+ARG BASE_API_URL
+ARG HOST
+ARG PORT
+ARG BETA_RELEASE
+
+# copy build context and install dependencies
+WORKDIR /workspace
 COPY . .
+RUN npm install
 
-# move node_modules into application root
-RUN mv /tmp/node_modules .
-
-# declare environment variables
-ENV BASE_API_URL http://contributions.local
-ENV HOST 0.0.0.0
-ENV PORT 3000
-ENV BETA_RELEASE true
+# Inject the enviromental variables
+ENV BASE_API_URL=${BASE_API_URL} HOST=${HOST} PORT=${PORT} BETA_RELEASE=${BETA_RELEASE}
 
 # build NuxtJS project
 RUN npm run build:modern
 
+###########
+# PROJECT #
+###########
+FROM node:16-slim
+
+ARG BASE_API_URL
+ARG HOST
+ARG PORT
+ARG BETA_RELEASE
+ARG USER
+
+# copy builder output to project workdir
+WORKDIR /app
+COPY --from=builder --chown=${USER}:${USER} /workspace/.nuxt /app/.nuxt
+COPY --from=builder --chown=${USER}:${USER} /workspace/node_modules /app/node_modules
+COPY --from=builder --chown=${USER}:${USER} /workspace/package.json /app/
+
+# Inject the enviromental variables
+ENV BASE_API_URL=${BASE_API_URL} HOST=${HOST} PORT=${PORT} BETA_RELEASE=${BETA_RELEASE}
+
+# set user context
+USER ${USER}
+
+# expose port
+EXPOSE ${PORT}
+
 # run for production
-CMD [ "npm", "run", "start:modern"]⏎
+CMD [ "npm", "run", "start:modern"]
