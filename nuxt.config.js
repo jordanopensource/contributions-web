@@ -53,11 +53,11 @@ export default {
   },
 
   proxy: {
-    '/v1': { target: process.env.BASE_API_URL },
+    '/v1': { target: process.env.CONTRIBUTIONS_API_URL },
   },
 
   publicRuntimeConfig: {
-    BASE_API_URL: process.env.BASE_API_URL,
+    CONTRIBUTIONS_API_URL: process.env.CONTRIBUTIONS_API_URL,
   },
 
   healthcheck: {
