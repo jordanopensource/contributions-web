@@ -6,7 +6,7 @@ services:
     container_name: contributions-web
     restart: unless-stopped
     environment:
-      BASE_API_URL: http://contributions-api:8080
+      CONTRIBUTIONS_API_URL: http://contributions-api:8080
       PORT: 3000
       HOST: contributions-web
     networks:

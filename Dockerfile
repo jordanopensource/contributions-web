@@ -1,14 +1,13 @@
-ARG BASE_API_URL=http://contributions.local HOST=0.0.0.0 PORT=3000 BETA_RELEASE=true USER=node
+ARG CONTRIBUTIONS_API_URL=http://contributions.local HOST=0.0.0.0 PORT=3000 USER=node
 
 ###########
 # BUILDER #
 ###########
 FROM node:16-alpine3.14 as builder
 
-ARG BASE_API_URL
+ARG CONTRIBUTIONS_API_URL
 ARG HOST
 ARG PORT
-ARG BETA_RELEASE
 
 # copy build context and install dependencies
 WORKDIR /workspace
@@ -16,7 +15,7 @@ COPY . .
 RUN npm install
 
 # Inject the enviromental variables
-ENV BASE_API_URL=${BASE_API_URL} HOST=${HOST} PORT=${PORT} BETA_RELEASE=${BETA_RELEASE}
+ENV CONTRIBUTIONS_API_URL=${CONTRIBUTIONS_API_URL} HOST=${HOST} PORT=${PORT}
 
 # build NuxtJS project
 RUN npm run build:modern
@@ -26,10 +25,9 @@ RUN npm run build:modern
 ###########
 FROM node:16-slim
 
-ARG BASE_API_URL
+ARG CONTRIBUTIONS_API_URL
 ARG HOST
 ARG PORT
-ARG BETA_RELEASE
 ARG USER
 
 # copy builder output to project workdir
@@ -39,7 +37,7 @@ COPY --from=builder --chown=${USER}:${USER} /workspace/node_modules /app/node_mo
 COPY --from=builder --chown=${USER}:${USER} /workspace/package.json /app/
 
 # Inject the enviromental variables
-ENV BASE_API_URL=${BASE_API_URL} HOST=${HOST} PORT=${PORT} BETA_RELEASE=${BETA_RELEASE}
+ENV CONTRIBUTIONS_API_URL=${CONTRIBUTIONS_API_URL} HOST=${HOST} PORT=${PORT}
 
 # set user context
 USER ${USER}
