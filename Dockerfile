@@ -1,4 +1,4 @@
-ARG CONTRIBUTIONS_API_URL=http://contributions.local HOST=0.0.0.0 PORT=3000 USER=node
+ARG CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo HOST=0.0.0.0 PORT=3000 USER=node
 
 ###########
 # BUILDER #
@@ -33,6 +33,7 @@ ARG USER
 # copy builder output to project workdir
 WORKDIR /app
 COPY --from=builder --chown=${USER}:${USER} /workspace/.nuxt /app/.nuxt
+COPY --from=builder --chown=${USER}:${USER} /workspace/nuxt.config.js /app/nuxt.config.js
 COPY --from=builder --chown=${USER}:${USER} /workspace/node_modules /app/node_modules
 COPY --from=builder --chown=${USER}:${USER} /workspace/package.json /app/
 
