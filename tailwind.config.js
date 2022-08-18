@@ -8,7 +8,19 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        720: '45rem',
+      },
+      colors: {
+        gray: {
+          DEFAULT: '#edeeef',
+        },
+        lightgrey: {
+          DEFAULT: '#f4f4f5',
+        },
+      },
+    },
   },
   variants: {
     extend: {},

@@ -6,7 +6,6 @@
   </a>
 
   <h3 align="center">top-contributors-web</h3>
-
   <p align="center">
      The web client for the Jordan Top Contributors website.
     <br />
@@ -20,9 +19,6 @@
     <a href="https://github.com/jordanopensource/top-contributors-web/issues">Request Feature</a>
   </p>
 </p>
-
-
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
