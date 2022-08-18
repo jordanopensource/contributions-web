@@ -1,27 +1,24 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/jordanopensource/contributions-web">
+  <a href="https://github.com/jordanopensource/top-contributors-web">
     <img src=".github/images/logo.svg" alt="Logo" width="120" height="120">
   </a>
 
-  <h3 align="center">contributions-web</h3>
-
+  <h3 align="center">top-contributors-web</h3>
   <p align="center">
      The web client for the Jordan Top Contributors website.
     <br />
-    <a href="https://github.com/jordanopensource/contributions-web"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jordanopensource/top-contributors-web"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <!-- <a href="https://josa.ngo">Visit the Portal</a> -->
     ·
-    <a href="https://github.com/jordanopensource/contributions-web/issues">Report Bug</a>
+    <a href="https://github.com/jordanopensource/top-contributors-web/issues">Report Bug</a>
     ·
-    <a href="https://github.com/jordanopensource/contributions-web/issues">Request Feature</a>
+    <a href="https://github.com/jordanopensource/top-contributors-web/issues">Request Feature</a>
   </p>
 </p>
-
-[![Build Status](https://builds.josa.dev/api/badges/jordanopensource/contributions-web/status.svg?ref=refs/heads/development)](https://builds.josa.dev/jordanopensource/contributions-web)
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -74,7 +71,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/jordanopensource/contributions-web.git
+   git clone https://github.com/jordanopensource/top-contributors-web.git
    ```
 2. Install NPM packages
    ```sh
@@ -115,7 +112,7 @@ $ npm run start
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/jordanopensource/contributions-web/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/jordanopensource/top-contributors-web/issues) for a list of proposed features (and known issues).
 
 
 
@@ -142,4 +139,4 @@ Distributed under the Apache License. See `LICENSE` for more information.
 
 Jordan Open Source Association - [@jo_osa](https://twitter.com/@jo_osa) - info@josa.ngo
 
-Project Link: [https://github.com/jordanopensource/contributions-web](https://github.com/jordanopensource/contributions-web)
+Project Link: [https://github.com/jordanopensource/top-contributors-web](https://github.com/jordanopensource/top-contributors-web)
