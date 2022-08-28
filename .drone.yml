@@ -18,6 +18,7 @@ steps:
       tags:
         - ${DRONE_COMMIT_SHA}
         - latest
+        - dev
       username:
         from_secret: docker_username
       password:
