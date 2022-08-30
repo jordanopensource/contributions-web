@@ -7,7 +7,7 @@
       </div>
       <div class="filter-component">
         <FilterSection class="lg:mt-0 lg:order-2" />
-        <Contributors :users="users" class="lg:flex-grow lg:pl-6" />
+        <Contributors :users="users" class="lg:grow lg:pl-6" />
       </div>
     </article>
   </div>
