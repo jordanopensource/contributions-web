@@ -9,7 +9,7 @@
         <OrganizationsFilter class="lg:mt-0 lg:order-2" />
         <Organizations
           :organizations="organizations"
-          class="lg:flex-grow lg:pl-6"
+          class="lg:grow lg:pl-6"
         />
       </div>
     </article>
