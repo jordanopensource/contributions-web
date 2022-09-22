@@ -17,8 +17,8 @@ steps:
       repo: josaorg/contributions-web
       build_args:
         [
-          CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo,
-          MATOMO_SITE_ID=11,
+          CONTRIBUTIONS_API_URL=https://contributions.api.prod.josa.ngo,
+          MATOMO_SITE_ID=10,
         ]
       tags:
         - ${DRONE_COMMIT_SHA}
