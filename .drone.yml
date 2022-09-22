@@ -15,6 +15,11 @@ steps:
     image: plugins/docker
     settings:
       repo: josaorg/contributions-web
+      build_args:
+        [
+          CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo,
+          MATOMO_SITE_ID=11,
+        ]
       tags:
         - ${DRONE_COMMIT_SHA}
         - stable

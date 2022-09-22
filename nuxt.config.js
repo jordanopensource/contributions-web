@@ -39,6 +39,10 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      'nuxt-matomo',
+      { matomoUrl: '//track.josa.ngo/', siteId: process.env.MATOMO_SITE_ID },
+    ],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
@@ -58,6 +62,7 @@ export default {
 
   publicRuntimeConfig: {
     CONTRIBUTIONS_API_URL: process.env.CONTRIBUTIONS_API_URL,
+    siteID: process.env.MATOMO_SITE_ID,
   },
 
   healthcheck: {
