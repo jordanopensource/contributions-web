@@ -17,12 +17,22 @@ steps:
       repo: josaorg/contributions-web
       build_args:
         [
-          CONTRIBUTIONS_API_URL=https://contributions.api.prod.josa.ngo,
-          MATOMO_SITE_ID=10,
+          CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo,
+          MATOMO_SITE_ID=11,
+          TARGET_ENV=development
+        ]
+      build_args_from_env:
+        [
+          DRONE_BUILD_NUMBER,
+          DRONE_BUILD_LINK,
+          DRONE_COMMIT_SHA,
+          DRONE_COMMIT_LINK,
+          DRONE_REPO_LINK,
+          DRONE_BUILD_FINISHED,
         ]
       tags:
         - ${DRONE_COMMIT_SHA}
-        - stable
+        - latest
       username:
         from_secret: docker_username
       password:

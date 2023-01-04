@@ -1,10 +1,14 @@
 <template>
   <div>
     <select id="period" name="period" @change="onChange">
+      <option value="last_year">Last Year</option>
       <option value="last_30_days" selected>Last 30 Days</option>
       <option value="last_month">Last Month</option>
       <option value="this_year">This Year</option>
     </select>
+    <p v-if="period === 'last_year'">
+      <small>{{ firstDayOfLastYear }} ➜ {{ lastDayOfLastYear }}</small>
+    </p>
     <p v-if="period === 'last_30_days'">
       <small>{{ last30Days }} ➜ {{ todayDate }}</small>
     </p>
@@ -43,6 +47,24 @@ export default {
         month: 'long',
       }),
       last30Days: 0,
+      firstDayOfLastYear: new Date(
+        new Date().getFullYear() - 1,
+        0,
+        1
+      ).toLocaleString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      }),
+      lastDayOfLastYear: new Date(
+        new Date().getFullYear() - 1,
+        11,
+        31
+      ).toLocaleString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      }),
     }
   },
   computed: {

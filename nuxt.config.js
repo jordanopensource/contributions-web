@@ -39,6 +39,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@josango/nuxt-build-banner',
     [
       'nuxt-matomo',
       { matomoUrl: '//track.josa.ngo/', siteId: process.env.MATOMO_SITE_ID },
@@ -63,6 +64,14 @@ export default {
   publicRuntimeConfig: {
     CONTRIBUTIONS_API_URL: process.env.CONTRIBUTIONS_API_URL,
     siteID: process.env.MATOMO_SITE_ID,
+    buildCommitSHA: process.env.DRONE_COMMIT_SHA,
+    DRONE_COMMIT_SHA: process.env.DRONE_COMMIT_SHA,
+    DRONE_COMMIT_LINK: process.env.DRONE_COMMIT_LINK,
+    DRONE_BUILD_NUMBER: process.env.DRONE_BUILD_NUMBER,
+    DRONE_BUILD_LINK: process.env.DRONE_BUILD_LINK,
+    DRONE_REPO_LINK: process.env.DRONE_REPO_LINK,
+    DRONE_BUILD_FINISHED: process.env.DRONE_BUILD_FINISHED,
+    TARGET_ENV: process.env.TARGET_ENV
   },
 
   healthcheck: {
