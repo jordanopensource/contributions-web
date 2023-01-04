@@ -17,9 +17,9 @@ steps:
       repo: josaorg/contributions-web
       build_args:
         [
-          CONTRIBUTIONS_API_URL=https://contributions.api.prod.josa.ngo,
-          MATOMO_SITE_ID=10,
-          TARGET_ENV=production
+          CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo,
+          MATOMO_SITE_ID=11,
+          TARGET_ENV=development
         ]
       build_args_from_env:
         [
