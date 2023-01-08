@@ -1,6 +1,7 @@
 <template>
   <div class="page-container">
     <Hero title="Contributors" />
+    <LastUpdated />
     <div class="area-chart-section">
       <div class="chart-header">
         <div class="divider-black"></div>
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import LastUpdated from '~/components/LastUpdated.vue'
 export default {
   name: 'ContributorsPage',
   components: {
@@ -37,6 +39,7 @@ export default {
     AreaChart: () => import('~/components/AreaChart.vue'),
     BarChart: () => import('~/components/BarChart.vue'),
     TopDevelopers: () => import('~/components/TopDevelopers.vue'),
+    LastUpdated,
   },
   data() {
     return {
