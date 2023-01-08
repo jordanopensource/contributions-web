@@ -38,7 +38,7 @@
 import { mapState } from 'vuex'
 import Card from './Card.vue'
 export default {
-  name: 'Stats',
+  name: 'StatsCards',
   components: {
     Card,
   },
