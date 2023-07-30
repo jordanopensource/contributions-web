@@ -18,6 +18,7 @@
           :repositories-stars="org.repositories_stars_count"
           :repositories-number="org.repositories_count"
           :members-count="org.members_count"
+          :profile-url="org.profile_url"
           :rank="org.currentRank"
         />
       </div>

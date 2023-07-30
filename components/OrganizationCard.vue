@@ -9,7 +9,19 @@
     <div class="block w-full pl-2 lg:px-3 mt-8 lg:mt-12">
       <div class="flex flex-col">
         <h3 class="full-name">{{ name }}</h3>
-        <p class="user-name">{{ username }}</p>
+        <div>
+          <a :href="profileUrl" target="_blank" class="username-container">
+            <img
+              class="h-5 pr-1"
+              src="~assets/images/footer/icon-github.svg"
+              alt="Github Account"
+              width="auto"
+              height="20"
+              loading="lazy"
+            />
+            {{ username }}</a
+          >
+        </div>
       </div>
     </div>
     <div class="self-center">
@@ -40,6 +52,7 @@ export default {
     repositoriesNumber: { type: Number, default: 0 },
     repositoriesStars: { type: Number, required: true },
     membersCount: { type: Number, required: true },
+    profileUrl: { type: String, default: '#' },
     imageUrl: { type: String, required: true },
     rank: { type: Number, required: true, default: 0 },
   },
@@ -63,9 +76,9 @@ export default {
   @apply text-sm font-semibold lg:text-lg;
 }
 
-.user-name {
+.username-container {
   font-family: 'IBM Mono';
-  @apply text-xs lg:text-sm font-light;
+  @apply flex text-xs lg:text-sm font-light items-center pb-2;
 }
 
 .has-border {
