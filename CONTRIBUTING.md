@@ -15,7 +15,7 @@ then add the value(s) of environment variable(s).
 You can use the current running API URL as the value to `CONTRIBUTIONS_API_URL` variable as the following:
 `CONTRIBUTIONS_API_URL=https://contributions.api.prod.josa.ngo/`
 
-5. [Run the project locally](https://github.com/jordanopensource/contributions-web/new/main#running-the-project-locally).
+5. [Run the project locally](https://github.com/jordanopensource/contributions-web/blob/main/CONTRIBUTING.md#running-the-project-locally).
 6. Check current [issues](https://github.com/jordanopensource/contributions-web/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest), 
 and if you're a beginner, you can [filter issues with `good first issues` label](https://github.com/jordanopensource/contributions-web/issues?q=is%3Aopen+is%3Aissue+label%3Ahacktoberfest+label%3A%22good+first+issue%22).    
 If you decide to work on one of the issue, write a comment on the issue asking to be assigned to it.
