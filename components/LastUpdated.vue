@@ -1,5 +1,5 @@
 <template>
-  <div v-if="lastUpdated" class="flex justify-end mr-24 pt-5">
+  <div v-if="lastUpdated" class="flex justify-end pt-5 ml-8 mr-8 md:mr-12 lg:mr-20  2xl:mr-28">
     <p class="opacity-50">
       {{ lastUpdated }}
     </p>
