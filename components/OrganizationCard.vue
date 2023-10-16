@@ -78,7 +78,7 @@ export default {
 
 .username-container {
   font-family: 'IBM Mono';
-  @apply flex text-xs lg:text-sm font-light items-center pb-2;
+  @apply flex text-xs lg:text-sm font-light items-center pb-2 hover:text-[#00b199] transition-colors duration-150;
 }
 
 .has-border {
