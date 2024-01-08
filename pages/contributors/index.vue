@@ -404,24 +404,43 @@ export default {
       let response = await this.$axios.get(
         `/v1/contributors/stats?period=${thisYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`
       )
-      const areaChartStats = response.data.usersStats[thisYear]
-      let months = [...Array(areaChartStats.length).keys()].map((key) => {
-        return new Date(thisYear, key).toLocaleString('en-GB', {
-          month: 'short',
+
+      let areaChartStats = response.data.usersStats[thisYear]
+      if (areaChartStats?.length) {
+        const months = [...Array(areaChartStats.length).keys()].map((key) => {
+          return new Date(thisYear, key).toLocaleString('en-GB', {
+            month: 'short',
+          })
         })
-      })
-      this.changeAreaChartOptions(areaChartStats, months, thisYear)
+        this.changeAreaChartOptions(areaChartStats, months, thisYear)
+      } else {
+        const lastYear = thisYear - 1
+        response = await this.$axios.get(
+          `/v1/contributors/stats?period=${lastYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`
+        )
+        areaChartStats = response.data.usersStats[lastYear]
+        areaChartStats = [areaChartStats[areaChartStats?.length - 1]]
+
+        const months = [...Array(areaChartStats.length).keys()].map((key) => {
+          return new Date(thisYear, key).toLocaleString('en-GB', {
+            month: 'short',
+          })
+        })
+        this.changeAreaChartOptions(areaChartStats, months, thisYear)
+      }
 
       response = await this.$axios.get(
         `/v1/contributors/stats?period=${thisYear}-01-01_${thisYear}-12-31&type=commits&aggregation=month`
       )
       const barChartStats = response.data.commitsStats[thisYear]
-      months = [...Array(barChartStats.length).keys()].map((key) => {
-        return new Date(thisYear, key).toLocaleString('en-GB', {
-          month: 'short',
+      if (barChartStats?.length) {
+        const months = [...Array(barChartStats.length).keys()].map((key) => {
+          return new Date(thisYear, key).toLocaleString('en-GB', {
+            month: 'short',
+          })
         })
-      })
-      this.changeBarChartOptions(barChartStats, months, thisYear)
+        this.changeBarChartOptions(barChartStats, months, thisYear)
+      }
     },
     async lastYearCharts() {
       const lastYear = new Date().getFullYear() - 1
