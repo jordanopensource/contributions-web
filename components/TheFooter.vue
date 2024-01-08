@@ -84,7 +84,7 @@
               height="16"
               loading="lazy"
             />
-            2021, JOSA - Jordan Open Source Association
+            Jordan Open Source Association (JOSA)
           </p>
         </div>
       </div>
