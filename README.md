@@ -34,7 +34,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#running">Installation</a></li>
+        <li><a href="#running">Running</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -46,19 +46,19 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 This is a Nuxtjs web client for the Jordan Top Contributors Website, a website that displays the top contributors to open source repositories in Jordan.
 
 ### Built With
 
-* [Nuxt.js](https://nuxtjs.org)
-* [Tailwind CSS](https://tailwindcss.com/)
+- [Nuxt.js](https://nuxtjs.org)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -92,7 +92,6 @@ $ npm run dev
 
 2. Go to `http://localhost:3000`
 
-
 #### Production
 
 To build and run the project locally for production purposes:
@@ -110,13 +109,13 @@ $ npm run start
 ```
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/jordanopensource/top-contributors-web/issues) for a list of proposed features (and known issues).
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -127,14 +126,14 @@ Contributions are what make the open source community such an amazing place to l
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the Apache License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
 
 Jordan Open Source Association - [@jo_osa](https://twitter.com/@jo_osa) - info@josa.ngo
