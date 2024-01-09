@@ -1,5 +1,8 @@
 <template>
   <div :class="isOpen ? '' : 'hidden overflow-hidden lg:block'">
+    <div class="mx-8 pt-6">
+      <SearchInput placeholder="Search Users..." @on-search="onSearch" />
+    </div>
     <div class="sort-section">
       <h6 class="text-xs font-bold pb-2">Period:</h6>
       <div class="flex lg:flex-col">
@@ -92,24 +95,65 @@ export default {
       getPeriod: 'getPeriod',
       getShow: 'getShow',
       getSortBy: 'getSortBy',
+      getUserSearchTerm: 'getUserSearchTerm',
     }),
   },
   methods: {
     async onSortByChanged(sortBy) {
+      this.$store.commit('setCurrentPage', 1)
       this.$store.commit('setSortBy', sortBy)
-      const response = await this.$axios.get(
-        `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}`
-      )
-      this.$store.commit('setUsers', response.data.users)
+
+      if (this.getUserSearchTerm) {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${this.getUserSearchTerm}`,
+        )
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}`,
+        )
+
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
     },
     async onShowChanged(show) {
       this.$store.commit('setCurrentPage', 1)
-      const response = await this.$axios.get(
-        `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}`
-      )
       this.$store.commit('setShow', show)
-      this.$store.commit('setUsers', response.data.users)
-      this.$store.commit('setPageCount', response.data.totalPages)
+      if (this.getUserSearchTerm) {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}&search=${this.getUserSearchTerm}`,
+        )
+
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}`,
+        )
+
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
+    },
+    async onSearch(searchTerm) {
+      this.$store.commit('setCurrentPage', 1)
+      if (searchTerm) {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${searchTerm}`,
+        )
+        this.$store.commit('setUserSearchTerm', searchTerm)
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}`,
+        )
+        this.$store.commit('setUserSearchTerm', '')
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
     },
   },
 }
