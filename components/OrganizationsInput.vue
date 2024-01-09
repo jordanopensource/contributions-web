@@ -3,7 +3,7 @@
     <div class="sort-section has-border">
       <div class="mb-5">
         <SearchInput
-          placeholder="Search organization name or username"
+          placeholder="Search Organizations..."
           @on-search="onSearch"
         />
       </div>
