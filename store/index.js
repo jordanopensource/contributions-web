@@ -11,6 +11,8 @@ export const state = () => ({
   period: 'last_30_days',
   chartPeriod: 'last_year',
   show: 'all',
+  orgSearchTerm: '',
+  userSearchTerm: '',
 })
 
 export const getters = {
@@ -21,6 +23,8 @@ export const getters = {
   getPeriod: (state) => state.period,
   getChartPeriod: (state) => state.chartPeriod,
   getShow: (state) => state.show,
+  getOrgSearchTerm: (state) => state.orgSearchTerm,
+  getUserSearchTerm: (state) => state.userSearchTerm,
 }
 
 export const mutations = {
@@ -59,5 +63,11 @@ export const mutations = {
   },
   setShow(state, show) {
     state.show = show
+  },
+  setOrgSearchTerm(state, searchTerm) {
+    state.orgSearchTerm = searchTerm
+  },
+  setUserSearchTerm(state, searchTerm) {
+    state.userSearchTerm = searchTerm
   },
 }

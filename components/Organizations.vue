@@ -23,7 +23,10 @@
         />
       </div>
     </div>
-    <PaginationBar @fetch-current-page="fetchCurrentPage" />
+    <div v-if="organizations?.length <= 0" class="flex justify-center py-14">
+      <p class="">Sorry, no organizations were found</p>
+    </div>
+    <PaginationBar v-else @fetch-current-page="fetchCurrentPage" />
   </div>
 </template>
 
@@ -32,7 +35,7 @@ import { mapState } from 'vuex'
 import OrganizationCard from './OrganizationCard.vue'
 import PaginationBar from './PaginationBar.vue'
 export default {
-  name: 'Organizations',
+  name: 'OrganizationsList',
   components: {
     OrganizationCard,
     PaginationBar,
@@ -44,14 +47,24 @@ export default {
     ...mapState({
       sortBy: 'orgs_sortBy',
       currentPage: 'currentPage',
+      orgSearchTerm: 'orgSearchTerm',
     }),
   },
   methods: {
     async fetchCurrentPage(page) {
-      const response = await this.$axios.get(
-        `/v1/orgs?page=${this.currentPage}&sort_by=${this.sortBy}`
-      )
-      this.$store.commit('setOrgs', response.data.orgs)
+      if (this.orgSearchTerm) {
+        const response = await this.$axios.get(
+          `/v1/orgs?page=${this.currentPage}&sort_by=${this.sortBy}&search=${this.orgSearchTerm}`,
+        )
+        this.$store.commit('setOrgs', response.data.orgs)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `/v1/orgs?page=${this.currentPage}&sort_by=${this.sortBy}`,
+        )
+        this.$store.commit('setOrgs', response.data.orgs)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
     },
   },
 }
