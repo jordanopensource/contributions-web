@@ -23,7 +23,10 @@
         />
       </div>
     </div>
-    <PaginationBar @fetch-current-page="fetchCurrentPage" />
+    <div v-if="users?.length <= 0" class="flex justify-center py-14">
+      <p class="">Sorry, no users were found</p>
+    </div>
+    <PaginationBar v-else @fetch-current-page="fetchCurrentPage" />
   </div>
 </template>
 
