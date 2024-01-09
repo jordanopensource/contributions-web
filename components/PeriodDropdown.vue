@@ -35,13 +35,13 @@ export default {
         {
           day: 'numeric',
           month: 'long',
-        }
+        },
       ),
       firstDayOfTheLastMonth: 0,
       lastDayOfTheLastMonth: new Date(
         new Date().getFullYear(),
         new Date().getMonth(),
-        0
+        0,
       ).toLocaleString('en-GB', {
         day: 'numeric',
         month: 'long',
@@ -50,7 +50,7 @@ export default {
       firstDayOfLastYear: new Date(
         new Date().getFullYear() - 1,
         0,
-        1
+        1,
       ).toLocaleString('en-GB', {
         day: 'numeric',
         month: 'long',
@@ -59,7 +59,7 @@ export default {
       lastDayOfLastYear: new Date(
         new Date().getFullYear() - 1,
         11,
-        31
+        31,
       ).toLocaleString('en-GB', {
         day: 'numeric',
         month: 'long',
@@ -79,6 +79,9 @@ export default {
     },
     getShow() {
       return this.$store.getters.getShow
+    },
+    getUserSearchTerm() {
+      return this.$store.getters.getUserSearchTerm
     },
   },
   mounted() {
@@ -100,10 +103,23 @@ export default {
   methods: {
     async onChange(e) {
       this.$store.commit('setPeriod', e.target.value)
-      const response = await this.$axios.get(
-        `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.getShow}`
-      )
-      this.$store.commit('setUsers', response.data.users)
+      this.$store.commit('setCurrentPage', 1)
+
+      if (this.getUserSearchTerm) {
+        const response = await this.$axios.get(
+          `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.getShow}&search=${this.getUserSearchTerm}`,
+        )
+
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `/v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.getShow}`,
+        )
+
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
     },
   },
 }

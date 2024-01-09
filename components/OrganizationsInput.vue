@@ -1,6 +1,12 @@
 <template>
   <div :class="isOpen ? '' : 'hidden overflow-hidden lg:block'">
     <div class="sort-section has-border">
+      <div class="mb-5">
+        <SearchInput
+          placeholder="Search Organizations..."
+          @on-search="onSearch"
+        />
+      </div>
       <h6 class="text-xs font-bold pb-2">Sort by:</h6>
       <div class="flex lg:flex-col">
         <RadioButton
@@ -45,15 +51,48 @@ export default {
   computed: {
     ...mapGetters({
       getCurrentPage: 'getCurrentPage',
+      getOrgsSortBy: 'getOrgsSortBy',
+      getOrgSearchTerm: 'getOrgSearchTerm',
     }),
   },
   methods: {
     async onSortByChanged(sortBy) {
       this.$store.commit('setOrgsSortBy', sortBy)
-      const response = await this.$axios.get(
-        `v1/orgs?sort_by=${sortBy}&page=${this.getCurrentPage}`
-      )
-      this.$store.commit('setOrgs', response.data.orgs)
+
+      if (this.getOrgSearchTerm) {
+        const response = await this.$axios.get(
+          `v1/orgs?sort_by=${sortBy}&page=${this.getCurrentPage}&search=${this.getOrgSearchTerm}`,
+        )
+
+        this.$store.commit('setOrgs', response.data.orgs)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `v1/orgs?sort_by=${sortBy}&page=${this.getCurrentPage}`,
+        )
+
+        this.$store.commit('setOrgs', response.data.orgs)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
+    },
+
+    async onSearch(searchTerm) {
+      this.$store.commit('setCurrentPage', 1)
+      if (searchTerm) {
+        this.$store.commit('setOrgSearchTerm', searchTerm)
+        const response = await this.$axios.get(
+          `v1/orgs?sort_by=${this.getOrgsSortBy}&page=${this.getCurrentPage}&search=${searchTerm}`,
+        )
+        this.$store.commit('setOrgs', response.data.orgs)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        this.$store.commit('setOrgSearchTerm', '')
+        const response = await this.$axios.get(
+          `v1/orgs?sort_by=${this.getOrgsSortBy}&page=${this.getCurrentPage}`,
+        )
+        this.$store.commit('setOrgs', response.data.orgs)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
     },
   },
 }
