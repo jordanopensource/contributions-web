@@ -17,7 +17,7 @@
           :image-url="user.avatar_url"
           :profile-url="user.profile_url"
           :score="user.score"
-          :contributions="user.commitsTotalCount"
+          :contributions="user.contributionsTotalCount"
           :rank="user.currentRank"
           :is-josa-member="user.isJOSAMember"
         />
@@ -50,20 +50,21 @@ export default {
       period: 'period',
       show: 'show',
       userSearchTerm: 'userSearchTerm',
+      countType: 'countType',
     }),
   },
   methods: {
     async fetchCurrentPage(page) {
       if (this.userSearchTerm) {
         const response = await this.$axios.get(
-          `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.show}&search=${this.userSearchTerm}`,
+          `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.show}&search=${this.userSearchTerm}&type=${this.countType}`,
         )
 
         this.$store.commit('setUsers', response.data.users)
         this.$store.commit('setPageCount', response.data.totalPages)
       } else {
         const response = await this.$axios.get(
-          `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.show}`,
+          `v1/users?page=${this.currentPage}&sort_by=${this.sortBy}&period=${this.period}&contributors=${this.show}&type=${this.countType}`,
         )
 
         this.$store.commit('setUsers', response.data.users)
