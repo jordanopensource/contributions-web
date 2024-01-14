@@ -5,13 +5,13 @@
     </div>
     <div class="sort-section">
       <h6 class="text-xs font-bold pb-2">Period:</h6>
-      <div class="flex lg:flex-col">
+      <div class="flex lg:flex-col gap-1">
         <PeriodDropdown />
       </div>
     </div>
     <div class="sort-section has-border">
       <h6 class="text-xs font-bold pb-2">Sort by:</h6>
-      <div class="flex lg:flex-col">
+      <div class="flex lg:flex-col gap-1">
         <RadioButton
           class="lg:pb-1"
           :input-id="`score`"
@@ -24,18 +24,18 @@
         />
         <RadioButton
           class="pb-2 contributions-radio"
-          :input-id="`commits`"
+          :input-id="`contributions`"
           :input-name="`sortby`"
-          :label-for="`commits`"
-          :label-text="`Commits`"
-          :value="'commit'"
+          :label-for="`contributions`"
+          :label-text="`Contributions`"
+          :value="'contributions'"
           @on-sort-by-changed="onSortByChanged"
         />
       </div>
     </div>
     <div class="sort-section has-border">
       <h6 class="text-xs font-bold pb-2">Show:</h6>
-      <div class="flex lg:flex-col">
+      <div class="flex lg:flex-col gap-1">
         <RadioButton
           class="lg:pb-1"
           :input-id="`all`"
@@ -59,15 +59,35 @@
     </div>
     <div class="sort-section">
       <h6 class="text-xs font-bold pb-2">Count:</h6>
-      <div class="flex lg:flex-col">
-        <CheckBox
+      <div class="flex lg:flex-col justify-between gap-1">
+        <div class="flex">
+          <RadioButton
+            class="lg:pb-1"
+            :input-id="`all contributions`"
+            :input-name="`count`"
+            :label-for="`all contributions`"
+            :label-text="`All Contributions`"
+            :checked="true"
+            :value="'all'"
+            @on-count-type-changed="onCountTypeChanged"
+          />
+          <div class="tooltip">
+            <span class="text-sm font-bold cursor-pointer px-1 blue-green">
+              &#9432;
+            </span>
+            <span class="tooltip-text">
+              Commits, Issues, Pull Requests and Code Reviews.
+            </span>
+          </div>
+        </div>
+        <RadioButton
           class="lg:pb-1"
           :input-id="`commits`"
           :input-name="`count`"
           :label-for="`commits`"
           :label-text="`Commits`"
-          :checked="true"
           :value="'commits'"
+          @on-count-type-changed="onCountTypeChanged"
         />
       </div>
     </div>
@@ -77,13 +97,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import RadioButton from './RadioButton.vue'
-import CheckBox from './CheckBox.vue'
 import PeriodDropdown from './PeriodDropdown.vue'
 export default {
   name: 'InputsSection',
   components: {
     RadioButton,
-    CheckBox,
     PeriodDropdown,
   },
   props: {
@@ -96,6 +114,7 @@ export default {
       getShow: 'getShow',
       getSortBy: 'getSortBy',
       getUserSearchTerm: 'getUserSearchTerm',
+      getCountType: 'getCountType',
     }),
   },
   methods: {
@@ -105,13 +124,13 @@ export default {
 
       if (this.getUserSearchTerm) {
         const response = await this.$axios.get(
-          `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${this.getUserSearchTerm}`,
+          `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${this.getUserSearchTerm}&type=${this.getCountType}`,
         )
         this.$store.commit('setUsers', response.data.users)
         this.$store.commit('setPageCount', response.data.totalPages)
       } else {
         const response = await this.$axios.get(
-          `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}`,
+          `v1/users?sort_by=${sortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&type=${this.getCountType}`,
         )
 
         this.$store.commit('setUsers', response.data.users)
@@ -123,14 +142,14 @@ export default {
       this.$store.commit('setShow', show)
       if (this.getUserSearchTerm) {
         const response = await this.$axios.get(
-          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}&search=${this.getUserSearchTerm}`,
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}&search=${this.getUserSearchTerm}&type=${this.getCountType}`,
         )
 
         this.$store.commit('setUsers', response.data.users)
         this.$store.commit('setPageCount', response.data.totalPages)
       } else {
         const response = await this.$axios.get(
-          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}`,
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${show}&type=${this.getCountType}`,
         )
 
         this.$store.commit('setUsers', response.data.users)
@@ -141,16 +160,35 @@ export default {
       this.$store.commit('setCurrentPage', 1)
       if (searchTerm) {
         const response = await this.$axios.get(
-          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${searchTerm}`,
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${searchTerm}&type=${this.getCountType}`,
         )
         this.$store.commit('setUserSearchTerm', searchTerm)
         this.$store.commit('setUsers', response.data.users)
         this.$store.commit('setPageCount', response.data.totalPages)
       } else {
         const response = await this.$axios.get(
-          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}`,
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&type=${this.getCountType}`,
         )
         this.$store.commit('setUserSearchTerm', '')
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      }
+    },
+    async onCountTypeChanged(countType) {
+      this.$store.commit('setCurrentPage', 1)
+      this.$store.commit('setCountType', countType)
+      if (this.getUserSearchTerm) {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&search=${this.getUserSearchTerm}&type=${this.getCountType}`,
+        )
+
+        this.$store.commit('setUsers', response.data.users)
+        this.$store.commit('setPageCount', response.data.totalPages)
+      } else {
+        const response = await this.$axios.get(
+          `v1/users?sort_by=${this.getSortBy}&page=${this.getCurrentPage}&period=${this.getPeriod}&contributors=${this.getShow}&type=${this.getCountType}`,
+        )
+
         this.$store.commit('setUsers', response.data.users)
         this.$store.commit('setPageCount', response.data.totalPages)
       }
@@ -171,5 +209,31 @@ export default {
 .contributions-radio {
   margin-left: 2.8rem;
   @apply lg:ml-0;
+}
+
+/* Tooltip container */
+.tooltip {
+  @apply p-0;
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+  @apply w-32 bg-white text-black p-2 text-xs;
+  visibility: hidden;
+  text-align: center;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.blue-green {
+  color: #00b199;
 }
 </style>

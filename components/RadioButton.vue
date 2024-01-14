@@ -53,6 +53,9 @@ export default {
       } else if (this.inputName === 'show') {
         const show = event.target.value
         this.$emit('on-show-changed', show)
+      } else if (this.inputName === 'count') {
+        const countType = event.target.value
+        this.$emit('on-count-type-changed', countType)
       }
     },
   },
