@@ -58,12 +58,12 @@ export default {
   async mounted() {
     const lastYear = new Date().getFullYear() - 1
     let response = await this.$axios.get(
-      `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=users&aggregation=month`
+      `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=users&aggregation=month`,
     )
     const areaChartStats = response.data.usersStats[lastYear]
 
     response = await this.$axios.get(
-      `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=commits&aggregation=month`
+      `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=contributions&aggregation=month`,
     )
     const barChartStats = response.data.commitsStats[lastYear]
 
@@ -88,7 +88,7 @@ export default {
       const months = [...Array(12).keys()].map((key) =>
         new Date(0, key).toLocaleString('default', {
           month: 'short',
-        })
+        }),
       )
       const lastYear = new Date().getFullYear() - 1
 
@@ -402,7 +402,7 @@ export default {
       const thisYear = new Date().getFullYear()
 
       let response = await this.$axios.get(
-        `/v1/contributors/stats?period=${thisYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`
+        `/v1/contributors/stats?period=${thisYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`,
       )
 
       let areaChartStats = response.data.usersStats[thisYear]
@@ -416,7 +416,7 @@ export default {
       } else {
         const lastYear = thisYear - 1
         response = await this.$axios.get(
-          `/v1/contributors/stats?period=${lastYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`
+          `/v1/contributors/stats?period=${lastYear}-01-01_${thisYear}-12-31&type=users&aggregation=month`,
         )
         areaChartStats = response.data.usersStats[lastYear]
         areaChartStats = [areaChartStats[areaChartStats?.length - 1]]
@@ -430,7 +430,7 @@ export default {
       }
 
       response = await this.$axios.get(
-        `/v1/contributors/stats?period=${thisYear}-01-01_${thisYear}-12-31&type=commits&aggregation=month`
+        `/v1/contributors/stats?period=${thisYear}-01-01_${thisYear}-12-31&type=contributions&aggregation=month`,
       )
       const barChartStats = response.data.commitsStats[thisYear]
       if (barChartStats?.length) {
@@ -446,7 +446,7 @@ export default {
       const lastYear = new Date().getFullYear() - 1
 
       let response = await this.$axios.get(
-        `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=users&aggregation=month`
+        `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=users&aggregation=month`,
       )
       const areaChartStats = response.data.usersStats[lastYear]
       let months = [...Array(areaChartStats.length).keys()].map((key) => {
@@ -457,7 +457,7 @@ export default {
       this.changeAreaChartOptions(areaChartStats, months, lastYear)
 
       response = await this.$axios.get(
-        `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=commits&aggregation=month`
+        `/v1/contributors/stats?period=${lastYear}-01-01_${lastYear}-12-31&type=contributions&aggregation=month`,
       )
       const barChartStats = response.data.commitsStats[lastYear]
       months = [...Array(barChartStats.length).keys()].map((key) => {
@@ -473,7 +473,7 @@ export default {
       const year = lastMonthDate.getFullYear()
 
       let response = await this.$axios.get(
-        `/v1/contributors/stats?period=${year}-01-01_${year}-12-31&type=users&aggregation=day`
+        `/v1/contributors/stats?period=${year}-01-01_${year}-12-31&type=users&aggregation=day`,
       )
 
       const areaChartStats =
@@ -485,14 +485,14 @@ export default {
           {
             day: 'numeric',
             month: 'numeric',
-          }
+          },
         )
       })
       const tickAmount = 5
       this.changeAreaChartOptions(areaChartStats, days, year, tickAmount)
 
       response = await this.$axios.get(
-        `/v1/contributors/stats?period=${year}-01-01_${year}-12-31&type=commits&aggregation=day`
+        `/v1/contributors/stats?period=${year}-01-01_${year}-12-31&type=contributions&aggregation=day`,
       )
       const barChartStats =
         response.data.commitsStats[year][lastMonthDate.getMonth()]
@@ -502,7 +502,7 @@ export default {
           {
             day: 'numeric',
             month: 'numeric',
-          }
+          },
         )
       })
       this.changeBarChartOptions(barChartStats, days, year, tickAmount)
