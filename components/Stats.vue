@@ -7,8 +7,8 @@
 
     <div class="cards-container">
       <Card
-        :count="commitsLastMonth"
-        description="Commits from users in Jordan in the last 30 days"
+        :count="contributionsLastMonth"
+        description="Contributions from users in Jordan in the last 30 days"
         color="blue"
         image="icon-commits.svg"
         img-size="w-10"
@@ -49,15 +49,15 @@ export default {
     this.$store.commit('setUsersCount', response.data.totalUsers)
     response = await this.$axios.get('/v1/contributions')
     this.$store.commit(
-      'setCommitsLastMonth',
-      response.data.commits_last_30_days
+      'setContributionsLastMonth',
+      response.data.contributions_last_30_days,
     )
   },
   computed: {
     ...mapState({
       orgsCount: 'orgsCount',
       usersCount: 'usersCount',
-      commitsLastMonth: 'commitsLastMonth',
+      contributionsLastMonth: 'contributionsLastMonth',
     }),
   },
 }
