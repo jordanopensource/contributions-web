@@ -11,6 +11,7 @@ export const state = () => ({
   period: 'last_30_days',
   chartPeriod: 'last_year',
   show: 'all',
+  countType: 'all',
   orgSearchTerm: '',
   userSearchTerm: '',
 })
@@ -23,6 +24,7 @@ export const getters = {
   getPeriod: (state) => state.period,
   getChartPeriod: (state) => state.chartPeriod,
   getShow: (state) => state.show,
+  getCountType: (state) => state.countType,
   getOrgSearchTerm: (state) => state.orgSearchTerm,
   getUserSearchTerm: (state) => state.userSearchTerm,
 }
@@ -63,6 +65,9 @@ export const mutations = {
   },
   setShow(state, show) {
     state.show = show
+  },
+  setCountType(state, countType) {
+    state.countType = countType
   },
   setOrgSearchTerm(state, searchTerm) {
     state.orgSearchTerm = searchTerm
