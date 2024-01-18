@@ -4,14 +4,14 @@
       <SearchInput placeholder="Search Users..." @on-search="onSearch" />
     </div>
     <div class="sort-section">
-      <h6 class="text-xs font-bold pb-2">Period:</h6>
-      <div class="flex lg:flex-col gap-1">
-        <PeriodDropdown />
+      <label for="period" class="text-xs font-bold">Period:</label>
+      <div class="flex lg:flex-col gap-1 pt-1">
+        <PeriodDropdown name="period" />
       </div>
     </div>
     <div class="sort-section has-border">
-      <h6 class="text-xs font-bold pb-2">Sort by:</h6>
-      <div class="flex lg:flex-col gap-1">
+      <span class="text-xs font-bold">Sort by:</span>
+      <div class="flex lg:flex-col gap-1 pt-1">
         <RadioButton
           class="lg:pb-1"
           :input-id="`score`"
@@ -34,8 +34,8 @@
       </div>
     </div>
     <div class="sort-section has-border">
-      <h6 class="text-xs font-bold pb-2">Show:</h6>
-      <div class="flex lg:flex-col gap-1">
+      <span class="text-xs font-bold">Show:</span>
+      <div class="flex lg:flex-col gap-1 pt-1">
         <RadioButton
           class="lg:pb-1"
           :input-id="`all`"
@@ -58,8 +58,8 @@
       </div>
     </div>
     <div class="sort-section">
-      <h6 class="text-xs font-bold pb-2">Count:</h6>
-      <div class="flex lg:flex-col justify-between gap-1">
+      <span class="text-xs font-bold">Count:</span>
+      <div class="flex lg:flex-col gap-3 pt-1">
         <div class="flex">
           <RadioButton
             class="lg:pb-1"
