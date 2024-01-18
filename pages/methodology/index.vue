@@ -1,37 +1,39 @@
 <template>
   <div class="page-container">
     <Hero title="Methodology" />
-    <div class="header-text">
-      <div class="divider-black"></div>
-      <h2>About JOSA</h2>
+    <div class="px-8 md:px-14 lg:px-24">
+      <div class="header-text">
+        <div class="divider-black"></div>
+        <h2>About JOSA</h2>
+      </div>
+      <QAndA
+        :question="aboutJOSA.question"
+        :answer="aboutJOSA.answer"
+        :is-expanded="aboutJOSA.isExpanded"
+      />
+      <div class="header-text">
+        <div class="divider-black"></div>
+        <h2>About this website</h2>
+      </div>
+      <QAndA
+        v-for="element in aboutWebsite"
+        :key="element.question"
+        :question="element.question"
+        :answer="element.answer"
+        :is-expanded="element.isExpanded"
+      />
+      <div class="header-text">
+        <div class="divider-black"></div>
+        <h2>FAQ</h2>
+      </div>
+      <QAndA
+        v-for="element in faq"
+        :key="element.question"
+        :question="element.question"
+        :answer="element.answer"
+        :is-expanded="element.isExpanded"
+      />
     </div>
-    <QAndA
-      :question="aboutJOSA.question"
-      :answer="aboutJOSA.answer"
-      :is-expanded="aboutJOSA.isExpanded"
-    />
-    <div class="header-text">
-      <div class="divider-black"></div>
-      <h2>About this website</h2>
-    </div>
-    <QAndA
-      v-for="element in aboutWebsite"
-      :key="element.question"
-      :question="element.question"
-      :answer="element.answer"
-      :is-expanded="element.isExpanded"
-    />
-    <div class="header-text">
-      <div class="divider-black"></div>
-      <h2>FAQ</h2>
-    </div>
-    <QAndA
-      v-for="element in faq"
-      :key="element.question"
-      :question="element.question"
-      :answer="element.answer"
-      :is-expanded="element.isExpanded"
-    />
   </div>
 </template>
 
@@ -107,22 +109,18 @@ export default {
   @apply bg-gray;
 }
 
-.top-developers {
-  @apply 2xl:mx-3;
-}
-
 .flex-container {
   @apply items-center md:flex md:justify-between;
 }
 
 .divider-black {
-  @apply w-10 lg:w-10 border-t-2 border-black py-2 lg:py-1;
+  @apply w-10 lg:w-10 border-t-2 border-black pb-4;
 }
 
 .header-text {
   font-family: 'IBM Mono';
   font-size: 1.9rem;
   line-height: 1em;
-  @apply font-normal mx-7 md:mx-12 lg:mx-24 pb-4 pt-16 md:pt-24 md:pb-8 lg:text-4xl lg:font-light;
+  @apply font-normal pb-4 pt-16 md:pt-24 md:pb-8 lg:text-4xl lg:font-light;
 }
 </style>
