@@ -1,19 +1,21 @@
 <template>
   <div class="pagination">
-    <ul>
-      <li>
-        <span class="px-1 lg:px-1"
-          ><button
-            :class="currentPage == 1 ? 'disabled' : 'previous-page'"
-            aria-label="Previous Page"
-            @click="fetchCurrentPage(currentPage - 1)"
-          >
-            &lt; Previous
-          </button></span
+    <ul class="flex">
+      <li class="px-1 lg:px-1">
+        <button
+          :class="currentPage == 1 ? 'disabled' : 'previous-page'"
+          aria-label="Previous Page"
+          @click="fetchCurrentPage(currentPage - 1)"
         >
+          &lt; Previous
+        </button>
       </li>
-      <span v-for="i in pageCount" :key="i" class="hidden lg:inline">
-        <li v-if="i == pageCount || i == 1 || Math.abs(i - currentPage) < 3">
+      <template v-for="i in pageCount">
+        <li
+          v-if="i == pageCount || i == 1 || Math.abs(i - currentPage) < 3"
+          :key="i"
+          class="hidden lg:inline"
+        >
           <button
             :class="{
               current: currentPage === i,
@@ -27,17 +29,15 @@
             {{ i }}
           </button>
         </li>
-      </span>
-      <li>
-        <span class="px-1 lg:px-1"
-          ><button
-            :class="currentPage == pageCount ? 'disabled' : 'next-page'"
-            aria-label="Next Page"
-            @click="fetchCurrentPage(currentPage + 1)"
-          >
-            Next &gt;
-          </button></span
+      </template>
+      <li class="px-1 lg:px-1">
+        <button
+          :class="currentPage == pageCount ? 'disabled' : 'next-page'"
+          aria-label="Next Page"
+          @click="fetchCurrentPage(currentPage + 1)"
         >
+          Next &gt;
+        </button>
       </li>
     </ul>
   </div>
@@ -64,7 +64,7 @@ export default {
     fetchCurrentPage(page) {
       this.$store.commit(
         'setCurrentPage',
-        this.limitNumberWithinRange(page, 1, this.pageCount)
+        this.limitNumberWithinRange(page, 1, this.pageCount),
       )
       this.$emit('fetch-current-page', page)
     },
@@ -80,12 +80,11 @@ export default {
   font-family: 'IBM Mono';
 }
 .pagination {
-  @apply pt-7 pb-12 mx-3 px-5 flex lg:mx-0 lg:pt-10 lg:pb-14 justify-center;
+  @apply pt-7 pb-12 flex lg:pt-10 lg:pb-14 justify-center;
 }
 
 .pagination li {
-  display: inline-block;
-  margin: 1px;
+  @apply m-1;
 }
 
 .previous-page,
@@ -110,9 +109,7 @@ export default {
 .pagination ul {
   @apply p-0 list-none;
 }
-.pagination li {
-  @apply inline m-1;
-}
+
 .pagination button.first::after {
   cursor: default;
   content: '\2800\22ef';
