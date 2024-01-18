@@ -7,7 +7,7 @@
       </div>
       <div class="filter-component">
         <FilterSection class="lg:mt-0 lg:order-2" />
-        <Contributors :users="users" class="lg:grow lg:pl-6" />
+        <Contributors :users="users" class="lg:grow" />
       </div>
     </article>
   </div>
@@ -41,15 +41,15 @@ export default {
   background-color: #edeeef;
 }
 .divider {
-  @apply w-10 lg:w-14 border-t-2 border-black;
+  @apply w-10 lg:w-14 border-t-2 border-black pb-4;
 }
 .header-title {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
-  @apply font-normal ml-8 mr-6 pt-16 lg:pt-24 md:ml-12 lg:ml-20 lg:text-4xl lg:font-light 2xl:ml-24;
+  @apply font-normal pt-16 lg:pt-24 lg:text-4xl lg:font-light;
 }
 
 .filter-component {
-  @apply lg:flex mx-auto mt-10 lg:mt-20 lg:w-11/12;
+  @apply lg:flex mt-10 lg:mt-20;
 }
 </style>
