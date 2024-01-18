@@ -1,6 +1,6 @@
 <template>
   <div>
-    <select id="period" name="period" @change="onChange">
+    <select :id="name" :name="name" @change="onChange">
       <option value="last_year">Last Year</option>
       <option value="last_30_days" selected>Last 30 Days</option>
       <option value="last_month">Last Month</option>
@@ -24,6 +24,9 @@
 <script>
 export default {
   name: 'PeriodDropdown',
+  props: {
+    name: { type: String, default: 'period' },
+  },
   data() {
     return {
       todayDate: new Date().toLocaleString('en-GB', {
