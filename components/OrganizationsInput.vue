@@ -7,8 +7,8 @@
           @on-search="onSearch"
         />
       </div>
-      <h6 class="text-xs font-bold pb-2">Sort by:</h6>
-      <div class="flex lg:flex-col">
+      <span class="text-xs font-bold">Sort by:</span>
+      <div class="flex lg:flex-col pt-1">
         <RadioButton
           class="mr-3 lg:pb-2 lg:mr-0"
           :input-id="`Total Stars`"
