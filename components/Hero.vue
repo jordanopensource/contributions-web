@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'Hero',
+  name: 'HeroBanner',
   props: {
     title: {
       type: String,
@@ -33,7 +33,7 @@ export default {
 }
 
 .banner {
-  @apply flex flex-col mx-9 md:h-96 md:flex-row;
+  @apply flex flex-col px-8 md:px-14 lg:px-24 md:h-96 md:flex-row;
 }
 
 .content-container {
@@ -42,6 +42,6 @@ export default {
 
 .content-header {
   font-family: 'IBM Mono';
-  @apply text-4xl md:text-4xl  lg:text-5xl tracking-wide font-normal md:mx-3 lg:mx-16;
+  @apply text-4xl md:text-4xl  lg:text-5xl tracking-wide font-normal;
 }
 </style>
