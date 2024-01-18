@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-section">
-    <div class="footer-conatiner">
+    <div class="footer-container">
       <div class="flex items-center p-8 lg:p-0">
         <img
           class="h-5"
@@ -30,7 +30,7 @@
         />
       </div>
       <div class="lg:flex px-8 pb-8 lg:px-0 lg:pb-0">
-        <div class="flex items-center justify-end">
+        <div class="flex items-center justify-end text-center align-middle">
           <div class="flex lg:px-5">
             <a
               href="https://github.com/jordanopensource"
@@ -38,11 +38,11 @@
               aria-label="JOSA Github Account"
             >
               <img
-                class="h-5 px-2"
+                class="mx-2"
                 src="~assets/images/footer/icon-small-github.svg"
                 alt="Github Account"
-                width="auto"
-                height="20"
+                width="20"
+                height="55"
                 loading="lazy"
             /></a>
             <a
@@ -51,11 +51,11 @@
               aria-label="JOSA Twitter Account"
             >
               <img
-                class="h-5 px-2"
+                class="mx-2"
                 src="~assets/images/footer/icon-small-twitter.svg"
                 alt="Twitter Account"
-                width="auto"
-                height="20"
+                width="25"
+                height="60"
                 loading="lazy"
             /></a>
             <a
@@ -64,11 +64,11 @@
               aria-label="JOSA Facebook Page"
             >
               <img
-                class="h-5 pl-2 lg:px-2"
+                class="ml-2 lg:mx-2"
                 src="~assets/images/footer/icon-small-fb.svg"
                 alt="Facebook Page"
-                width="auto"
-                height="20"
+                width="20"
+                height="55"
                 loading="lazy"
               />
             </a>
@@ -104,10 +104,10 @@ export default {
 }
 .footer-section {
   background-color: #edeeef;
-  @apply lg:h-64 lg:pt-28 w-11/12 lg:w-full mx-auto lg:mx-0 pb-7 lg:pb-0;
+  @apply lg:h-64 lg:pt-28 lg:w-full pb-7 lg:pb-0 px-8 md:px-14 lg:px-0;
 }
-.footer-conatiner {
+.footer-container {
   background-color: #1a1f21;
-  @apply lg:flex h-full text-white items-center lg:justify-between lg:px-24 mx-3 lg:mx-0;
+  @apply lg:flex h-full text-white items-center lg:justify-between lg:px-24;
 }
 </style>
