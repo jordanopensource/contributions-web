@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Card',
+  name: 'StatCard',
   props: {
     count: { type: Number, required: true },
     description: { type: String, required: true },
@@ -55,7 +55,7 @@ export default {
 }
 
 .card-container {
-  @apply bg-white shadow my-5 mx-3 lg:w-2/4 lg:mx-5;
+  @apply bg-white shadow my-5 lg:w-2/4;
 }
 
 .content-container {
