@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md mx-auto">
+  <div class="max-w-md">
     <div
       class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden"
     >
