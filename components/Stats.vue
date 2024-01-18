@@ -71,14 +71,14 @@ export default {
 .header {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
-  @apply font-normal ml-8 pt-16 lg:pt-24 lg:pb-5 md:ml-12 lg:ml-20 lg:text-4xl lg:font-light 2xl:ml-24;
+  @apply font-normal pt-16 lg:pt-24 lg:pb-5 lg:text-4xl lg:font-light;
 }
 
 .divider {
-  @apply w-10 lg:w-10 border-t-2 border-black;
+  @apply w-10 lg:w-10 border-t-2 border-black pb-4;
 }
 
 .cards-container {
-  @apply block py-2 w-11/12 mx-auto lg:flex lg:flex-nowrap lg:justify-center;
+  @apply block py-2 lg:flex lg:flex-nowrap lg:justify-center gap-10;
 }
 </style>

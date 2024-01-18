@@ -6,7 +6,7 @@
           isOpen ? 'filter-section has-border' : 'filter-section lg:has-border'
         "
       >
-        <h1 class="filter-text">Filter</h1>
+        <h3 class="filter-text">Filter</h3>
         <button
           :class="isOpen ? 'expand-button' : 'expand-button-collapsed'"
           aria-label="Expand Filter Section"
@@ -50,12 +50,11 @@ export default {
 
 <style lang="postcss" scoped>
 .section-container {
-  @apply block w-11/12 lg:w-1/3 mx-auto lg:mx-0 lg:mr-5 lg:bg-lightgrey;
+  @apply block lg:w-[28%] lg:bg-lightgrey;
 }
 
 .content-conatiner {
   background-color: #f4f4f5;
-  @apply mx-3 lg:mx-0;
 }
 
 .filter-section {
@@ -73,7 +72,7 @@ export default {
 }
 
 .sort-section {
-  @apply mx-6 pt-6 pb-4;
+  @apply pt-6 pb-4;
 }
 
 .contributions-radio {

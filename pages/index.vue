@@ -1,13 +1,15 @@
 <template>
   <div class="bg-gray">
     <Hero />
-    <LastUpdated />
-    <LazyHydrate when-visible>
-      <Stats />
-    </LazyHydrate>
-    <LazyHydrate when-visible>
-      <TopDevelopers />
-    </LazyHydrate>
+    <div class="px-8 md:px-14 lg:px-24">
+      <LastUpdated />
+      <LazyHydrate when-visible>
+        <Stats />
+      </LazyHydrate>
+      <LazyHydrate when-visible>
+        <TopDevelopers />
+      </LazyHydrate>
+    </div>
   </div>
 </template>
 

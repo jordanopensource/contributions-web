@@ -2,10 +2,10 @@
   <div class="section-container">
     <div class="content-conatiner">
       <div class="text-section has-border">
-        <h1 class="hidden head-text md:block">Rank</h1>
-        <h1 class="head-text px-0 lg:px-7">Organization</h1>
+        <h3 class="hidden head-text md:block">Rank</h3>
+        <h3 class="head-text px-0 lg:px-7">Organization</h3>
         <div class="flex justify-end w-full">
-          <h1 class="head-text">Total</h1>
+          <h3 class="head-text">Total</h3>
         </div>
       </div>
       <div>
@@ -76,11 +76,11 @@ export default {
 }
 
 .section-container {
-  @apply block w-11/12 mx-auto lg:mx-0 bg-gray;
+  @apply block bg-gray;
 }
 
 .content-conatiner {
-  @apply mx-3 lg:mx-0 bg-white;
+  @apply bg-white;
 }
 
 .has-border {

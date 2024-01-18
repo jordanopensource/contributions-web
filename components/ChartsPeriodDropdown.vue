@@ -1,6 +1,6 @@
 <template>
   <div>
-    <select id="period" name="period" @change="onChange">
+    <select :id="name" :name="name" @change="onChange">
       <option value="last_year">Last Year</option>
       <option value="this_year">This Year</option>
       <option value="last_month">Last Month</option>
@@ -20,6 +20,9 @@
 <script>
 export default {
   name: 'PeriodDropdown',
+  props: {
+    name: { type: String, default: 'period' },
+  },
   data() {
     return {
       todayDate: new Date().toLocaleString('en-GB', {
@@ -31,13 +34,13 @@ export default {
         {
           day: 'numeric',
           month: 'long',
-        }
+        },
       ),
       firstDayOfTheLastMonth: 0,
       lastDayOfTheLastMonth: new Date(
         new Date().getFullYear(),
         new Date().getMonth(),
-        0
+        0,
       ).toLocaleString('en-GB', {
         day: 'numeric',
         month: 'long',
@@ -45,7 +48,7 @@ export default {
       endOfTheYear: new Date(
         new Date().getFullYear() - 1,
         11,
-        31
+        31,
       ).toLocaleString('en-GB', {
         day: 'numeric',
         month: 'long',

@@ -2,20 +2,27 @@
   <div class="flex mx-8 h-36 lg:h-48 content-center has-border pb-3">
     <p class="rank hidden md:block">{{ rank }}.</p>
     <div class="image-container">
-      <img class="image" :src="imageUrl" alt="avatar" width="80" height="80" />
-      <span class="image-filter"></span>
+      <a :href="profileUrl" target="_blank">
+        <img
+          class="image"
+          :src="imageUrl"
+          alt="avatar"
+          width="80"
+          height="80" />
+        <span class="image-filter"></span
+      ></a>
     </div>
 
     <div class="block w-full pl-2 lg:px-3 mt-8 lg:mt-12">
       <div class="flex flex-col">
-        <h3 class="full-name">{{ name }}</h3>
-        <div>
+        <span class="full-name">{{ name }}</span>
+        <div class="w-max">
           <a :href="profileUrl" target="_blank" class="username-container">
             <img
               class="h-5 pr-1"
               src="~assets/images/footer/icon-github.svg"
               alt="Github Account"
-              width="auto"
+              width="25"
               height="20"
               loading="lazy"
             />
@@ -115,5 +122,14 @@ export default {
 
 .image-container {
   @apply self-center w-16 h-16 relative lg:w-20 lg:h-20;
+}
+
+a {
+  transition: all 0.3s ease 0s;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #00b199;
 }
 </style>
