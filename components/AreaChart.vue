@@ -25,7 +25,7 @@ export default {
 
 <style lang="postcss">
 .chart-section-container {
-  @apply m-auto w-11/12 bg-white py-0 px-0 md:px-7 md:py-10;
+  @apply bg-white py-0 md:py-10;
 }
 
 .tooltip {

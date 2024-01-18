@@ -1,31 +1,35 @@
 <template>
   <div class="page-container">
     <Hero title="Contributors" />
-    <LastUpdated />
-    <div class="area-chart-section">
-      <div class="chart-header">
-        <div class="divider-black"></div>
-        <div class="flex-container">
-          <h2 class="pb-3 lg:pb-0">Total Users in Jordan</h2>
-          <ChartsPeriodDropdown
-            class="justify-self-end"
-            @on-chart-period-changed="onChartPeriodChanged"
-          />
+    <div class="px-8 md:px-14 lg:px-24">
+      <LastUpdated />
+      <div class="area-chart-section">
+        <div class="chart-header">
+          <div class="divider"></div>
+          <div class="flex-container">
+            <h2 class="pb-3 lg:pb-0">Total Users in Jordan</h2>
+            <label class="hidden" for="chartsPeriod">Period</label>
+            <ChartsPeriodDropdown
+              class="justify-self-end"
+              name="chartsPeriod"
+              @on-chart-period-changed="onChartPeriodChanged"
+            />
+          </div>
         </div>
+        <AreaChart class="area-chart" :chart-options="areaChartData" />
       </div>
-      <AreaChart class="area-chart" :chart-options="areaChartData" />
-    </div>
-    <div class="bar-chart-section">
-      <div class="bar-chart-header">
-        <div class="divider-black"></div>
-        <div class="flex-container">
-          <h2 class="pb-3 lg:pb-0">Contributions from Jordan</h2>
+      <div class="bar-chart-section">
+        <div class="bar-chart-header">
+          <div class="divider pb-4"></div>
+          <div class="flex-container">
+            <h2 class="pb-3 lg:pb-0">Contributions from Jordan</h2>
+          </div>
         </div>
+        <BarChart class="bar-chart" :chart-options="barChartData" />
       </div>
-      <BarChart class="bar-chart" :chart-options="barChartData" />
-    </div>
-    <div>
-      <TopDevelopers class="top-developers" />
+      <div>
+        <TopDevelopers class="top-developers" />
+      </div>
     </div>
   </div>
 </template>
@@ -586,37 +590,25 @@ export default {
   @apply h-56 md:h-96 lg:h-720;
 }
 
-.area-chart-section {
-  @apply lg:mx-10 2xl:mx-9 mx-3;
-}
-
-.bar-chart-section {
-  @apply lg:mx-10 2xl:mx-9 mx-3;
-}
-
-.top-developers {
-  @apply 2xl:mx-3;
-}
-
 .bar-chart-header {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
   line-height: 1em;
-  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-14 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
+  @apply font-normal pb-4 pt-16 md:pt-24 md:pb-8  lg:text-4xl lg:font-light;
 }
 
 .chart-header {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
   line-height: 1em;
-  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-14 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
+  @apply font-normal  pb-4 pt-16 md:pt-24 md:pb-8 lg:text-4xl lg:font-light;
 }
 
 .flex-container {
-  @apply items-center md:flex md:justify-between;
+  @apply items-center md:flex md:justify-between p-0;
 }
 
-.divider-black {
+.divider {
   @apply w-10 lg:w-10 border-t-2 border-black;
 }
 </style>

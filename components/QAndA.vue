@@ -49,7 +49,7 @@ export default {
 
 <style lang="postcss" scoped>
 .card {
-  @apply bg-white shadow-lg mx-7 md:mx-11 lg:ml-24 lg:w-5/12 p-8 my-5;
+  @apply bg-white shadow-lg lg:w-5/12 p-8 my-5;
 }
 
 .question-section {

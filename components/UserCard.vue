@@ -16,14 +16,14 @@
 
     <div class="block w-full pl-2 lg:px-3 mt-6 lg:mt-8">
       <div class="flex flex-col">
-        <h3 class="full-name">{{ name }}</h3>
-        <div>
+        <span class="full-name">{{ name }}</span>
+        <div class="w-max">
           <a :href="profileUrl" target="_blank" class="username-container">
             <img
-              class="h-5 pr-1"
+              class="pr-1"
               src="~assets/images/footer/icon-github.svg"
               alt="Github Account"
-              width="auto"
+              width="25"
               height="20"
               loading="lazy"
             />
@@ -31,10 +31,11 @@
           >
           <span v-show="isJosaMember" class="josa-member">
             <img
-              class="h-5 pr-1"
+              class="pr-1"
               src="~/assets/images/stats/josa-icon.svg"
               alt="Logo"
-              width="auto"
+              width="25"
+              height="20"
               loading="lazy"
             />JOSA Member
           </span>
@@ -48,7 +49,9 @@
           <p class="blue">{{ score }}</p>
         </div>
         <div class="flex flex-col">
-          <p class="counters">Contributions</p>
+          <p class="counters">
+            {{ countType === 'all' ? 'Contributions' : 'Commits' }}
+          </p>
           <p class="blue-green">{{ contributions }}</p>
         </div>
       </div>
@@ -57,6 +60,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'UserCard',
   props: {
@@ -68,6 +72,11 @@ export default {
     profileUrl: { type: String, default: '#' },
     isJosaMember: { type: Boolean, default: false },
     rank: { type: Number, required: true, default: 0 },
+  },
+  computed: {
+    ...mapState({
+      countType: 'countType',
+    }),
   },
 }
 </script>
