@@ -1,22 +1,26 @@
 <template>
   <div class="page-container">
     <Hero title="Organizations" />
-    <LastUpdated />
-    <div class="area-chart-section">
-      <div class="chart-header">
-        <div class="divider-black"></div>
-        <div class="flex-container">
-          <h2 class="pb-3 lg:pb-0">Total Organizations in Jordan</h2>
-          <ChartsPeriodDropdown
-            class="justify-self-end"
-            @on-chart-period-changed="onChartPeriodChanged"
-          />
+    <div class="px-8 md:px-14 lg:px-24">
+      <LastUpdated />
+      <div class="area-chart-section">
+        <div class="chart-header">
+          <div class="divider"></div>
+          <div class="flex-container">
+            <h2 class="pb-3 lg:pb-0">Total Organizations in Jordan</h2>
+            <label class="hidden" for="orgCharts">Period</label>
+            <ChartsPeriodDropdown
+              class="justify-self-end"
+              name="orgCharts"
+              @on-chart-period-changed="onChartPeriodChanged"
+            />
+          </div>
         </div>
+        <AreaChart class="area-chart" :chart-options="areaChartData" />
       </div>
-      <AreaChart class="area-chart" :chart-options="areaChartData" />
-    </div>
-    <div>
-      <TopOrganizations class="top-developers" />
+      <div>
+        <TopOrganizations class="top-developers" />
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +47,7 @@ export default {
   async mounted() {
     const lastYear = new Date().getFullYear() - 1
     const response = await this.$axios.get(
-      `/v1/organizations/stats?period=${lastYear}-01-01_${lastYear}-12-31&aggregation=month`
+      `/v1/organizations/stats?period=${lastYear}-01-01_${lastYear}-12-31&aggregation=month`,
     )
     const areaChartStats = response.data.organizationsStats[lastYear]
 
@@ -54,7 +58,7 @@ export default {
       const months = [...Array(12).keys()].map((key) =>
         new Date(0, key).toLocaleString('default', {
           month: 'short',
-        })
+        }),
       )
       const lastYear = new Date().getFullYear() - 1
 
@@ -244,7 +248,7 @@ export default {
       const thisYear = new Date().getFullYear()
 
       const response = await this.$axios.get(
-        `/v1/organizations/stats?period=${thisYear}-01-01_${thisYear}-12-31&aggregation=month`
+        `/v1/organizations/stats?period=${thisYear}-01-01_${thisYear}-12-31&aggregation=month`,
       )
       const areaChartStats = response.data.organizationsStats[thisYear]
       const months = [...Array(areaChartStats.length).keys()].map((key) => {
@@ -258,7 +262,7 @@ export default {
       const lastYear = new Date().getFullYear() - 1
 
       const response = await this.$axios.get(
-        `/v1/organizations/stats?period=${lastYear}-01-01_${lastYear}-12-31&aggregation=month`
+        `/v1/organizations/stats?period=${lastYear}-01-01_${lastYear}-12-31&aggregation=month`,
       )
       const areaChartStats = response.data.organizationsStats[lastYear]
       const months = [...Array(areaChartStats.length).keys()].map((key) => {
@@ -274,7 +278,7 @@ export default {
       const year = lastMonthDate.getFullYear()
 
       const response = await this.$axios.get(
-        `/v1/organizations/stats?period=${year}-01-01_${year}-12-31&aggregation=day`
+        `/v1/organizations/stats?period=${year}-01-01_${year}-12-31&aggregation=day`,
       )
 
       const areaChartStats =
@@ -286,7 +290,7 @@ export default {
           {
             day: 'numeric',
             month: 'numeric',
-          }
+          },
         )
       })
       const tickAmount = 5
@@ -305,26 +309,18 @@ export default {
   @apply h-56 md:h-96 lg:h-720;
 }
 
-.area-chart-section {
-  @apply lg:mx-10 2xl:mx-9 mx-3;
-}
-
-.top-developers {
-  @apply 2xl:mx-3;
-}
-
 .chart-header {
   font-family: 'IBM Mono';
   font-size: 1.7rem;
   line-height: 1em;
-  @apply font-normal mx-4 pb-4 pt-16 md:pt-24 md:pb-8 md:mx-14 lg:text-4xl lg:font-light lg:px-2 2xl:px-4;
+  @apply font-normal pb-4 pt-16 md:pt-24 md:pb-8  lg:text-4xl lg:font-light;
 }
 
 .flex-container {
   @apply items-center md:flex md:justify-between;
 }
 
-.divider-black {
+.divider {
   @apply w-10 lg:w-10 border-t-2 border-black;
 }
 </style>
