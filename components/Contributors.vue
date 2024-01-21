@@ -3,7 +3,7 @@
     <div class="content-conatiner">
       <div class="text-section has-border">
         <h3 class="hidden head-text md:block">Rank</h3>
-        <h3 class="head-text">User</h3>
+        <h3 class="head-text md:px-2 lg:px-5 xl:px-7">User</h3>
         <div class="flex justify-end w-full">
           <h3 class="head-text">Total</h3>
         </div>
