@@ -1,47 +1,8 @@
 # Drone CI File!
 
-kind: pipeline
-type: kubernetes
-name: default
-
-metadata:
-  namespace: builds
-
-node_selector:
-  doks.digitalocean.com/node-pool: josa-cloud-np
-
-steps:
-  - name: build
-    image: plugins/docker
-    settings:
-      repo: josaorg/contributions-web
-      build_args:
-        [
-          CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo,
-          MATOMO_SITE_ID=11,
-          TARGET_ENV=development
-        ]
-      build_args_from_env:
-        [
-          DRONE_BUILD_NUMBER,
-          DRONE_BUILD_LINK,
-          DRONE_COMMIT_SHA,
-          DRONE_COMMIT_LINK,
-          DRONE_REPO_LINK,
-          DRONE_BUILD_FINISHED,
-        ]
-      tags:
-        - ${DRONE_COMMIT_SHA}
-        - latest
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-  - name: notify
-    image: plugins/slack
-    settings:
-      webhook:
-        from_secret: slack_webhook
-      channel: heartbeat
-    depends_on:
-      - build
+kind: template
+load: container-args.jsonnet
+data:
+  repositoryName: josaorg/contributions-web
+  releaseName: contributions-web
+  buildArgs: CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo, MATOMO_SITE_ID=11, TARGET_ENV=development
