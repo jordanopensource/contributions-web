@@ -1,7 +1,7 @@
 # Drone CI File!
 
 kind: template
-load: container-args.jsonnet
+load: container.jsonnet
 data:
   repositoryName: josaorg/contributions-web
   releaseName: contributions-web
