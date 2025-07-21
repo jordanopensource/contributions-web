@@ -1,0 +1,100 @@
+when:
+  - event: [push, manual]
+    branch:
+      exclude: [main]
+  - event: [pull_request]
+    # Only run when PR targets development or other branches (not main)
+    evaluate: 'CI_COMMIT_TARGET_BRANCH != "main"'
+    # Build the source branch
+    branch:
+      exclude: [main]
+  - event: [pull_request]
+    # Also build latest image when development branch creates PR to main
+    evaluate: 'CI_COMMIT_TARGET_BRANCH == "main" && CI_COMMIT_BRANCH == "development"'
+    branch: [development]
+
+variables:
+  - &docker_repo 'josaorg/contributions-web'
+  - &slack_channel 'builds'
+  # Docker build arguments template
+  - &build_args_template
+    - CI_COMMIT_SHA=${CI_COMMIT_SHA}
+    - CI_BUILD_NUMBER=${CI_BUILD_NUMBER}
+    - CI_BUILD_LINK=${CI_BUILD_LINK}
+    - CI_COMMIT_LINK=${CI_COMMIT_LINK}
+    - CI_REPO_LINK=${CI_REPO_LINK}
+    - CI_BUILD_FINISHED=${CI_BUILD_FINISHED}
+  # Success message template
+  - &success_message >
+    ✅ *SUCCESS* - Latest Build #{{ build.number }}
+
+    📁 *Repository:* {{ repo.name }}
+    🌿 *Branch:* {{ build.branch }}
+    📝 *Commit:* {{ truncate build.commit 8 }}
+    👤 *Author:* {{ build.author }}
+
+    🔗 *Links:*
+    • <{{ build.link }}|View Build>
+  # Failure message template
+  - &failure_message >
+    ❌ *FAILED* - Latest Build #{{ build.number }}
+
+    📁 *Repository:* {{ repo.name }}
+    🌿 *Branch:* {{ build.branch }}
+    📝 *Commit:* {{ truncate build.commit 8 }}
+    👤 *Author:* {{ build.author }}
+
+    🔗 *Links:*
+    • <{{ build.link }}|View Build>
+
+steps:
+  # Security check - scan for secrets/credentials
+  - name: check-for-leaks
+    image: zricethezav/gitleaks:v8.18.4
+    commands:
+      - gitleaks detect --source . --verbose
+
+  # Build latest image (development and other branches)
+  - name: build-latest-image
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      repo: *docker_repo
+      dockerfile: ./Dockerfile
+      tags:
+        - ${CI_COMMIT_SHA:-latest}
+        - latest
+      username:
+        from_secret: DOCKER_HUB_USERNAME
+      password:
+        from_secret: DOCKER_HUB_PASSWORD
+      build_args: *build_args_template
+    depends_on:
+      - check-for-leaks
+
+  # Slack notification for latest build success
+  - name: notify-slack-latest-success
+    image: plugins/slack
+    settings:
+      webhook:
+        from_secret: SLACK_WEBHOOK
+      channel: *slack_channel
+      template: *success_message
+    when:
+      - status: success
+    depends_on:
+      - check-for-leaks
+      - build-latest-image
+
+  # Slack notification for latest build failure
+  - name: notify-slack-latest-failure
+    image: plugins/slack
+    settings:
+      webhook:
+        from_secret: SLACK_WEBHOOK
+      channel: *slack_channel
+      template: *failure_message
+    when:
+      - status: failure
+    depends_on:
+      - check-for-leaks
+      - build-latest-image
