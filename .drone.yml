@@ -1,8 +1,0 @@
-# Drone CI File!
-
-kind: template
-load: container.jsonnet
-data:
-  repositoryName: josaorg/contributions-web
-  releaseName: contributions-web
-  buildArgs: CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo, MATOMO_SITE_ID=11, TARGET_ENV=development
