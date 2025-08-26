@@ -26,7 +26,7 @@ variables:
     - CI_BUILD_FINISHED=${CI_BUILD_FINISHED}
     - CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo
     - MATOMO_SITE_ID=11
-    - TARGET_ENV=development
+    - TARGET_ENV=production
   # Success message template
   - &success_message >
     ✅ *SUCCESS* - Latest Build #{{ build.number }}
