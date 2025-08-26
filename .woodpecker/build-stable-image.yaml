@@ -19,6 +19,9 @@ variables:
     - CI_COMMIT_LINK=${CI_COMMIT_LINK}
     - CI_REPO_LINK=${CI_REPO_LINK}
     - CI_BUILD_FINISHED=${CI_BUILD_FINISHED}
+    - CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo
+    - MATOMO_SITE_ID=11
+    - TARGET_ENV=development
   # Success message template
   - &success_message >
     ✅ *SUCCESS* - Stable Build #{{ build.number }}
