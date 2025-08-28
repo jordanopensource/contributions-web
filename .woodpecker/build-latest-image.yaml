@@ -70,7 +70,12 @@ steps:
         from_secret: DOCKER_HUB_USERNAME
       password:
         from_secret: DOCKER_HUB_PASSWORD
-      build_args: *build_args_template
+      build_args:
+        {
+          CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:8080,
+          MATOMO_SITE_ID: '11',
+          TARGET_ENV: production,
+        }
     depends_on:
       - check-for-leaks
 
