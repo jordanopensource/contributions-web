@@ -19,7 +19,7 @@ variables:
     - CI_COMMIT_LINK=${CI_COMMIT_LINK}
     - CI_REPO_LINK=${CI_REPO_LINK}
     - CI_BUILD_FINISHED=${CI_BUILD_FINISHED}
-    - CONTRIBUTIONS_API_URL=https://contributions.api.dev.josa.ngo
+    - CONTRIBUTIONS_API_URL=http://contributions.api.svc.cluster.local:8080
     - MATOMO_SITE_ID=10
     - TARGET_ENV=production
   # Success message template
