@@ -13,15 +13,15 @@ variables:
   - &slack_channel 'builds'
   # Docker build arguments template
   - &build_args_template
-    - CI_COMMIT_SHA=${CI_COMMIT_SHA}
-    - CI_BUILD_NUMBER=${CI_BUILD_NUMBER}
-    - CI_BUILD_LINK=${CI_BUILD_LINK}
-    - CI_COMMIT_LINK=${CI_COMMIT_LINK}
-    - CI_REPO_LINK=${CI_REPO_LINK}
-    - CI_BUILD_FINISHED=${CI_BUILD_FINISHED}
-    - CONTRIBUTIONS_API_URL=http://contributions.api.svc.cluster.local:8080
-    - MATOMO_SITE_ID=10
-    - TARGET_ENV=production
+    CI_COMMIT_SHA: ${CI_COMMIT_SHA}
+    CI_BUILD_NUMBER: ${CI_BUILD_NUMBER}
+    CI_BUILD_LINK: ${CI_BUILD_LINK}
+    CI_COMMIT_LINK: ${CI_COMMIT_LINK}
+    CI_REPO_LINK: ${CI_REPO_LINK}
+    CI_BUILD_FINISHED: ${CI_BUILD_FINISHED}
+    CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:8080
+    MATOMO_SITE_ID: '11'
+    TARGET_ENV: production
   # Success message template
   - &success_message >
     ✅ *SUCCESS* - Stable Build #{{ build.number }}
@@ -65,10 +65,7 @@ steps:
         from_secret: DOCKER_HUB_USERNAME
       password:
         from_secret: DOCKER_HUB_PASSWORD
-      build_args:
-        - CONTRIBUTIONS_API_URL=http://contributions.api.svc.cluster.local:8080
-        - MATOMO_SITE_ID=10
-        - TARGET_ENV=production
+      build_args: *build_args_template
     depends_on:
       - check-for-leaks
 
