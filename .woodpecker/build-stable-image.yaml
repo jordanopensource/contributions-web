@@ -9,8 +9,8 @@ when:
       exclude: [main]
 
 variables:
-  - &docker_repo 'josaorg/contributions-web'
-  - &slack_channel 'builds'
+  - &docker_repo "josaorg/contributions-web"
+  - &slack_channel "builds"
   # Docker build arguments template
   - &build_args_template
     CI_COMMIT_SHA: ${CI_COMMIT_SHA}
@@ -64,8 +64,8 @@ steps:
         from_secret: DOCKER_HUB_PASSWORD
       build_args:
         {
-          CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:8080,
-          MATOMO_SITE_ID: '11',
+          CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:80,
+          MATOMO_SITE_ID: "11",
           TARGET_ENV: production,
         }
     depends_on:
