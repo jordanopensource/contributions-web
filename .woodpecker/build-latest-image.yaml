@@ -5,28 +5,10 @@ when:
   - event: [pull_request]
     # Only run when PR targets development or other branches (not main)
     evaluate: 'CI_COMMIT_TARGET_BRANCH != "main"'
-    # Build the source branch
-    branch:
-      exclude: [main]
-  - event: [pull_request]
-    # Also build latest image when development branch creates PR to main
-    evaluate: 'CI_COMMIT_TARGET_BRANCH == "main" && CI_COMMIT_BRANCH == "development"'
-    branch: [development]
 
 variables:
   - &docker_repo "josaorg/contributions-web"
   - &slack_channel "builds"
-  # Docker build arguments template
-  - &build_args_template
-    CI_COMMIT_SHA: ${CI_COMMIT_SHA}
-    CI_BUILD_NUMBER: ${CI_BUILD_NUMBER}
-    CI_BUILD_LINK: ${CI_BUILD_LINK}
-    CI_COMMIT_LINK: ${CI_COMMIT_LINK}
-    CI_REPO_LINK: ${CI_REPO_LINK}
-    CI_BUILD_FINISHED: ${CI_BUILD_FINISHED}
-    CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:80
-    MATOMO_SITE_ID: "11"
-    TARGET_ENV: production
   # Success message template
   - &success_message >
     ✅ *SUCCESS* - Latest Build #{{ build.number }}
@@ -52,10 +34,11 @@ variables:
 
 steps:
   # Security check - scan for secrets/credentials
-  - name: check-for-leaks
-    image: zricethezav/gitleaks:v8.18.4
-    commands:
-      - gitleaks detect --source . --verbose
+  - name: run-pre-commit-hooks
+    image: josaorg/pre-commit-runner
+    settings:
+      args: "--all-files"
+      skip: "end-of-file-fixer, yamllint"
 
   # Build latest image (development and other branches)
   - name: build-latest-image
@@ -71,13 +54,19 @@ steps:
       password:
         from_secret: DOCKER_HUB_PASSWORD
       build_args:
-        {
-          CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:80,
-          MATOMO_SITE_ID: "11",
-          TARGET_ENV: production,
-        }
+        CI_REPO: "${CI_REPO}"
+        CI_REPO_NAME: "${CI_REPO_NAME}"
+        CI_REPO_URL: "${CI_REPO_URL}"
+        CI_COMMIT_SHA: "${CI_COMMIT_SHA}"
+        CI_COMMIT_REF: "${CI_COMMIT_REF}"
+        CI_PIPELINE_URL: "${CI_PIPELINE_URL}"
+        CI_PIPELINE_CREATED: "${CI_PIPELINE_CREATED}"
+        CI_PREV_PIPELINE_URL: "${CI_PREV_PIPELINE_URL}"
+        CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:80
+        MATOMO_SITE_ID: "11"
+        TARGET_ENV: production
     depends_on:
-      - check-for-leaks
+      - run-pre-commit-hooks
 
   # Slack notification for latest build success
   - name: notify-slack-latest-success
@@ -90,7 +79,7 @@ steps:
     when:
       - status: success
     depends_on:
-      - check-for-leaks
+      - run-pre-commit-hooks
       - build-latest-image
 
   # Slack notification for latest build failure
@@ -104,5 +93,5 @@ steps:
     when:
       - status: failure
     depends_on:
-      - check-for-leaks
+      - run-pre-commit-hooks
       - build-latest-image
