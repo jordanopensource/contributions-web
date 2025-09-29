@@ -1,0 +1,44 @@
+default_install_hook_types:
+  - pre-commit
+  - pre-push
+  - commit-msg
+default_stages:
+  - pre-commit
+  - pre-push
+repos:
+  - hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
+    repo: meta
+  - hooks:
+      - args:
+          - --allow-multiple-documents
+        id: check-yaml
+        types: ["yaml"]
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+  - hooks:
+      - id: yamllint
+        args: [--strict, -c=.yamllint]
+        exclude: "(.github|tests|.woodpecker|pnpm-lock.yaml)/.*"
+    repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.37.1
+  - hooks:
+      - id: validate-eslint
+    repo: https://github.com/jordanopensource/pre-commit-hooks
+    rev: v0.4.5
+  - hooks:
+      - id: gitleaks
+        name: detect hardcoded secrets
+    repo: https://github.com/zricethezav/gitleaks
+    rev: v8.26.0
+  - hooks:
+      - id: commitizen
+        stages:
+          - commit-msg
+    repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.7.1
