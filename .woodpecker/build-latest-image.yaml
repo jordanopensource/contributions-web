@@ -62,6 +62,7 @@ steps:
         CI_PIPELINE_URL: "${CI_PIPELINE_URL}"
         CI_PIPELINE_CREATED: "${CI_PIPELINE_CREATED}"
         CI_PREV_PIPELINE_URL: "${CI_PREV_PIPELINE_URL}"
+        CI_PIPELINE_NUMBER: "${CI_PIPELINE_NUMBER}"
         CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:80
         MATOMO_SITE_ID: "11"
         TARGET_ENV: production
