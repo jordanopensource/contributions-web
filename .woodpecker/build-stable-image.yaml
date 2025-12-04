@@ -65,7 +65,7 @@ steps:
         CI_PREV_PIPELINE_URL: "${CI_PREV_PIPELINE_URL}"
         CI_PIPELINE_NUMBER: "${CI_PIPELINE_NUMBER}"
         CONTRIBUTIONS_API_URL: http://contributions.api.svc.cluster.local:80
-        MATOMO_SITE_ID: "11"
+        MATOMO_SITE_ID: "10"
         TARGET_ENV: production
     depends_on:
       - run-pre-commit-hooks
