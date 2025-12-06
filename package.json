@@ -17,25 +17,25 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
-    "apexcharts": "^3.45.1",
-    "core-js": "^3.35.0",
-    "nuxt": "^2.17.2",
+    "apexcharts": "^5.3.6",
+    "core-js": "^3.47.0",
+    "nuxt": "^2.18.1",
     "nuxt-healthcheck": "^1.0.1",
     "nuxt-matomo": "^1.2.4",
-    "vue-apexcharts": "^1.6.2",
+    "vue-apexcharts": "^1.7.0",
     "vue-lazy-hydration": "^2.0.0-beta.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
-    "@nuxtjs/eslint-config": "^10.0.0",
-    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/eslint-config": "^11.0.0",
+    "@nuxtjs/eslint-module": "^3.1.0",
     "@nuxtjs/tailwindcss": "^5.3.5",
-    "eslint": "^8.49.0",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-nuxt": "^4.0.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.17.0",
-    "postcss": "^8.4.33",
-    "prettier": "^3.0.3"
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-vue": "^9.33.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.7.4"
   }
 }
