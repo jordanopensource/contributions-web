@@ -71,7 +71,7 @@ export default {
     DRONE_BUILD_LINK: process.env.DRONE_BUILD_LINK,
     DRONE_REPO_LINK: process.env.DRONE_REPO_LINK,
     DRONE_BUILD_FINISHED: process.env.DRONE_BUILD_FINISHED,
-    TARGET_ENV: process.env.TARGET_ENV
+    TARGET_ENV: process.env.TARGET_ENV,
   },
 
   healthcheck: {
@@ -90,5 +90,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['apexcharts', 'vue-apexcharts'],
+  },
 }
