@@ -19,7 +19,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "apexcharts": "^5.3.6",
     "core-js": "^3.47.0",
-    "nuxt": "^2.18.1",
+    "nuxt": "^3.19.0",
     "nuxt-healthcheck": "^1.0.1",
     "nuxt-matomo": "^1.2.4",
     "vue-apexcharts": "^1.7.0",
