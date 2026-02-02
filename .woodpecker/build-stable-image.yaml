@@ -37,7 +37,7 @@ variables:
 
 steps:
   - name: run-pre-commit-hooks
-    image: josaorg/pre-commit-runner
+    image: registry.cloud.josa.ngo/library/pre-commit-runner
     settings:
       args: "--all-files"
       skip: "end-of-file-fixer, yamllint"
