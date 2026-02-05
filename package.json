@@ -22,12 +22,11 @@
     "nuxt": "^2",
     "nuxt-healthcheck": "^1",
     "nuxt-matomo": "^1",
-    "vue-apexcharts": "^1",
-    "vue-lazy-hydration": "^2.0.0-beta.4"
-  },
+    "vue-apexcharts": "^1"
+    },
   "devDependencies": {
     "@babel/eslint-parser": "^7",
-    "@nuxtjs/eslint-config": "^11",
+  "@nuxtjs/eslint-config": "^11",
     "@nuxtjs/eslint-module": "^3",
     "@nuxtjs/tailwindcss": "^4",
     "eslint": "^8",
