@@ -19,7 +19,7 @@
     "@nuxtjs/pwa": "^3",
     "apexcharts": "^5",
     "core-js": "^3",
-    "nuxt": "^2",
+    "nuxt": "^3",
     "nuxt-healthcheck": "^1",
     "nuxt-matomo": "^1",
     "vue-apexcharts": "^1"
